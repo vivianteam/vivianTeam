@@ -51,7 +51,12 @@
                   <tbody>
                     <?php $stt=0 ?>
                     @foreach($orders as $order)
-                    <?php $stt=$stt+1 ?>
+                    <?php $stt=$stt+1 ;
+                    
+                    
+                    ?>
+                    <?php  $status = $order->status;
+                    ?>
                     <tr>
                       <td >{!!$stt!!}
                       </td>
@@ -77,15 +82,15 @@
                         </td>
                       @endif
                       <td style="text-align: center; width: 20px">
-                        @if('{{$order->status}}' == 'chua')
-                        <a data-id="{{$order->id}}">
-                          <img src="{{asset('image/')}}/img/checked.png">
-                        </a>
-                        @else
-                        <a data-id="{{$order->id}} ">
-                          <img src="{{asset('image/')}}/img/cancel.png">
-                        </a>
-                        @endif
+                      <a>
+                        <div class="active{{$order->id}}">
+                       @if($status == 0)
+                          <img src="{{asset('image/')}}/img/cancel.png" onclick="ajaxToggoActiveStatusAdmin({{$order->id}}, 0)">
+                       @else
+                          <img src="{{asset('image/')}}/img/checked.png" onclick="ajaxToggoActiveStatusAdmin({{$order->id}}, 1)">
+                       @endif
+                       </div>
+                     </a>
                       </td>
                       <td>{{$order->date_order}}
                       </td>
@@ -127,38 +132,27 @@
     </section>
   </div>
 
-  <script>
-            
-      $(document).on('click', '.action', function(){
-      // var user_id = $(this).data('user_id');
-       var order_id = $(this).data('id');
-       //var action = 'change_status';
-       //$('#message').html('');
-       // if(confirm("Are you Sure you want to change status of this User?"))
-       // {
-        $.ajax({
-         url:'{{route('postCheckOrder')}}',
-         method:'POST',
-         data:{
-          id:order_id, 
-          // user_status:user_status, 
-          // action:action
-        },
-         success:function(data)
-         {
-          if(data != '')
-          {
-           load_user_data();
-           $('#message').html(data);
-          }
-         }
-        });
-       // }
-       // else
-       // {
-       //  return false;
-       // }
-      });
-    </script>
+  <script type="text/javascript">
+        function ajaxToggoActiveStatusAdmin(id_user, presentStatus){
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+            $.ajax({
+                url: "{{ route('postCheckOrder') }}",
+                type: 'POST',
+                cache: false,
+                data: {id:id_user, status:presentStatus},
+                success: function(data){
+                    $('.active'+id_user).html(data);
+                },
+                error: function (){
+                    alert('Lỗi đã xảy ra');
+                }
+            });
+            return false;
+        }
+  </script>
 
   @endsection
