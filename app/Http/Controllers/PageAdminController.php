@@ -3,11 +3,21 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\users;
+use App\products;
+use App\orders;
+use App\person_post_new;
+
 
 class PageAdminController extends Controller
 {
      public function getIndexAdmin(){
-    	return view('admin.pageAdmin.indexAdmin');
+      $totalCustomer = users::where('id_type',1)->count();
+      $totalOrder=orders::where('paid',0)->count();
+      $totalrequest=person_post_new::all()->count();
+      $showNewOrders=orders::where('paid',0)->paginate(5);
+
+    	return view('admin.pageAdmin.indexAdmin', compact('totalCustomer','totalOrder','totalrequest','showNewOrders'));
     }
     public function getDashboard(){
       return view('viewAdmin.dashboard');

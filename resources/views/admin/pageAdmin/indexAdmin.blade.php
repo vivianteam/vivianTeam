@@ -13,8 +13,8 @@
                 <div class="card-body">
                   <div class="media d-flex">
                     <div class="media-body text-left">
-                      <h3 class="info">850</h3>
-                      <h6>Products Sold</h6>
+                      <h3 class="info">{{$totalOrder}}</h3>
+                      <h6>New Orders</h6>
                     </div>
                     <div>
                       <i class="icon-basket-loaded info font-large-2 float-right"></i>
@@ -34,8 +34,8 @@
                 <div class="card-body">
                   <div class="media d-flex">
                     <div class="media-body text-left">
-                      <h3 class="warning">$748</h3>
-                      <h6>Net Profit</h6>
+                      <h3 class="warning"></h3>
+                      <h6>New Orders</h6>
                     </div>
                     <div>
                       <i class="icon-pie-chart warning font-large-2 float-right"></i>
@@ -55,8 +55,8 @@
                 <div class="card-body">
                   <div class="media d-flex">
                     <div class="media-body text-left">
-                      <h3 class="success">146</h3>
-                      <h6>New Customers</h6>
+                      <h3 class="success">{{$totalCustomer}}</h3>
+                      <h6>Total Customers</h6>
                     </div>
                     <div>
                       <i class="icon-user-follow success font-large-2 float-right"></i>
@@ -76,8 +76,8 @@
                 <div class="card-body">
                   <div class="media d-flex">
                     <div class="media-body text-left">
-                      <h3 class="danger">99.89 %</h3>
-                      <h6>Customer Satisfaction</h6>
+                      <h3 class="danger">{{$totalrequest}}</h3>
+                      <h6>Total Request</h6>
                     </div>
                     <div>
                       <i class="icon-heart danger font-large-2 float-right"></i>
@@ -136,136 +136,26 @@
                     <table id="new-orders-table" class="table table-hover table-xl mb-0">
                       <thead>
                         <tr>
-                          <th class="border-top-0">Product</th>
-                          <th class="border-top-0">Customers</th>
+                          <th class="border-top-0">ID</th>
+                          <th class="border-top-0">Date order</th>
                           <th class="border-top-0">Total</th>
                         </tr>
                       </thead>
                       <tbody>
+                        @foreach($showNewOrders as $showNewOrder)
                         <tr>
-                          <td class="text-truncate">iPhone X</td>
-                          <td class="text-truncate p-1">
-                            <ul class="list-unstyled users-list m-0">
-                              <li data-toggle="tooltip" data-popup="tooltip-custom" data-original-title="John Doe"
-                              class="avatar avatar-sm pull-up">
-                                <img class="media-object rounded-circle" src="source/Admin/app-assets/images/portrait/small/avatar-s-19.png"
-                                alt="Avatar">
-                              </li>
-                              <li data-toggle="tooltip" data-popup="tooltip-custom" data-original-title="Katherine Nichols"
-                              class="avatar avatar-sm pull-up">
-                                <img class="media-object rounded-circle" src="source/Admin/app-assets/images/portrait/small/avatar-s-18.png"
-                                alt="Avatar">
-                              </li>
-                              <li data-toggle="tooltip" data-popup="tooltip-custom" data-original-title="Joseph Weaver"
-                              class="avatar avatar-sm pull-up">
-                                <img class="media-object rounded-circle" src="source/Admin/app-assets/images/portrait/small/avatar-s-17.png"
-                                alt="Avatar">
-                              </li>
-                              <li class="avatar avatar-sm">
-                                <span class="badge badge-info">+4 more</span>
-                              </li>
-                            </ul>
+                          <td class="text-truncate">{{$showNewOrder->id}}</td>
+                          <td class="text-truncate">{{$showNewOrder->date_order}}
                           </td>
-                          <td class="text-truncate">$8999</td>
+                          <td class="text-truncate">{{number_format($showNewOrder->totalPrice)}}</td>
                         </tr>
-                        <tr>
-                          <td class="text-truncate">Pixel 2</td>
-                          <td class="text-truncate p-1">
-                            <ul class="list-unstyled users-list m-0">
-                              <li data-toggle="tooltip" data-popup="tooltip-custom" data-original-title="Alice Scott"
-                              class="avatar avatar-sm pull-up">
-                                <img class="media-object rounded-circle" src="source/Admin/app-assets/images/portrait/small/avatar-s-16.png"
-                                alt="Avatar">
-                              </li>
-                              <li data-toggle="tooltip" data-popup="tooltip-custom" data-original-title="Charles Miller"
-                              class="avatar avatar-sm pull-up">
-                                <img class="media-object rounded-circle" src="source/Admin/app-assets/images/portrait/small/avatar-s-15.png"
-                                alt="Avatar">
-                              </li>
-                            </ul>
-                          </td>
-                          <td class="text-truncate">$5550</td>
-                        </tr>
-                        <tr>
-                          <td class="text-truncate">OnePlus</td>
-                          <td class="text-truncate p-1">
-                            <ul class="list-unstyled users-list m-0">
-                              <li data-toggle="tooltip" data-popup="tooltip-custom" data-original-title="Christine Ramos"
-                              class="avatar avatar-sm pull-up">
-                                <img class="media-object rounded-circle" src="source/Admin/app-assets/images/portrait/small/avatar-s-11.png"
-                                alt="Avatar">
-                              </li>
-                              <li data-toggle="tooltip" data-popup="tooltip-custom" data-original-title="Thomas Brewer"
-                              class="avatar avatar-sm pull-up">
-                                <img class="media-object rounded-circle" src="source/Admin/app-assets/images/portrait/small/avatar-s-10.png"
-                                alt="Avatar">
-                              </li>
-                              <li data-toggle="tooltip" data-popup="tooltip-custom" data-original-title="Alice Chapman"
-                              class="avatar avatar-sm pull-up">
-                                <img class="media-object rounded-circle" src="source/Admin/app-assets/images/portrait/small/avatar-s-9.png"
-                                alt="Avatar">
-                              </li>
-                              <li class="avatar avatar-sm">
-                                <span class="badge badge-info">+3 more</span>
-                              </li>
-                            </ul>
-                          </td>
-                          <td class="text-truncate">$9000</td>
-                        </tr>
-                        <tr>
-                          <td class="text-truncate">Galaxy</td>
-                          <td class="text-truncate p-1">
-                            <ul class="list-unstyled users-list m-0">
-                              <li data-toggle="tooltip" data-popup="tooltip-custom" data-original-title="Ryan Schneider"
-                              class="avatar avatar-sm pull-up">
-                                <img class="media-object rounded-circle" src="source/Admin/app-assets/images/portrait/small/avatar-s-14.png"
-                                alt="Avatar">
-                              </li>
-                              <li data-toggle="tooltip" data-popup="tooltip-custom" data-original-title="Tiffany Oliver"
-                              class="avatar avatar-sm pull-up">
-                                <img class="media-object rounded-circle" src="source/Admin/app-assets/images/portrait/small/avatar-s-13.png"
-                                alt="Avatar">
-                              </li>
-                              <li data-toggle="tooltip" data-popup="tooltip-custom" data-original-title="Joan Reid"
-                              class="avatar avatar-sm pull-up">
-                                <img class="media-object rounded-circle" src="source/Admin/app-assets/images/portrait/small/avatar-s-12.png"
-                                alt="Avatar">
-                              </li>
-                            </ul>
-                          </td>
-                          <td class="text-truncate">$7500</td>
-                        </tr>
-                        <tr>
-                          <td class="text-truncate">Moto Z2</td>
-                          <td class="text-truncate p-1">
-                            <ul class="list-unstyled users-list m-0">
-                              <li data-toggle="tooltip" data-popup="tooltip-custom" data-original-title="Kimberly Simmons"
-                              class="avatar avatar-sm pull-up">
-                                <img class="media-object rounded-circle" src="source/Admin/app-assets/images/portrait/small/avatar-s-8.png"
-                                alt="Avatar">
-                              </li>
-                              <li data-toggle="tooltip" data-popup="tooltip-custom" data-original-title="Willie Torres"
-                              class="avatar avatar-sm pull-up">
-                                <img class="media-object rounded-circle" src="source/Admin/app-assets/images/portrait/small/avatar-s-7.png"
-                                alt="Avatar">
-                              </li>
-                              <li data-toggle="tooltip" data-popup="tooltip-custom" data-original-title="Rebecca Jones"
-                              class="avatar avatar-sm pull-up">
-                                <img class="media-object rounded-circle" src="source/Admin/app-assets/images/portrait/small/avatar-s-6.png"
-                                alt="Avatar">
-                              </li>
-                              <li class="avatar avatar-sm">
-                                <span class="badge badge-info">+1 more</span>
-                              </li>
-                            </ul>
-                          </td>
-                          <td class="text-truncate">$8500</td>
-                        </tr>
+                        @endforeach
                       </tbody>
                     </table>
                   </div>
                 </div>
               </div>
+              {!! $showNewOrders->links() !!}
             </div>
           </div>
         </div>

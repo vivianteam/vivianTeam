@@ -187,7 +187,7 @@ class controllerPage extends Controller
           //  
        // $getPosT=person_post_new::where('id',$req->id)->get();
         $tam=$req->testCountLike;
-        dd($tam);
+       // dd($tam);
        // nhập số 3 test bình thường thì
         $post = person_post_new::find(5);
 // ---dd($tam);
@@ -238,7 +238,7 @@ class controllerPage extends Controller
     public function postPayment(Request $req){
 
         $cart = Session::get('cart');
-        $total=$cart->totalPrice;
+        $total=number_format($cart->totalPrice+20000);
         $quanitily=$cart->totalQty;
         //dd($total,$quanitily);
         $url="https://www.baokim.vn/payment/product/version11?business=tducnguyen1997%40gmail.com&id=&order_description=&product_name=Tổng hóa đơn&product_price=1&product_quantity={$quanitily}&total_amount={$total}&url_cancel=&url_detail=&url_success=http%3A%2F%2Flocalhost%3A8080%2Flaravel%2Fvivianv1.0%2Fvivian%2Fvivian%2Fpublic%2Findex";
