@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>S-cart Admin  | Order #125
+    <title>S-cart Admin  | Order #  
     </title>
     @include("viewAdmin.elements.stylesheet")
   </head>

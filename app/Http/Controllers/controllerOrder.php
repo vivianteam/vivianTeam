@@ -22,7 +22,7 @@ class controllerOrder extends Controller
     	return view('admin.pageAdmin.manageOrder',compact('orders'));
     }
 
-    public function getEditManagementOrder(Request $req){
+    public function getEditManagementOrder2(Request $req){
     	$orders=orders::find($req->id);
     	$parent=products::select('id','name')->get()->toArray();
     	$users=users::where('id',$req->id)->first();
@@ -30,6 +30,21 @@ class controllerOrder extends Controller
     	//dd($details);
     	// $products=products::where('id',$details->id_product)->get()->toArray();
     	// dd($products);
-    	return view('admin.pageAdmin.editManagementOrder',compact('parent','users','details','orders'));
+    	return view('admin.pageAdmin.editOrder2',compact('parent','users','details','orders'));
+    }
+
+    public function postCheckOrder(Request $req){
+        $checkOrder=orders::find($req->id);
+        if($checkOrder->status=='chua')
+        {
+            $checkOrder->status ='checked';
+            $checkOrder->paid=1;
+        }
+        else
+        {
+            $checkOrder->status ='chua';
+            $checkOrder->paid=0;
+        }
+        $checkOrder->save();
     }
 }
