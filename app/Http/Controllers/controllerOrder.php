@@ -11,7 +11,7 @@ use App\products;
 use App\orders;
 use App\order_details;
 use App\users;
-use Illuminate\Http\Request;
+use Illuminate\Http\Request; 
 
 class controllerOrder extends Controller
 {
@@ -35,16 +35,21 @@ class controllerOrder extends Controller
 
     public function postCheckOrder(Request $req){
         $checkOrder=orders::find($req->id);
-        if($checkOrder->status=='chua')
+        $status = $req->status;
+        $order_id=$req->id;
+        //dd($status);
+        if($checkOrder->status==0)
         {
-            $checkOrder->status ='checked';
+            $checkOrder->status =1;
             $checkOrder->paid=1;
         }
         else
         {
-            $checkOrder->status ='chua';
+            $checkOrder->status =0;
             $checkOrder->paid=0;
         }
-        $checkOrder->save();
+        $reuslt = $checkOrder->save();
+       // dd($reuslt);
+        return view('admin.pageAdmin.ajaxToggoActiveStatus',compact('status','order_id'));
     }
 }
