@@ -38,8 +38,6 @@
                       </th>
                       <th>Payment
                       </th>
-                      <th>Satatus
-                      </th>
                       <th class="sorting_desc_disabled sorting_asc_disabled sorting">Check
                       </th>
                       <th>Date order
@@ -52,10 +50,10 @@
                     <?php $stt=0 ?>
                     @foreach($orders as $order)
                     <?php $stt=$stt+1 ;
-                    
-                    
                     ?>
-                    <?php  $status = $order->status;
+                    <?php  
+                      $status = $order->status;
+                      $checks=$order->paid;
                     ?>
                     <tr>
                       <td >{!!$stt!!}
@@ -66,23 +64,9 @@
                       </td>
                       <td style="width: 20px">{{$order->payment}}
                       </td>
-                      @if('{{$order->paid}}' == '0')
-                        <td >
-                          <button class="btn btn-success btn-xs" >
-                            <span class="glyphicon glyphicon-pencil">
-                            </span>new
-                          </button>
-                        </td>
-                      @else
-                        <td >
-                          <button class="btn btn-warning btn-xs" >
-                            <span class="glyphicon glyphicon-pencil">
-                            </span>old
-                          </button>
-                        </td>
-                      @endif
+                      
                       <td style="text-align: center; width: 20px">
-                      <a>
+                      <a id="containnerTest">
                         <div class="active{{$order->id}}">
                        @if($status == 0)
                           <img src="{{asset('image/')}}/img/cancel.png" onclick="ajaxToggoActiveStatusAdmin({{$order->id}}, 0)">
@@ -115,8 +99,6 @@
                       </th>
                       <th>Payment
                       </th>
-                      <th>Status
-                      </th>
                       <th>Date order
                       </th>
                       <th>Action
@@ -131,28 +113,30 @@
       </div>
     </section>
   </div>
-
-  <script type="text/javascript">
-        function ajaxToggoActiveStatusAdmin(id_user, presentStatus){
-            $.ajaxSetup({
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                }
-            });
-            $.ajax({
-                url: "{{ route('postCheckOrder') }}",
-                type: 'POST',
-                cache: false,
-                data: {id:id_user, status:presentStatus},
-                success: function(data){
-                    $('.active'+id_user).html(data);
-                },
-                error: function (){
-                    alert('Lỗi đã xảy ra');
-                }
-            });
-            return false;
-        }
-  </script>
+<script type="text/javascript">
+  function ajaxToggoActiveStatusAdmin(id_user, presentStatus){
+    $.ajaxSetup({
+      headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+      }
+    });
+    $.ajax({
+      url: "{{ route('postCheckOrder') }}",
+      type: 'POST',
+      cache: false,
+      data: {
+        id:id_user, status:presentStatus}
+      ,
+      success: function(data){
+        $('.active'+id_user).html(data);
+      }
+      ,
+      error: function (){
+        alert('Lỗi đã xảy ra');
+      }
+    });
+    return false;
+  }
+</script>
 
   @endsection

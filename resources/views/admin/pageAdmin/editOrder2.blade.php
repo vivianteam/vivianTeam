@@ -261,11 +261,7 @@
     </section>
     <script>
       function dataEdit(id){
-        $('#editItem [name="editItem-form"]').val({
-          {
-          $orders->id}
-                                                  }
-                                                 );
+        $('#editItem [name="editItem-form"]').val({{$orders->id}});
         $('#editItem .form_id').val($('.item_'+id+'_id').html().toString().replace(/,/g,''));
         $('#editItem .form_sku').val($('.item_'+id+'_sku').html().toString().replace(/,/g,''));
         $('#editItem .form_qty').val($('.item_'+id+'_qty').html().toString().replace(/,/g,''));

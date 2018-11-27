@@ -22,6 +22,11 @@ class controllerOrder extends Controller
     	return view('admin.pageAdmin.manageOrder',compact('orders'));
     }
 
+    public function getOrderStatus(){
+        $orders=orders::all();
+        return view('admin.pageAdmin.orderStatus',compact('orders'));
+    }
+
     public function getEditManagementOrder2(Request $req){
     	$orders=orders::find($req->id);
     	$parent=products::select('id','name')->get()->toArray();

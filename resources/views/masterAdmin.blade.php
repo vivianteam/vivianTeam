@@ -448,12 +448,22 @@
           </a>
         </li>
         <li class=" nav-item">
-          <a href="{{route('getManagementOrder')}}">
+          <a href="#">
             <i class="la la-home">
             </i>
-            <span class="menu-title" data-i18n="nav.dash.main">Management Orders
+            <span class="menu-title" data-i18n="nav.dash.main">Management Order
             </span>
           </a>
+          <ul class="menu-content">
+            <li>
+              <a class="menu-item" href="{{route('getManagementOrder')}}" data-i18n="nav.dash.crypto">Check order
+              </a>
+            </li>
+            <li>
+              <a class="menu-item" href="{{route('getOrderStatus')}}" data-i18n="nav.dash.ecommerce">Order status
+              </a>
+            </li>
+          </ul>
         </li>
         <li class=" nav-item">
           <a href="{{route('request')}}">
@@ -465,11 +475,21 @@
         </li>
         <li class=" nav-item">
           <a href="#">
-            <i class="la la-television">
+            <i class="la la-home">
             </i>
-            <span class="menu-title" data-i18n="nav.templates.main">Management users
+            <span class="menu-title" data-i18n="nav.dash.main">Management Users
             </span>
           </a>
+          <ul class="menu-content">
+            <li>
+              <a class="menu-item" href="{{route('getManagementOrder')}}" data-i18n="nav.dash.crypto">Customers
+              </a>
+            </li>
+            <li>
+              <a class="menu-item" href="{{route('getOrderStatus')}}" data-i18n="nav.dash.ecommerce">Employee
+              </a>
+            </li>
+          </ul>
         </li>
       </ul>
     </div>
