@@ -482,7 +482,7 @@
           </a>
           <ul class="menu-content">
             <li>
-              <a class="menu-item" href="{{route('getManagementOrder')}}" data-i18n="nav.dash.crypto">Customers
+              <a class="menu-item" href="{{route('getCustomer')}}" data-i18n="nav.dash.crypto">Customers
               </a>
             </li>
             <li>
