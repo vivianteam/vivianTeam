@@ -262,8 +262,10 @@ Route::get('editManagementOrder2/{id}',[
 'as'=>'getEditManagementOrder2',
 'uses'=>'controllerOrder@getEditManagementOrder2'
 ]);
-
-
+Route::get('orderStatus',[
+'as'=>'getOrderStatus',
+'uses'=>'controllerOrder@getOrderStatus'
+]);
 Route::post('checkOrder',[
 'as'=>'postCheckOrder',
 'uses'=>'controllerOrder@postCheckOrder'
