@@ -271,6 +271,37 @@ Route::post('checkOrder',[
 'uses'=>'controllerOrder@postCheckOrder'
 ]);
 //end order
+//
+//
+//start account
+//
+Route::get('customer',[
+'as'=>'getCustomer',
+'uses'=>'controllerAccount@getCustomer'
+]);
+Route::get('addCustomer',[
+'as'=>'getAddCustomer',
+'uses'=>'controllerAccount@getAddCustomer'
+]);
+Route::post('addCustomer',[
+'as'=>'postAddCustomer',
+'uses'=>'controllerAccount@postAddCustomer'
+]);
+Route::get('editCustomer/{id}',[
+'as'=>'geteditCustomer',
+'uses'=>'controllerAccount@geteditCustomer'
+]);
+Route::post('editCustomer/{id}',[
+'as'=>'posteditCustomer',
+'uses'=>'controllerAccount@posteditCustomer'
+]);
+Route::get('deleteCustomer/{id}',[
+'as'=>'getdeleteCustomer',
+'uses'=>'controllerAccount@getdeleteCustomer'
+]);
+//
+//end account
+//
 // start contact
 Route::get('contactAdmin',[
 'as'=>'getContact',

@@ -14,7 +14,7 @@ class ControllerCategories extends Controller
     public function getCategories(){
         $categories = categories::all();
       return view('admin.pageAdmin.categories',['categories' => $categories]);
-    }
+    } 
     public function getAddCategories(){
         return view('admin.pageAdmin.addCategories');
     }
