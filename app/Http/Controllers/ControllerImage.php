@@ -31,7 +31,7 @@ class ControllerImage extends Controller
     	$file_image=$req->file('img')->getClientOriginalName();
         $img=new images;
         $img->image=$file_image;
-        $img->id_product=$req->cmb_pro;
+        $img->id_product=$req->cmb_pro_Add;
         $req->file('img')->move('image/products/',$file_image);
         $img->save();
         return redirect()->route('imageProduct')->with(['flash_level'=>'success','flash_message'=>'Success !! Complete add image']);
@@ -47,7 +47,7 @@ class ControllerImage extends Controller
     	$img=images::find($id);
     	$file_image=$req->file('img')->getClientOriginalName();
         $img->image=$file_image;
-        $img->id_product=$req->cmb_pro;
+        $img->id_product=$req->cmb_proEdit;
         $req->file('img')->move('image/products/',$file_image);
         $img->save();
         return redirect()->route('imageProduct')->with(['flash_level'=>'success','flash_message'=>'Success !! Complete update image']);

@@ -8,11 +8,11 @@
             </a>
           </li>
           <li>
-            <a href="/blogs/news">News
+            <a href="{{route('getBlog')}}">BLOG
             </a>
           </li>
           <li>
-            <span>Mauris Lacinia Lectus
+            <span>{{$preson_posts->title}}
             </span>
           </li>
         </ol>
@@ -21,7 +21,7 @@
     <div id="pageContent" class="starthide">
       <div class="container">
         <!-- two columns -->
-        <div class="row">					 
+        <div class="row">
           <!-- center column -->
           <div class="col-xl-8 col-lg-8 col-md-12" id="centerColumn">
             <div class="title-box">
@@ -29,45 +29,49 @@
               </h1>
             </div>
             <div class="post">
+              <?php
+                $day=date("d", strtotime("$preson_posts->created_at"));
+                $month=date("M", strtotime("$preson_posts->created_at"));
+              ?>
               <!-- title post -->
               <div class="post__title_block">
                 <div class="pull-left">
                   <time>
-                    <span>09
-                    </span>dec
+                    <span>{{$day}}
+                    </span>{{$month}}
                   </time>
-                </div>										
+                </div>
                 <div class="pull-left">
                   <h2 class="post__title text-uppercase">
-                    <a href="#">Mauris Lacinia Lectus
+                    <a href="#">{{$preson_posts->title}}
                     </a>
                   </h2>
                   <div class="post__meta">
                     <span class="post__meta__item">
                       <span class="autor">by 
-                        <b>Jon Silver
+                        <b>{{$preson_posts->username}}
                         </b>
                       </span>
                     </span>
                     <span class="post__meta__item">
                       <span class="icon icon-message">
                       </span>
-                      <a href="/blogs/news/mauris-lacinia-lectus-6#addcomment">0 comment(s)
+                      <a href="#">0 comment(s)
                       </a>
-                    </span>									
+                    </span>
                     <span class="post__meta__item">
                       <span class="icon icon-folder">
                       </span>
-                      <a href="/blogs/news">News
+                      <a href="#">News
                       </a> 
                     </span>
                   </div>
-                </div>									
+                </div>
               </div>
               <!-- /title post -->
               <!-- content post -->
               <p>
-                <img src="{{asset('image/')}}/bogs/{{ $preson_posts->image }}" class="img-responsive" alt="">
+                <img style="width: 770px;height: 488px" src="{{asset('image/')}}/bogs/{{ $preson_posts->image }}" class="img-responsive" alt="">
               </p>
               <div class="divider divider--xs">
               </div>
@@ -89,15 +93,49 @@
               <div id="addcomment" style="position: absolute; top: -190px;">
               </div>
             </div>
-            <!-- form -->
+            <!-- form like -->
+            <div class="form-group">
+              @if($getPerson->id_user==Auth::user()->id)
+              <?php
+dd($getPerson->id_user);
+              ?>
+
+                @if($getPerson->status==1)
+                  <a href="{{route('getLikeTest01',$getPerson->id)}}" onclick="ajaxToggoActiveStatusAdmin({{$getPerson->id_user}}, 1,{{$getPerson->id}})" style="margin-right: 20px" name="testCountLike"  >
+                    <img src="{{asset('image/')}}/like/like.png">(2)
+                  </a>
+                  <a href="{{route('getLikeTest01',$getPerson->id)}}" onclick="ajaxToggoActiveStatusAdmin({{$getPerson->id}}, 0)" style="margin-right: 20px" id="{{$getPerson->id}}" >
+                    <img src="{{asset('image/')}}/like/1.png">(1)
+                  </a>
+                @else
+                  <a href="{{route('getLikeTest01',$getPerson->id)}}" onclick="ajaxToggoActiveStatusAdmin({{$getPerson->id_user}}, 1,{{$getPerson->id}})" style="margin-right: 20px" name="testCountLike">
+                    <img src="{{asset('image/')}}/like/2.png">(2)
+                  </a>
+                  <a href="{{route('getLikeTest01',$getPerson->id)}}" onclick="ajaxToggoActiveStatusAdmin({{$getPerson->id}}, 0)" style="margin-right: 20px" id="{{$getPerson->id}}" >
+                    <img src="{{asset('image/')}}/like/dislike.png">(1)
+                  </a>
+                @endif
+              @else
+                <a href="{{route('getLikeTest01',$getPerson->id)}}" onclick="ajaxToggoActiveStatusAdmin({{$getPerson->id_user}}, 1,{{$getPerson->id}})" style="margin-right: 20px" name="testCountLike" >
+                  <img src="{{asset('image/')}}/like/2.png">(2)
+                </a>
+                <a href="{{route('getLikeTest01',$getPerson->id)}}" onclick="ajaxToggoActiveStatusAdmin({{$getPerson->id}}, 0)" style="margin-right: 20px" id="{{$getPerson->id}}" >
+                  <img src="{{asset('image/')}}/like/1.png">(1)
+                </a>
+              @endif
+            </div>
+
+            <!-- end form like -->
+
+            <!-- form comment-->
             <form class="form form-horizontal" action="{{route('getcomment',$preson_posts->id)}}" method="POST" enctype="multipart/form-data">
-            <input type="hidden" name="_token" value="{{ csrf_token() }}" >
-              @foreach($comments as $comment)
-                <div class="form-group">
-                  <b>ten</b>: {{ $comment->id }}
-                  <p style="font-size:9px;">date</p>
-                </div>
-              @endforeach
+              <input type="hidden" name="_token" value="{{ csrf_token() }}" >
+                @foreach($comments as $comment)
+                  <div class="form-group">
+                    <b>ten</b>: {{ $comment->id }}
+                    <p style="font-size:9px;">date</p>
+                  </div>
+                @endforeach
               <div class="form-group">
                 <label for="InputComment">Comment
                 </label>
@@ -107,7 +145,7 @@
               <button type="submit" class="btn btn-top btn--ys">Post comment
               </button>
             </form>
-            <!-- /form -->
+            <!-- /form comment-->
           </div>
           <div class="divider divider--lg visible-md visible-sm visible-xs">
           </div>
@@ -262,50 +300,6 @@
               </div>
               <!-- / -->
             </div>
-            <h4 class="text-uppercase title-aside">ARCHIVES
-            </h4>
-            <div class="block-underline">
-              <ul class="categories-list">
-                <li>
-                  <a href="#">July 2016
-                  </a>
-                </li>
-                <li>
-                  <a href="#">Juny 2016
-                  </a>
-                </li>
-                <li>
-                  <a href="#">May 2016
-                  </a>
-                </li>
-                <li>
-                  <a href="#">April 2016
-                  </a>
-                </li>			              
-              </ul>
-            </div>
-            <h4 class="text-uppercase title-aside">META
-            </h4>
-            <div class="block-underline">
-              <ul class="categories-list">
-                <li>
-                  <a href="#">Entries RSS
-                  </a>
-                </li>
-                <li>
-                  <a href="#">WordPress.org
-                  </a>
-                </li>
-                <li>
-                  <a href="#">Magento
-                  </a>
-                </li>
-                <li>
-                  <a href="#">Shopify
-                  </a>
-                </li>
-              </ul>
-            </div>				
           </aside>
         </div>
       </div>

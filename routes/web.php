@@ -60,20 +60,14 @@ Route::post('likeTest02',[
 'as'=>'postLikeTest02',
 'uses'=>'controllerPage@postLikeTest02'
 ]);
+
+////
 Route::get('payment',[
 'as'=>'postPayment',
 'uses'=>'controllerPage@postPayment'
 ]);
 ///// tesst
-///
-///
-Route::get('posts', 'controllerPage@posts')->name('posts');
-Route::post('ajaxRequest', 'controllerPage@ajaxRequest')->name('ajaxRequest');
-//////////\
-///
-Route::post('/like','controllerPage@postLikePost')->name('like');
-// Route::get('likeTest/{slug}',"controllerPage@likeTest");
-// 
+
 // Comment
 // 
 Auth::routes();

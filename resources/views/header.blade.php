@@ -3,8 +3,8 @@
     <div class="container">
       <div class="row">
         <div class="col-sm-4 col-md-4 col-lg-4 col-xl-5">
-          <a href="index.html">
-            <img class="logo img-responsive" src="" alt="logo" /> 
+          <a href="#">
+            <img style="height: 80px; margin-top: -20px" src="{{asset('image/')}}/img/logo2.png ">
           </a>
         </div>
         <div class="col-sm-8 col-md-8 col-lg-8 col-xl-7 text-right">
@@ -147,7 +147,7 @@
                     </a>
                     <ul class="dropdown-menu megamenu" role="menu">
                       @foreach($cate as $loai)
-                      @if(count($loai->SmallCategories)>0)
+                      @if(count($loai->SmallCategories)>0) 
                       <li class="col-sm-3">
                         <a href="#" class="megamenu__subtitle">
                           <span>{{ $loai->name}}

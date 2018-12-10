@@ -18,7 +18,7 @@
               <h4 class="card-title">All order
               </h4>
               <a class="heading-elements-toggle">
-                <i class="la la-ellipsis-h font-medium-3">
+                <i class="la la-ellipsis-h font-medium-3"> 
                 </i>
               </a>
             </div>

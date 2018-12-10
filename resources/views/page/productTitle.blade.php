@@ -25,7 +25,7 @@
                             <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6 hidden-xs">
                                 <div class="product-main-image">
                                     <div class="product-main-image__item">
-                                        <img class="product-zoom" id="bigImg" src="{{asset('image/')}}/products/{{ $sanpham->image }}" zoom-image="{{ asset('image/')}}/products/{{ $sanpham->image }}" alt="Black Coffee Belt" /> 
+                                        <img style="height:500px;width: 450px" class="product-zoom" id="bigImg" src="{{asset('image/')}}/products/{{ $sanpham->image }}" zoom-image="{{ asset('image/')}}/products/{{ $sanpham->image }}" alt="Black Coffee Belt" /> 
                                     </div>
                                     <div class="product-main-image__zoom"></div>
                                 </div>
