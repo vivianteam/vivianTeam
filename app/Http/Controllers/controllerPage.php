@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use App\slides;
 use App\categories;
 use App\products;
@@ -17,7 +18,7 @@ use App\likes;
 use App\comments;
 use App\contacts;
 use Session;
-use Mail;
+use Mail;   
 use Hash;
 use Auth;
  
@@ -123,78 +124,37 @@ class controllerPage extends Controller
     public function getOrder(){
         return view('page.customerInformation');
     }
-
-    public function posts()
-    {
-        $posts = person_post_new::get();
-        return view('page.blog2', compact('posts'));
-    }
-
     // comment
     //
 
     public function getComment(Request $request){
-         // $sanpham=products::where('id',$req->id)->first();
-         //  $image_products=images::where('id_product',$sanpham->id)->get();
-        //$same=products::where('id_small_categories',$sanpham->id_small_categories)->get();
-            //if ($request->ajax()){
-                $preson_posts= person_post_new::where('id',$request->id)->first();
-                $comments= comments::where('id_person',$preson_posts->id)->get();
+        $preson_posts=DB::table('users')->join('person_post_new','users.id','=','person_post_new.id_user')->where('person_post_new.id',$request->id)->first();
+        $countLike=likes::where('id_person',$request->id)->count();
+        $getPerson=likes::where('id_person',$request->id)->get();
+        dd($getPerson->id_user);
+        //dd($countLike);
+        $comments= comments::where('id_person',$preson_posts->id)->get();
+        return view('page.comment2', compact('comments','preson_posts','countLike','getPerson'));
+    }
 
-                return view('page.comment2', compact('comments','preson_posts'));
-            //}
-        }
-
-        public function postComment(Request $request){
-           // if ($request->ajax()){
-                $user = Auth::user();
-                $comment = new comments();
-                $comment->id_user = $user->id;
-                $comment->id_person = $request->id;
-                $comment->content = $request->txt_comment;
-              //  dd($comment->id_user,$comment->id_person,$comment->content);
-                $comment->save();
-                return redirect()->route('getComment');
-                //dd($comment);
-                //return response()->json(['success'=>'Got Simple Ajax Request.']);
-            //}
-        }
+    public function postComment(Request $request){
+        $user = Auth::user();
+        $comment = new comments();
+        $comment->id_user = $user->id;
+        $comment->id_person = $request->id;
+        $comment->content = $request->txt_comment;
+        $comment->save();
+        return redirect()->route('getComment');
+    }
     // end comment
 
-    public function ajaxRequest(Request $request){
-
-
-        $post = person_post_new::find($request->id);
-        $response = auth()->user()->toggleLike($post);
-
-
-        return response()->json(['success'=>$response]);
-    }
 
     public function getBlog(Request $req){
-        $persons= person_post_new::all();
-        //$post=person_post_new::where('id','=',$req->id)->get();
-       // $post=person_post_new::select('id')->get();
-        // $likePost=person_post_new::find($req->id);
-        // $likes=Likes::where('id_person',$likePost->id)->count();
-        // $same=person_post_new::where('id',$req->id)->first();
-        // $parent=users::where('id_user',$same->id_user)->get();
-         //if ($request->ajax()){
-                //$preson_posts= person_post_new::where('id',$request->id)->first();
-                $testcmt= person_post_new::all();
-               // return view('page.commentlist', ['person_post_new'=>$testcmt]);
-          //  }
-          //  
-       // $getPosT=person_post_new::where('id',$req->id)->get();
-        $tam=$req->testCountLike;
-       // dd($tam);
-       // nhập số 3 test bình thường thì
-        $post = person_post_new::find(5);
-// ---dd($tam);
-        $commentsCount = likes::where('id_person',$post->id)->count();
-
-        return view('page.blog',compact('persons','testcmt','commentsCount'));
-    }
+        $persons=DB::table('users')->join('person_post_new','users.id','=','person_post_new.id_user')->get();
+        $likePosts=DB::table('person_post_new')
+                    ->join('likes','person_post_new.id','=','likes.id_person')->get();
+        return view('page.blog',compact('persons','likePosts'));
+    } 
  
     public function postLikeTest02(Request $req){
         $loggedin_user=Auth::user()->id;
@@ -364,7 +324,6 @@ class controllerPage extends Controller
     }
 
     public function postSignin(Request $req){
-        
         $user = new users();
         $user->username = $req->txt_fullName;
         $user->password = Hash::make($req->txt_Password);
@@ -373,7 +332,6 @@ class controllerPage extends Controller
         $user->address = $req->txt_Address;
         $user->gender = $req->txt_Gender;
         $user->id_type=1;
-       // dd($req->txt_fullName,$req->txt_Password,$req->txt_phone);
         $user->save();
         return redirect()->back()->with('thanhcong','Tạo tài khoản thành công');
     }
@@ -383,12 +341,10 @@ class controllerPage extends Controller
     }
 
     public function postLoginPage(Request $req){
-        
         $credentials = array('email'=>$req->txt_Email,'password'=>$req->txt_Password);
         $user = users::where([
                 ['email','=',$req->txt_Email]
             ])->first();
-
         if($user){
             if(Auth::attempt($credentials)){
 
@@ -401,10 +357,9 @@ class controllerPage extends Controller
         else{
            return redirect()->back()->with(['flag'=>'danger','message'=>'Tài khoản chưa kích hoạt']); 
         }
-        
     }
 
-     public function postLogout(){
+    public function postLogout(){
         Auth::logout();
         return redirect()->route('index');
     }

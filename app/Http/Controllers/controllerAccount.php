@@ -17,7 +17,7 @@ class controllerAccount extends Controller
     	return view('admin.pageAdmin.users.manaCustomer',compact('customers'));
 
     }
-
+ 
     public function getAddCustomer(){
     	return view('admin.pageAdmin.users.addCustomer');
     }
@@ -38,7 +38,7 @@ class controllerAccount extends Controller
     public function geteditCustomer($id){
     	$data=users::find($id);
         //$parent=categories::select('id','name','image','descriptions')->get()->toArray();
-        return view('admin.pageAdmin.editCategory',compact('data'));
+        return view('admin.pageAdmin.users.editCustomer',compact('data'));
     }
     public function posteditCustomer(Requests $req,$id){
     	$customer=users::find($id);

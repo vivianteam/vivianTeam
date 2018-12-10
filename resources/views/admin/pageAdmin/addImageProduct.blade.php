@@ -21,8 +21,8 @@
                       <label class="col-md-3 label-control" for="projectinput5">ID product
                       </label>
                       <div class="col-md-9">
-                        <select id="projectinput6" name="cmb_pro" class="form-control">
-                          <option value="{!!old('cmb_pro')!!}" selected="" disabled="">Product name
+                        <select id="projectinput6" name="cmb_pro_Add" class="form-control">
+                          <option value="{!!old('cmb_pro_Add')!!}" selected="" disabled="">Product name
                           </option>
                           @foreach($parent as $item)
                           <option value="{!! $item["id"] !!}">{!! $item["name"]!!}

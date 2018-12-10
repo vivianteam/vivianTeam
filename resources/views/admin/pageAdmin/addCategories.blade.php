@@ -23,7 +23,7 @@
                         </label>
                         <div class="col-md-9">
                           <input type="text" id="projectinput5" class="form-control" placeholder="Category name"
-                            name="txt_CateName" value="{!! old('txt_CateName') !!}">
+                            name="txt_CateNameTest" value="{!! old('txt_CateNameTest') !!}">
                         </div>
                       </div>
                         <div class="form-group row">

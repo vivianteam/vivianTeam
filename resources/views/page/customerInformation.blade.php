@@ -103,7 +103,7 @@
                             <label class="field__label" for="checkout_email">Email
                             </label>
                             <div class="field__input-wrapper">
-                              <input placeholder="Email" autocapitalize="off" spellcheck="false" autocomplete="shipping email" data-trekkie-id="email_field" data-autofocus="true" data-backup="customer_email" aria-describedby="checkout-context-step-one" aria-required="true" class="field__input" size="30" type="email" value="{{Auth::user()->email}}" name="email" id="checkout_email" />
+                              <input disabled placeholder="Email" autocapitalize="off" spellcheck="false" autocomplete="shipping email" data-trekkie-id="email_field" data-autofocus="true" data-backup="customer_email" aria-describedby="checkout-context-step-one" aria-required="true" class="field__input" size="30" type="email" value="{{Auth::user()->email}}" name="email" id="checkout_email" />
                             </div>
                           </div>
                         </div>
@@ -118,7 +118,7 @@
                       </div>
                       <div class="section__content">
                         <div class="fieldset" data-address-fields>
-                          <input class="visually-hidden" autocomplete="shipping given-name" tabindex="-1" aria-hidden="true" aria-label="no-label" data-autocomplete-field="first_name" data-honeypot="true" size="30" type="text" name="checkout[shipping_address][first_name]" />
+                          <input disabled class="visually-hidden" autocomplete="shipping given-name" tabindex="-1" aria-hidden="true" aria-label="no-label" data-autocomplete-field="first_name" data-honeypot="true" size="30" type="text" name="checkout[shipping_address][first_name]" />
                           <input class="visually-hidden" autocomplete="shipping family-name" tabindex="-1" aria-hidden="true" aria-label="no-label" data-autocomplete-field="last_name" data-honeypot="true" aria-required="true" size="30" type="text" name="checkout[shipping_address][last_name]" />
                           <input class="visually-hidden" autocomplete="shipping address-line1" tabindex="-1" aria-hidden="true" aria-label="no-label" data-autocomplete-field="address1" data-honeypot="true" aria-required="true" size="30" type="text" name="checkout[shipping_address][address1]" />
                           <input class="visually-hidden" autocomplete="shipping address-line2" tabindex="-1" aria-hidden="true" aria-label="no-label" data-autocomplete-field="address2" data-honeypot="true" size="30" type="text" name="checkout[shipping_address][address2]" />
@@ -130,7 +130,7 @@
                             <label class="field__label" for="checkout_shipping_address_first_name">Full name
                             </label>
                             <div class="field__input-wrapper">
-                              <input placeholder="Full name" autocomplete="shipping given-name" data-trekkie-id="shipping_firstname_field" data-backup="first_name" class="field__input" size="50" type="text" value="{{Auth::user()->username}}" name="fullName" id="checkout_shipping_address_first_name"/>
+                              <input disabled placeholder="Full name" autocomplete="shipping given-name" data-trekkie-id="shipping_firstname_field" data-backup="first_name" class="field__input" size="50" type="text" value="{{Auth::user()->username}}" name="fullName" id="checkout_shipping_address_first_name"/>
                             </div>
                           </div>
                           
@@ -138,21 +138,21 @@
                             <label class="field__label" for="checkout_shipping_address_first_name">Gender
                             </label>
                             <div class="field__input-wrapper">
-                              <input placeholder="Gender" autocomplete="shipping given-name" data-trekkie-id="shipping_firstname_field" data-backup="first_name" class="field__input" size="30" type="text" value="{{Auth::user()->gender}}" name="gender" id="checkout_shipping_address_first_name" />
+                              <input disabled placeholder="Gender" autocomplete="shipping given-name" data-trekkie-id="shipping_firstname_field" data-backup="first_name" class="field__input" size="30" type="text" value="{{Auth::user()->gender}}" name="gender" id="checkout_shipping_address_first_name" />
                             </div>
                           </div>
                         <div class="field--third field field--required" data-address-field="zip" data-google-places="true">
                             <label class="field__label" for="checkout_shipping_address_zip">Phone Numbers
                             </label>
                             <div class="field__input-wrapper">
-                              <input placeholder="Phone numbers" autocomplete="shipping postal-code" data-backup="zip" data-trekkie-id="shipping_zip_google_autocomplete_field" data-google-autocomplete="true" data-google-autocomplete-title="Suggestions" data-google-autocomplete-single-item="1 item available" data-google-autocomplete-multi-item="" data-google-autocomplete-item-selection="" class="field__input field__input--zip" aria-required="true" size="30" type="text" value="{{Auth::user()->phone}}" name="phone" id="checkout_shipping_address_zip" />
+                              <input disabled placeholder="Phone numbers" autocomplete="shipping postal-code" data-backup="zip" data-trekkie-id="shipping_zip_google_autocomplete_field" data-google-autocomplete="true" data-google-autocomplete-title="Suggestions" data-google-autocomplete-single-item="1 item available" data-google-autocomplete-multi-item="" data-google-autocomplete-item-selection="" class="field__input field__input--zip" aria-required="true" size="30" type="text" value="{{Auth::user()->phone}}" name="phone" id="checkout_shipping_address_zip" />
                             </div>
                           </div>
                           <div data-address-field="address1" data-google-places="true" class="field field--required">
                             <label class="field__label" for="checkout_shipping_address_address1">Address
                             </label>
                             <div class="field__input-wrapper">
-                              <input placeholder="Address" autocomplete="shipping address-line1" autocorrect="off" role="combobox" aria-autocomplete="list" aria-owns="address-autocomplete" aria-expanded="false" aria-required="true" data-backup="address1" data-trekkie-id="shipping_address1_google_autocomplete_field" data-google-autocomplete="true" data-google-autocomplete-title="Suggestions" data-google-autocomplete-single-item="1 item available" data-google-autocomplete-multi-item="" data-google-autocomplete-item-selection="" class="field__input" size="50" type="text" value="{{Auth::user()->address}}" name="address" id="checkout_shipping_address_address1" />
+                              <input disabled placeholder="Address" autocomplete="shipping address-line1" autocorrect="off" role="combobox" aria-autocomplete="list" aria-owns="address-autocomplete" aria-expanded="false" aria-required="true" data-backup="address1" data-trekkie-id="shipping_address1_google_autocomplete_field" data-google-autocomplete="true" data-google-autocomplete-title="Suggestions" data-google-autocomplete-single-item="1 item available" data-google-autocomplete-multi-item="" data-google-autocomplete-item-selection="" class="field__input" size="50" type="text" value="{{Auth::user()->address}}" name="address" id="checkout_shipping_address_address1" />
                             </div>
                           </div>
                         </div> 

@@ -22,7 +22,7 @@
                 </i>
               </a>
               <div class="heading-elements">
-                <a href="{{asset('getCustomer')}}">
+                <a href="{{route('getAddCustomer')}}">
                   <button class="btn btn-primary btn-sm">
                     <i class="ft-plus white">Add new
                     </i> 

@@ -14,15 +14,15 @@
                   <div class="form-body">
                     <h4 class="form-section">
                       <i class="ft-clipboard">
-                      </i> Add new
+                      </i> Edit now
                     </h4>
                      @include('admin.pageAdmin.error')
                     <div class="form-group row">
                       <label class="col-md-3 label-control" for="projectinput5">ID product
                       </label>
                       <div class="col-md-9">
-                        <select id="projectinput6" name="cmb_pro" class="form-control">
-                          <option value="{!!old('cmb_pro',isset($data)? $data['id_product']: null)!!}" selected="" disabled="">Product name
+                        <select id="projectinput6" name="cmb_proEdit" class="form-control">
+                          <option value="{!!old('cmb_proEdit',isset($data)? $data['id_product']: null)!!}" selected="" disabled="">Product name
                           </option>
                           @foreach($parent as $item)
                           <option value="{!! $item["id"] !!}">{!! $item["name"]!!}
@@ -42,7 +42,7 @@
                     </div>
                   </div>
                   <div class="form-actions">
-                    <a href="categories">
+                    <a href="{{route('imageProduct')}}">
                       <button type="button" class="btn btn-warning mr-1">
                         <i class="ft-x">
                         </i> Cancel

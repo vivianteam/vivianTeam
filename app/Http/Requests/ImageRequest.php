@@ -26,6 +26,8 @@ class ImageRequest extends FormRequest
     public function rules()
     {
        return [
+            'cmb_proEdit'=>'required',
+            //'cmb_pro_Add'=>'required',
             'img'=>'required|image|mimes:jpeg,png,jpg,gif|max:2048'
            // 'cateImage' =>  'requỉred'
            // 'txt_CateDecription'    =>  'requỉred|descriptions',
@@ -34,9 +36,10 @@ class ImageRequest extends FormRequest
 
     public function messages(){
         return [
-            
+            'cmb_proEdit.required'=>'Please enter id product',
             'img.required'    =>  'Please choose image',
-            'img.image'   => 'This file is Not image'
+            'img.image'   => 'This file is Not image',
+           // 'cmb_pro_Add.required'=>'Please enter id product'
           // 'cateImage.requỉred'    =>  'Please choose image',
             //'txt_CateDecription.requỉred'    =>  'Please enter descriptions category',
 

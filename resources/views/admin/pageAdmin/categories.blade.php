@@ -30,24 +30,14 @@
                 </a>
               </div>
             </div>
-            <div class="card-header">
-                    <div class="input-group">
-                        <div class="input-group-prepend">
-                          <span class="input-group-text"><i class="ft-search"></i></span>
-                        </div>
-                        <input type="text" class="form-control ac-default" />
-                      </div>
-            </div>
           </div>
           <div class="card-content">
             <div class="card-body">
               <!-- Task List table -->
               <div class="table-responsive">
-                <table id="users-contacts" class="table table-striped table-bordered row-grouping display no-wrap icheck table-middle">
+                <table id="datatable" class="table table-striped table-bordered" style="width:100%">
                   <thead>
                     <tr>
-                      <th>
-                      </th>
                       <th>ID
                       </th>
                       <th>Name
@@ -56,7 +46,7 @@
                       </th>
                       <th>Description
                       </th>
-                      <th>Actions
+                      <th class="sorting_desc_disabled sorting_asc_disabled sorting">Actions
                       </th>
                     </tr>
                   </thead>
@@ -66,17 +56,12 @@
                     <?php $stt=$stt+1 ?>
                     <tr>
                       <td>
-                        <input type="checkbox" class="input-chk">
-                      </td>
-                      <td>
                         {!! $stt !!}
                       </td>
                       <td class="text-center">
                         {{ $category-> name }}
                       </td>
-                      <td class="text-center">
-                        {{ $category-> image }}
-                      </td>
+                      <td class="text-center"><img src="{{asset('image/')}}/Categories/{{ $category-> image }}" style='max-width:80px;max-height:200px' class='img img-thumbnail' />
                       <td>
                         {{ $category-> descriptions }}
                       </td>
