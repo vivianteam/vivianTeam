@@ -65,5 +65,5 @@
     </section>
     <!-- // Basic form layout section end -->
   </div>
-</div>
+</div>  
 @endsection

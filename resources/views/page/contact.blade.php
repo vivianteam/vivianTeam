@@ -160,8 +160,6 @@
 </div>
 
 <!--VIM add JS validate-->
-    <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.15.0/jquery.validate.min.js"></script>
-    
     <script type="text/javascript">
       $(function() {
         $('#contact_form').validate({
@@ -212,30 +210,6 @@
           },
         });
       })
-    </script>
-    <script>
-      $(function() {
-  //ẩn
-        $("#phone-error-message").hide();
-     //chạy
-    $("#txt_phone").focusout(function(){
-    check_phone_f();
-  });
- //hàm
-    function  check_phone_f()
-    {
-      var pattern = new RegExp(/(09|01|07|05|03)+([0-9]{8})\b/g);
-      if(pattern.test($("#txt_phone").val()))
-      {
-       $("#phone-error-message").hide();
-      }
-      else 
-      {
-         $("#phone-error-message").html("Format Telephone Number Wrong");
-         $("#phone-error-message").show();
-      }
-    }
-    });
     </script>
 <!--END JS validate-->
 @endsection

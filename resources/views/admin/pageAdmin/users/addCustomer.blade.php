@@ -17,7 +17,6 @@
                         <i class="ft-clipboard">
                         </i> Add new
                       </h4> 
-                       @include('admin.pageAdmin.error')
                       <div class="form-group row">
                         <label class="col-md-3 label-control" for="projectinput5">User name
                         </label>
@@ -98,6 +97,57 @@
           </div>
         </div>
     </section>
+<!--VIM add JS validate-->
+    <script type="text/javascript">
+      $(function() {
+        $('#contact_form').validate({
+          rules : {
+            txt_name : {
+              required : true   
+            },
+
+            txt_email : {
+              required : true
+            },
+
+            txt_phone : {
+              required : true
+            },
+            
+            txt_address : {
+              required : true   
+            },
+
+            txt_message : {
+              required : true
+            }
+          },
+
+          messages : {
+            txt_name : {
+              required : "You must fill information"  
+            },
+
+            txt_email : {
+              required : "You must fill information"
+            },
+
+            txt_phone : {
+              required : "you must fill information"
+            },
+
+            txt_address : {
+              required : "You must fill information" 
+            },
+
+            txt_message : {
+              required : "you must fill information" 
+            }
+          },
+        });
+      })
+    </script>
+<!--END JS validate-->
   </div>
 </div>
 @endsection

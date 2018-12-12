@@ -830,6 +830,9 @@
             sliderNoZoom();
         })
     </script>
+
+    <!-- validate -->
+    <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.15.0/jquery.validate.min.js"></script>
 <!-- End Subiz -->
   </body>
   <!-- Mirrored from fashop-default.myshopify.com/ by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 08 Sep 2018 09:28:06 GMT -->

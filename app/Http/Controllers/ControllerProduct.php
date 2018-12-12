@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use Illuminate\Http\Request;
 use App\Http\Controllers\Controller as Controller;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
@@ -24,7 +25,7 @@ class ControllerProduct extends Controller
    		return view('admin.pageAdmin.addProduct',compact('parent'));
    	}
 
-   	public function postAddProduct(ProductRequest $req){
+   	public function postAddProduct(Request $req){
    		$file_image=$req->file('proImg')->getClientOriginalName();
         $pro= new products; 
         $pro->name=$req->txt_name;
@@ -50,7 +51,7 @@ class ControllerProduct extends Controller
         return view('admin.pageAdmin.editProducts',compact('data','parent'));
    	}
 
-   	public function postEditProduct(ProductRequest $req,$id){
+   	public function postEditProduct(Request $req,$id){
       	$file_image=$req->file('proImg')->getClientOriginalName();
        	$pro=products::find($id);
         $pro->name=$req->txt_name;

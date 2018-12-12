@@ -670,6 +670,9 @@
           // modal.find('.modal-body #form_message').text(message)
         });
   </script>
+  <!-- validate -->
+  <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.15.0/jquery.validate.min.js"></script>
+  <script src="{{ asset('js/blog.js')}}"></script>
   <!-- END PAGE LEVEL JS-->
   </body>
 <!-- Mirrored from pixinvent.com/modern-admin-clean-bootstrap-4-dashboard-html-template/html/ltr/vertical-modern-menu-template/dashboard-ecommerce.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 14 Sep 2018 21:10:39 GMT -->
