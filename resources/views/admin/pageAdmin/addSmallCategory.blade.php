@@ -1,6 +1,5 @@
 @extends('masterAdmin')
 @section('content')     
-
 <div class="content-detached content-right">
   <div class="content-body">
     <!-- Basic form layout section start --> 
@@ -10,20 +9,19 @@
             <div class="card">
               <div class="card-content collpase show">
                 <div class="card-body">
-                  <form class="form form-horizontal" action="{!! route('getaddSmallCategory')!!}" method="POST" enctype="multipart/form-data">
+                  <form class="form form-horizontal" id="add_small_categories_form"action="{!! route('getaddSmallCategory')!!}" method="POST" enctype="multipart/form-data">
                     <input type="hidden" name="_token" value="{{ csrf_token() }}" >
                     <div class="form-body">
                       <h4 class="form-section">
                         <i class="ft-clipboard">
                         </i> Add new
                       </h4>
-                       @include('admin.pageAdmin.error')
                        <div class="form-group row">
                         <label class="col-md-3 label-control" for="projectinput6">Categories
                         </label>
                         <div class="col-md-9">
                           <select id="projectinput6" value="{!! old('cmb_Small') !!}" name="cmb_Small" class="form-control">
-                            <option value="0" selected="" disabled="">Categories name
+                            <option value="0" disabled="">Categories name
                             </option>
                             @foreach($parent as $item)
                             <option value="{!! $item["id"] !!}">{!! $item["name"]!!}
@@ -36,16 +34,15 @@
                         <label class="col-md-3 label-control" for="projectinput5">Small category name
                         </label>
                         <div class="col-md-9">
-                          <input type="text" id="projectinput5" class="form-control" placeholder="Category name"
-                                 name="txt_SmallCateName" value="{!! old('txt_SmallCateName') !!}">
+                          <input type="text" id="projectinput5" class="form-control" placeholder="Category name" name="txt_SmallCateName" required pattern="^[a-zA-Z]*$" title="Small Category Name Invalid" value="{!! old('txt_SmallCateName') !!}">
                         </div>
+                      </div>
                       </div>
                       <div class="form-group row">
                         <label class="col-md-3 label-control" for="projectinput9">Description
                         </label>
                         <div class="col-md-9">
-                          <textarea id="projectinput9" rows="5" class="form-control" name="txt_SmallCateDecription">{!! old('txt_SmallCateDecription') !!}
-                          </textarea>
+                          <textarea id="projectinput9" rows="5" class="form-control" name="txt_SmallCateDecription" required>{!! old('txt_SmallCateDecription') !!}</textarea>
                         </div>
                       </div>
                     </div>

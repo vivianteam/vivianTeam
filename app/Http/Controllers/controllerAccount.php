@@ -12,7 +12,6 @@ use App\Http\Requests\CateRequest;
 use Session;
 use Hash;
 use Auth;
-use Illuminate\Http\Request;
 use App\orders;
 use App\admin;
 

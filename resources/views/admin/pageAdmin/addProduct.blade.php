@@ -1,10 +1,5 @@
 @extends('masterAdmin')
 @section('content')  
-<style type="text/css">
-  .error{
-    color: red;
-  }
-</style>    
 <div class="content-detached content-right">
   <div class="content-body">
     <!-- Basic form layout section start -->
@@ -24,8 +19,8 @@
                     <div class="form-group row">
                       <label class="col-md-3 label-control" for="cmb_Small">Small categories</label>
                       <div class="col-md-9">
-                        <select id="cmb_Small" value="{!! old('cmb_Small') !!}" name="cmb_Small" class="form-control">
-                          <option value="0" selected="" disabled="">Small categories name</option> 
+                        <select id="cmb_Small" value="{!! old('cmb_Small') !!}" name="cmb_Small" class="form-control" required>
+                          <option value="0" disabled=""></option> 
                           @foreach($parent as $item)
                           <option value="{!! $item["id"]!!}" >{!! $item["nameSmallCate"]!!}</option>
                           @endforeach
@@ -36,27 +31,26 @@
                       <label class="col-md-3 label-control" for="txt_name">Product name
                       </label>
                       <div class="col-md-9">
-                        <input type="text" id="txt_name" class="form-control" placeholder="Product name"
-                               name="txt_name" value="{!! old('txt_name') !!}">
+                        <input type="text" id="txt_name" class="form-control" placeholder="Product name"name="txt_name" required pattern="^[a-zA-Z]*$" title="Product Name Invalid" value="{!! old('txt_name') !!}">
                       </div>
                     </div>
                     <div class="form-group row">
                       <label class="col-md-3 label-control" for="txt_dsort">Description sort</label>
                       <div class="col-md-9">
-                        <textarea id="txt_dsort" value="{!!old('txt_dsort')!!}" rows="5" class="form-control" name="txt_dsort" placeholder="Description sort"></textarea>
+                        <textarea id="txt_dsort" value="{!!old('txt_dsort')!!}" rows="5" class="form-control" name="txt_dsort" placeholder="Description sort" required></textarea>
                       </div>
                     </div>
                     <div class="form-group row">
                       <label class="col-md-3 label-control" for="projectinput9">Description long</label>
                       <div class="col-md-9">
-                        <textarea id="projectinput9" value="{!!old('txt_dlong')!!}" rows="5" class="form-control" name="txt_dlong" placeholder="Description long"></textarea>
+                        <textarea id="projectinput9" value="{!!old('txt_dlong')!!}" rows="5" class="form-control" name="txt_dlong" placeholder="Description long" required></textarea>
                       </div>
                     </div>
                     <div class="form-group row">
                         <label class="col-md-3 label-control" for="projectinput9">Url Image</label>
                         <div class="col-md-9">
                             <fieldset class="form-group">
-                              <input type="file" id="chooseimg" name="proImg" multiple="multiple" class="form-control" value="{!! old('proImg') !!}">
+                              <input type="file" id="chooseimg" name="proImg" multiple="multiple" class="form-control" required accept="image/gif, image/jpeg, image/png" value="{!! old('proImg') !!}">
                             </fieldset>
                         </div>
                       </div>
@@ -71,41 +65,39 @@
                     <div class="form-group row">
                       <label class="col-md-3 label-control" for="txt_Color">Color</label>
                       <div class="col-md-9">
-                        <input type="text" name="txt_Color" id="txt_Color" class="form-control" value="{!!old('txt_Color')!!}"  placeholder="Color">
+                        <input type="text" name="txt_Color" id="txt_Color" class="form-control" value="{!!old('txt_Color')!!}" required pattern="^[a-zA-Z]*$" title="Example: Red" placeholder="Color">
                       </div>
                     </div>
                     <div class="form-group row">
                       <label class="col-md-3 label-control" for="txt_Size">Size</label>
                       <div class="col-md-9">
-                        <input type="text" id="txt_Size" class="form-control" placeholder="Size"
-                               name="txt_Size" value="{!!old('txt_Size')!!}">
+                        <input type="text" id="txt_Size" class="form-control" placeholder="Size" required name="txt_Size" value="{!!old('txt_Size')!!}">
                       </div>
                     </div>
                     <div class="form-group row">
                       <label class="col-md-3 label-control" for="txt_PriceIn">Price in</label>
                       <div class="col-md-9">
-                        <input type="text" id="txt_PriceIn" class="form-control" placeholder="Price in" name="txt_PriceIn" value="{!!old('txt_PriceIn')!!}">
+                        <input type="text" id="txt_PriceIn" class="form-control" placeholder="Price in" name="txt_PriceIn" required pattern="^(0|[1-9][0-9]*)$" title="Only Number" value="{!!old('txt_PriceIn')!!}">
                       </div>
                     </div>
                     <div class="form-group row">
                       <label class="col-md-3 label-control" for="txt_PriceOut">Price out</label>
                       <div class="col-md-9">
-                        <input type="text" id="txt_PriceOut" class="form-control" placeholder="Price out" name="txt_PriceOut" value="{!!old('txt_PriceOut')!!}">
+                        <input type="text" id="txt_PriceOut" class="form-control" placeholder="Price out" name="txt_PriceOut" required pattern="^(0|[1-9][0-9]*)$" title="Only Number" value="{!!old('txt_PriceOut')!!}">
                       </div>
                     </div>
                     <div class="form-group row">
                       <label class="col-md-3 label-control" for="txt_PriceSale">Price sale</label>
                       <div class="col-md-9">
-                        <input type="text" id="txt_PriceSale" class="form-control" placeholder="Size" name="txt_PriceSale" value="{!!old('txt_PriceSale')!!}">
+                        <input type="text" id="txt_PriceSale" class="form-control" placeholder="Price sale" name="txt_PriceSale" required pattern="^(0|[1-9][0-9]*)$" title="Only Number" value="{!!old('txt_PriceSale')!!}">
                       </div>
                     </div>
                     <div class="form-group row">
                       <label class="col-md-3 label-control" for="cmb_New">New</label>
                       <div class="col-md-9">
                         <select id="cmb_New" value="{!!old('cmb_New')!!}" name="cmb_New" class="form-control">
-                          <option value="none" selected="" disabled="">New</option>
-                          <option value="1">Mới</option>
-                          <option value="0">Cũ</option>
+                          <option value="1">New</option>
+                          <option value="0">Old</option>
                         </select>
                       </div>
                     </div>
@@ -113,9 +105,8 @@
                       <label class="col-md-3 label-control" for="cmb_Satus">Status</label>
                       <div class="col-md-9">
                         <select id="cmb_Satus" value="{!!old('cmb_Satus')!!}" name="cmb_Satus" class="form-control">
-                          <option value="none" selected="" disabled="">Status</option>
-                          <option value="design">Còn</option>
-                          <option value="development">Hết</option>
+                          <option value="design">Ready</option>
+                          <option value="development">Sold out</option>
                         </select>
                       </div>
                     </div>
@@ -142,112 +133,4 @@
     <!-- // Basic form layout section end -->
   </div>
 </div>
-
-<!--VIM add JS validate-->
-    <script type="text/javascript">
-      $(function() {
-        $('#addProduct_form').validate({
-          rules : {
-            cmb_Small : {
-              required : true   
-            },
-
-            txt_name : {
-              required : true
-            },
-
-            txt_dsort : {
-              required : true
-            },
-            
-            txt_dlong : {
-              required : true   
-            },
-
-            proImg : {
-              required : true
-            },
-
-            txt_Color : {
-              required : true   
-            },
-
-            txt_Size : {
-              required : true   
-            },
-
-            txt_PriceIn : {
-              required : true   
-            },
-
-            txt_PriceOut : {
-              required : true   
-            },
-
-            txt_PriceSale : {
-              required : true   
-            },
-
-            cmb_New : {
-              required : true   
-            },
-
-            cmb_Satus : {
-              required : true   
-            }
-          },
-
-          messages : {
-            cmb_Small : {
-              required : "You must fill information"  
-            },
-
-            txt_name : {
-              required : "You must fill information"
-            },
-
-            txt_dsort : {
-              required : "you must fill information"
-            },
-
-            txt_dlong : {
-              required : "You must fill information" 
-            },
-
-            proImg : {
-              required : "You must fill information"  
-            },
-
-            txt_Color : {
-              required : "You must fill information"
-            },
-
-            txt_Size : {
-              required : "you must fill information"
-            },
-
-            txt_PriceIn : {
-              required : "You must fill information" 
-            },
-
-            txt_PriceOut : {
-              required : "You must fill information"  
-            },
-
-            txt_PriceSale : {
-              required : "You must fill information"
-            },
-
-            cmb_New : {
-              required : "you must fill information"
-            },
-
-            cmb_Satus : {
-              required : "you must fill information" 
-            }
-          },
-        });
-      })
-    </script>
-<!--END JS validate-->
 @endsection

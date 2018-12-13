@@ -1,5 +1,10 @@
 @extends('masterAdmin')
-@section('content')      
+@section('content')
+<style type="text/css">
+  .error{
+    color: red;
+  }
+</style>
 <div class="content-detached content-right">
   <div class="content-body">
     <!-- Basic form layout section start -->
@@ -9,20 +14,18 @@
           <div class="card">
             <div class="card-content collpase show">
               <div class="card-body">
-                <form class="form form-horizontal" action="{!! route('getEditImageProduct',$data['id'])!!}" method="POST" enctype="multipart/form-data">
+                <form class="form form-horizontal" id= "edit_image_form"action="{!! route('getEditImageProduct',$data['id'])!!}" method="POST" enctype="multipart/form-data">
                     <input type="hidden" name="_token" value="{{ csrf_token() }}" >
                   <div class="form-body">
                     <h4 class="form-section">
                       <i class="ft-clipboard">
                       </i> Edit now
                     </h4>
-                     @include('admin.pageAdmin.error')
                     <div class="form-group row">
-                      <label class="col-md-3 label-control" for="projectinput5">ID product
-                      </label>
+                      <label class="col-md-3 label-control" for="cmb_proEdit">Product Name</label>
                       <div class="col-md-9">
-                        <select id="projectinput6" name="cmb_proEdit" class="form-control">
-                          <option value="{!!old('cmb_proEdit',isset($data)? $data['id_product']: null)!!}" selected="" disabled="">Product name
+                        <select id="cmb_proEdit" name="cmb_proEdit" class="form-control" required>
+                          <option value="{!!old('cmb_proEdit',isset($data)? $data['id_product']: null)!!}"  disabled="">Product name
                           </option>
                           @foreach($parent as $item)
                           <option value="{!! $item["id"] !!}">{!! $item["name"]!!}
@@ -32,14 +35,23 @@
                       </div>
                     </div>
                     <div class="form-group row">
-                      <label class="col-md-3 label-control" for="projectinput9">Url Image
+                      <label class="col-md-3 label-control" for="chooseimg">Url Image
                       </label>
                       <div class="col-md-9">
                           <fieldset class="form-group">
-                            <input type="file" name="img" class="form-control-file" id="exampleInputFile" value="{!!old('img',isset($data)? $data['image']: null)!!}">
+                            <input type="file" name="img" class="form-control-file" id="chooseimg" required accept="image/gif, image/jpeg, image/png" value="{!!old('img',isset($data)? $data['image']: null)!!}">
                           </fieldset>
                       </div>
                     </div>
+                    </div>
+                    <div class="form-group row">
+                      <label class="col-md-3 label-control" for="projectinput9">Image</label>
+                      <div class="col-md-9">        
+                          <div class="form" style="border :1px solid #CACFE7">
+                            <img id="image" height="200px" />
+                          </div>
+                      </div>
+                  </div>  
                   </div>
                   <div class="form-actions">
                     <a href="{{route('imageProduct')}}">

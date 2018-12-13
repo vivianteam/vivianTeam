@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Http\Request;
 use App\Http\Controllers\Controller as Controller;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
@@ -27,7 +27,7 @@ class ControllerImage extends Controller
     	return view('admin.pageAdmin.addImageProduct',compact('parent'));
     }
 
-    public function postAddImageProduct(ImageRequest $req){
+    public function postAddImageProduct(Request $req){
     	$file_image=$req->file('img')->getClientOriginalName();
         $img=new images;
         $img->image=$file_image;
@@ -43,7 +43,7 @@ class ControllerImage extends Controller
     	return view('admin.pageAdmin.editImage',compact('parent','data'));
     }
 
-    public function postEditImageProduct(ImageRequest $req,$id){
+    public function postEditImageProduct(Request $req,$id){
     	$img=images::find($id);
     	$file_image=$req->file('img')->getClientOriginalName();
         $img->image=$file_image;

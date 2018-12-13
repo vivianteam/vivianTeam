@@ -111,7 +111,7 @@
                   <sup>
                   </sup>
                 </label>
-                <input name="txt_name" type="text" class="form-control" id="inputName">
+                <input name="txt_name" type="text" class="form-control" id="inputName" required pattern="^[a-zA-Z]*$" title="Name Invalid">
                 <p style="color:red;display:none;" class="error errorEmail"></p>
               </div>
             </div>
@@ -121,8 +121,7 @@
                   <sup>*
                   </sup>
                 </label>
-                <input name="txt_email" type="email" class="form-control" id="inputEmail">
-                <p style="color:red;display:none;" class="error errorEmail"></p>
+                <input name="txt_email" type="email" class="form-control" id="inputEmail" required pattern="^[\w]{1,}[\w.+-]{0,}@[\w-]{2,}([.][a-zA-Z]{2,}|[.][\w-]{2,}[.][a-zA-Z]{2,})$" title="Email Format Invalid">
               </div>
             </div>
             <div class="col-md-4">
@@ -131,10 +130,10 @@
                   <sup>*
                   </sup>
                 </label>
-                <input name="txt_phone" type="tel" class="form-control" id="inputPhone" maxlength="10"></input>
-                <p style="color:red;display:none;" class="error errorEmail" name="phone-error-message"></p>
+                <input name="txt_phone" type="tel" class="form-control" id="inputPhone" maxlength="10" pattern="(09|03|04|07|08|05)+([0-9]{8})\b" required title="invalid format Phone Number"></input>
               </div>
             </div>
+            
           </div>
           <!-- /input -->
           <!-- textarea --> 
@@ -143,14 +142,13 @@
               <sup>*
               </sup>
             </label>
-            <textarea class="form-control" name="txt_message" rows="12"  id="textareaMessage"></textarea>
-            <p style="color:red;display:none;" class="error errorEmail"></p>
+            <textarea class="form-control" name="txt_message" rows="12"  id="textareaMessage" required></textarea>
           </div>
           <!-- /textarea -->
           <!-- button -->
           <div class="pull-right note">* Required Fields
           </div>
-          <button class="btn btn--ys btn--xl btn-top" type="submit">Send Message
+          <button class="btn btn--ys btn--xl btn-top" id="submit" type="submit">Send Message
           </button>
           <!-- /button -->               
         </form>
@@ -160,7 +158,7 @@
 </div>
 
 <!--VIM add JS validate-->
-    <script type="text/javascript">
+    <!-- <script type="text/javascript">
       $(function() {
         $('#contact_form').validate({
           rules : {
@@ -175,11 +173,12 @@
               email : true
             },
 
-            txt_phone : {
+            /*txt_phone : {
               required : true,
               number: true,
-              minlength: 9.5
-            },
+              minlength: 9.5,
+              digits :true
+            },*/
             
             txt_message : {
               required : true
@@ -198,11 +197,12 @@
               email : "format wrong email"
             },
 
-            txt_phone : {
+            /*txt_phone : {
               required : "you must fill information",  
               number : "you must fill Number",
-              minlength: "your phone Less 10 character",     
-            },
+              minlength: "your phone Less 10 character",   
+              digits: "Negative numbers are not allowed"  
+            },*/
 
             txt_message : {
               required : "you must fill information" 
@@ -210,6 +210,6 @@
           },
         });
       })
-    </script>
+    </script> -->
 <!--END JS validate-->
 @endsection

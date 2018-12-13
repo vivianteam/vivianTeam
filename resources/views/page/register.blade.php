@@ -1,5 +1,10 @@
 @extends('master')
 @section('content')
+<style type="text/css">
+  .error{
+    color: red;
+  }
+</style>
     <section class="breadcrumbs">
       <div class="container">
         <ol class="breadcrumb breadcrumb--ys pull-left">
@@ -54,7 +59,7 @@
                       <sup>*
                       </sup>
                     </label>
-                    <input type="text" name="txt_fullName" class="form-control" id="">
+                    <input type="text" name="txt_fullName" class="form-control" id="" required pattern="^[a-zA-Z0-9]*$" title="Name Invalid">
                   </div>
                   
                   <div class="form-group">
@@ -62,14 +67,14 @@
                       <sup>*
                       </sup>
                     </label>
-                    <input type="email" name="txt_Email" class="form-control" id="">
+                    <input type="email" name="txt_Email" class="form-control" id="" required pattern="^[\w]{1,}[\w.+-]{0,}@[\w-]{2,}([.][a-zA-Z]{2,}|[.][\w-]{2,}[.][a-zA-Z]{2,})$" title="Email Format Invalid">
                   </div>
                   <div class="form-group">
                     <label for="email">Phone 
                       <sup>*
                       </sup>
                     </label>
-                    <input type="text" name="txt_phone" class="form-control" id="">
+                    <input type="text" name="txt_phone" class="form-control" id="" maxlength="10" pattern="(09|03|04|07|08|05)+([0-9]{8})\b" required title="invalid Phone Numbers">
                   </div>
 
                   <div class="form-group">
@@ -77,21 +82,26 @@
                       <sup>*
                       </sup>
                     </label>
-                    <input type="password" name="txt_Password" class="form-control" id="">
+                    <input type="password" name="txt_Password" class="form-control" id="" required pattern=".{6,}" title="Six or more characters">
                   </div>
                   <div class="form-group">
                     <label for="lname">Gender
                       <sup>*
                       </sup>
                     </label>
-                    <input type="text" name="txt_Gender" class="form-control" id="">
+                    <select id="txt_gender" value="{!!old('txt_Gender')!!}" name="txt_Gender" class="form-control">
+                      <option value="Nam" id="txt_gender">Male
+                      </option>
+                      <option value="Nữ" id="txt_gender">Famale
+                      </option>
+                    </select>
                   </div>
                   <div class="form-group">
                     <label for="lname">Address
                       <sup>*
                       </sup>
                     </label>
-                    <input type="text" name="txt_Address" class="form-control" id="">
+                    <input type="text" name="txt_Address" class="form-control" id="" required>
                   </div>
                   <div class="row">
                     <div class="col-xs-12 col-sm-6 col-md-6">
@@ -119,7 +129,7 @@
     </div>
     </div>
 
-<script>
+<!-- <script>
  $(function() {
 $('#register').validate({
 rules : {
@@ -178,7 +188,7 @@ messages : {
 
 });
 })
-</script>
+</script> -->
 </div>
 
 @endsection

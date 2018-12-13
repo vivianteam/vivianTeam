@@ -16,7 +16,6 @@
                       <i class="ft-clipboard">
                       </i> Add new
                     </h4>
-                    @include('admin.pageAdmin.error')
                     <div class="form-group row">
                       <label class="col-md-3 label-control" for="projectinput5">ID user
                       </label>

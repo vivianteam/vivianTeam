@@ -26,21 +26,16 @@
             <div class="card-body">
               <!-- Task List table -->
               <div class="table-responsive">
+
                 <table id="example" class="table table-striped table-bordered" style="width:100%">
                   <thead>
                     <tr>
-                      <th>ID
-                      </th>
-                      <th>Name
-                      </th>
-                      <th>Email
-                      </th>
-                      <th>Phone
-                      </th>
-                      <th>Message
-                      </th>
-                      <th>Action
-                      </th>
+                      <th>ID</th>
+                      <th>Name</th>
+                      <th>Email</th>
+                      <th>Phone</th>
+                      <th>Message</th>
+                      <th>Action</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -160,4 +155,3 @@
     </section>
   </div>
   @endsection
-

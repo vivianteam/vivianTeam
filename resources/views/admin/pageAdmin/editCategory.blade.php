@@ -1,5 +1,10 @@
 @extends('masterAdmin')
-@section('content')      
+@section('content')
+<style type="text/css">
+  .error{
+    color: red;
+  }
+</style>   
 <div class="content-detached content-right">
   <div class="content-body">
     <!-- Basic form layout section start -->
@@ -9,19 +14,18 @@
           <div class="card">
             <div class="card-content collpase show">
               <div class="card-body">
-                <form class="form form-horizontal" action="{{ route('geteditCategory',$data['id']) }}" method="POST" enctype="multipart/form-data">
+                <form class="form form-horizontal" id="edit_categories" action="{{ route('geteditCategory',$data['id']) }}" method="POST" enctype="multipart/form-data">
                   <input type="hidden" name="_token" value="{{ csrf_token() }}" >
                   <div class="form-body">
                     <h4 class="form-section">
                       <i class="ft-clipboard">
                       </i> Edit now
                     </h4>
-                    @include('admin.pageAdmin.error')
                     <div class="form-group row">
                       <label class="col-md-3 label-control" for="projectinput5">Category name
                       </label>
                       <div class="col-md-9">
-                        <input type="text" id="projectinput5" class="form-control" placeholder="Category name" name="txt_thienTest" value="{!! old('txt_thienTest',isset($data)? $data['name']: null) !!}">
+                        <input type="text" id="projectinput5" class="form-control" placeholder="Category name" name="txt_thienTest" required pattern="^[a-zA-Z]*$" title="Category Name Invalid" value="{!! old('txt_thienTest',isset($data)? $data['name']: null) !!}">
                       </div>
                     </div>
                      <div class="form-group row">
@@ -29,15 +33,23 @@
                           </label>
                           <div class="col-md-9">
                               <fieldset class="form-group">
-                                <input type="file"  name="cateImage" multiple="multiple" class="form-control"  value="{!! old('cateImage',isset($data)? $data['image']: null) !!}">
+                                <input type="file"  name="cateImage" id="chooseimg" multiple="multiple" class="form-control" required accept="image/gif, image/jpeg, image/png" value="{!! old('cateImage',isset($data)? $data['image']: null) !!}">
                               </fieldset>
                           </div>
+                      </div>
+                      <div class="form-group row">
+                        <label class="col-md-3 label-control" for="projectinput9">Image</label>
+                        <div class="col-md-9">        
+                          <div class="form" style="border :1px solid #CACFE7">
+                            <img id="image" height="200px" />
+                          </div>
+                        </div>
                       </div>
                     <div class="form-group row">
                       <label class="col-md-3 label-control" for="projectinput9">Description
                       </label>
                       <div class="col-md-9">
-                          <textarea id="projectinput9" rows="5" class="form-control" name="txt_CateDecription">{!! old('txt_CateDecription',isset($data)? $data['descriptions']: null) !!}
+                          <textarea id="projectinput9" rows="5" required class="form-control" name="txt_CateDecription">{!! old('txt_CateDecription',isset($data)? $data['descriptions']: null) !!}
                           </textarea>
                       </div>
                     </div>
