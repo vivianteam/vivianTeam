@@ -306,7 +306,7 @@ class controllerPage extends Controller
             $order_detail->quanitily = $value['qty'];
             $order_detail->price = ($value['price']/$value['qty']);
             $order_detail->save();
-        }
+        } 
 
         $data=['hoten'=>$req->fullName,'idOrder'=>$order->id,'Total'=>$cart->totalPrice];
         Mail::send('page.message',$data,function($msg){

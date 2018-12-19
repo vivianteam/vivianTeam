@@ -115,7 +115,7 @@
             <li class="dropdown dropdown-user nav-item">
               <a class="dropdown-toggle nav-link dropdown-user-link" href="#" data-toggle="dropdown">
                 <span class="mr-1">Hello,
-                  <span class="user-name text-bold-700">John Doe
+                  <span class="user-name text-bold-700"> thien
                   </span>
                 </span>
                 <span class="avatar avatar-online">
@@ -146,33 +146,6 @@
                 <a class="dropdown-item" href="#">
                   <i class="ft-power">
                   </i> Logout
-                </a>
-              </div>
-            </li>
-            <li class="dropdown dropdown-language nav-item">
-              <a class="dropdown-toggle nav-link" id="dropdown-flag" href="#" data-toggle="dropdown"
-                 aria-haspopup="true" aria-expanded="false">
-                <i class="flag-icon flag-icon-gb">
-                </i>
-                <span class="selected-language">
-                </span>
-              </a>
-              <div class="dropdown-menu" aria-labelledby="dropdown-flag">
-                <a class="dropdown-item" href="#">
-                  <i class="flag-icon flag-icon-gb">
-                  </i> English
-                </a>
-                <a class="dropdown-item" href="#">
-                  <i class="flag-icon flag-icon-fr">
-                  </i> French
-                </a>
-                <a class="dropdown-item" href="#">
-                  <i class="flag-icon flag-icon-cn">
-                  </i> Chinese
-                </a>
-                <a class="dropdown-item" href="#">
-                  <i class="flag-icon flag-icon-de">
-                  </i> German
                 </a>
               </div>
             </li>
@@ -398,102 +371,147 @@
       </div>
     </nav>
   <!-- ////////////////////////////////////////////////////////////////////////////-->
-  <div class="main-menu menu-fixed menu-dark menu-accordion menu-shadow" data-scroll-to-active="true">
-    <div class="main-menu-content">
-      <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
-        <li class=" nav-item">
-          <a href="{{route('indexAdmin')}}">
-            <i class="la la-home">
-            </i>
-            <span class="menu-title" data-i18n="nav.dash.main">Dashboard
-            </span>
-          </a>
-        </li>
-        <li class=" nav-item">
-          <a href="#">
-            <i class="la la-home">
-            </i>
-            <span class="menu-title" data-i18n="nav.dash.main">Management products
-            </span>
-          </a>
-          <ul class="menu-content">
-            <li>
-              <a class="menu-item" href="{{route('categories')}}" data-i18n="nav.dash.crypto">Categories
+  @if (Auth::check())
+    @if(Auth::user()->id_type==2)
+      <div class="main-menu menu-fixed menu-dark menu-accordion menu-shadow" data-scroll-to-active="true">
+        <div class="main-menu-content">
+          <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
+            <li class=" nav-item">
+              <a href="{{route('indexAdmin')}}">
+                <i class="la la-home">
+                </i>
+                <span class="menu-title" data-i18n="nav.dash.main">Dashboard
+                </span>
               </a>
             </li>
-            <li>
-              <a class="menu-item" href="{{route('smallCategory')}}" data-i18n="nav.dash.ecommerce">Small categories
+            <li class=" nav-item">
+              <a href="#">
+                <i class="la la-home">
+                </i>
+                <span class="menu-title" data-i18n="nav.dash.main">Management products
+                </span>
+              </a>
+              <ul class="menu-content">
+                <li>
+                  <a class="menu-item" href="{{route('categories')}}" data-i18n="nav.dash.crypto">Categories
+                  </a>
+                </li>
+                <li>
+                  <a class="menu-item" href="{{route('smallCategory')}}" data-i18n="nav.dash.ecommerce">Small categories
+                  </a>
+                </li>
+                <li>
+                  <a class="menu-item" href="{{route('products')}}" data-i18n="nav.dash.sales">Products
+                  </a>
+                </li>
+                <li>
+                  <a class="menu-item" href="{{route('imageProduct')}}" data-i18n="nav.dash.crypto">Images
+                  </a>
+                </li>
+                <li>
+                  <a class="menu-item" href="{{route('demo')}}" data-i18n="nav.dash.crypto">Demo
+                  </a>
+                </li>
+              </ul>
+            </li>
+            <li class=" nav-item">
+              <a href="{{route('getContact')}}">
+                <i class="la la-home">
+                </i>
+                <span class="menu-title" data-i18n="nav.dash.main">Management Contacts
+                </span>
               </a>
             </li>
-            <li>
-              <a class="menu-item" href="{{route('products')}}" data-i18n="nav.dash.sales">Products
+            <li class=" nav-item">
+              <a href="#">
+                <i class="la la-home">
+                </i>
+                <span class="menu-title" data-i18n="nav.dash.main">Management Order
+                </span>
+              </a>
+              <ul class="menu-content">
+                <li>
+                  <a class="menu-item" href="{{route('getManagementOrder')}}" data-i18n="nav.dash.crypto">Check order
+                  </a>
+                </li>
+                <li>
+                  <a class="menu-item" href="{{route('getOrderStatus')}}" data-i18n="nav.dash.ecommerce">Order status
+                  </a>
+                </li>
+              </ul>
+            </li>
+            <li class=" nav-item">
+              <a href="{{route('request')}}">
+                <i class="la la-television">
+                </i>
+                <span class="menu-title" data-i18n="nav.templates.main">Management requests
+                </span>
               </a>
             </li>
-            <li>
-              <a class="menu-item" href="{{route('imageProduct')}}" data-i18n="nav.dash.crypto">Images
+            <li class=" nav-item">
+              <a href="#">
+                <i class="la la-home">
+                </i>
+                <span class="menu-title" data-i18n="nav.dash.main">Management Users
+                </span>
               </a>
-            </li>
-            <li>
-              <a class="menu-item" href="{{route('demo')}}" data-i18n="nav.dash.crypto">Demo
-              </a>
+              <ul class="menu-content">
+                <li>
+                  <a class="menu-item" href="{{route('getCustomer')}}" data-i18n="nav.dash.crypto">Customers
+                  </a>
+                </li>
+                <li>
+                  <a class="menu-item" href="{{route('getOrderStatus')}}" data-i18n="nav.dash.ecommerce">Employee
+                  </a>
+                </li>
+              </ul>
             </li>
           </ul>
-        </li>
-        <li class=" nav-item">
-          <a href="{{route('getContact')}}">
-            <i class="la la-home">
-            </i>
-            <span class="menu-title" data-i18n="nav.dash.main">Management Contacts
-            </span>
-          </a>
-        </li>
-        <li class=" nav-item">
-          <a href="#">
-            <i class="la la-home">
-            </i>
-            <span class="menu-title" data-i18n="nav.dash.main">Management Order
-            </span>
-          </a>
-          <ul class="menu-content">
-            <li>
-              <a class="menu-item" href="{{route('getManagementOrder')}}" data-i18n="nav.dash.crypto">Check order
-              </a>
-            </li>
-            <li>
-              <a class="menu-item" href="{{route('getOrderStatus')}}" data-i18n="nav.dash.ecommerce">Order status
-              </a>
-            </li>
-          </ul>
-        </li>
-        <li class=" nav-item">
-          <a href="{{route('request')}}">
-            <i class="la la-television">
-            </i>
-            <span class="menu-title" data-i18n="nav.templates.main">Management requests
-            </span>
-          </a>
-        </li>
-        <li class=" nav-item">
-          <a href="#">
-            <i class="la la-home">
-            </i>
-            <span class="menu-title" data-i18n="nav.dash.main">Management Users
-            </span>
-          </a>
-          <ul class="menu-content">
-            <li>
-              <a class="menu-item" href="{{route('getCustomer')}}" data-i18n="nav.dash.crypto">Customers
-              </a>
-            </li>
-            <li>
-              <a class="menu-item" href="{{route('getOrderStatus')}}" data-i18n="nav.dash.ecommerce">Employee
-              </a>
-            </li>
-          </ul>
-        </li>
-      </ul>
+        </div>
+      </div>
+    @elseif(Auth::user()->id_type==3)
+      <div class="main-menu menu-fixed menu-dark menu-accordion menu-shadow" data-scroll-to-active="true">
+      <div class="main-menu-content">
+        <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
+          <li class=" nav-item">
+            <a href="{{route('getContact')}}">
+              <i class="la la-home">
+              </i>
+              <span class="menu-title" data-i18n="nav.dash.main">Management Contacts
+              </span>
+            </a>
+          </li>
+          <li class=" nav-item">
+            <a href="#">
+              <i class="la la-home">
+              </i>
+              <span class="menu-title" data-i18n="nav.dash.main">Management Order
+              </span>
+            </a>
+            <ul class="menu-content">
+              <li>
+                <a class="menu-item" href="{{route('getManagementOrder')}}" data-i18n="nav.dash.crypto">Check order
+                </a>
+              </li>
+              <li>
+                <a class="menu-item" href="{{route('getOrderStatus')}}" data-i18n="nav.dash.ecommerce">Order status
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li class=" nav-item">
+            <a href="{{route('request')}}">
+              <i class="la la-television">
+              </i>
+              <span class="menu-title" data-i18n="nav.templates.main">Management requests
+              </span>
+            </a>
+          </li>
+        </ul>
+      </div>
     </div>
-  </div>
+    @endif
+  @endif
   <!-- flast message -->
   <!-- end flast message -->
   <!-- chức nội dung -->
@@ -594,7 +612,24 @@
     $(document).ready(function() {
       $('#datatable').DataTable();
     }
-                     );
+  );
+  </script>
+  <script>
+        $('#editItem').on('show.bs.modal', function (event) {
+          alert("djfgjds");
+          // var button = $(event.relatedTarget) ;
+          // var id = button.data('id')
+          // var name = button.data('name')
+          // var email = button.data('email')
+          // var phone = button.data('phone')
+          // var message = button.data('message')
+          // var modal = $(this)
+          // modal.find('.modal-body #form_id').text(id)
+          // modal.find('.modal-body #form_name').text(name)
+          // modal.find('.modal-body #form_email').text(email)
+          // modal.find('.modal-body #form_phone').text(phone)
+          // modal.find('.modal-body #form_message').text(message)
+        });
   </script>
   <!-- END PAGE LEVEL JS-->
   </body>

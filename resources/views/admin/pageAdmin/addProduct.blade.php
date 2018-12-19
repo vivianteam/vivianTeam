@@ -25,7 +25,7 @@
                           <option value="0" selected="" disabled="">Small categories name
                           </option> 
                           @foreach($parent as $item)
-                          <option value="{!! $item["id"] !!}">{!! $item["name"]!!}
+                          <option value="{!! $item["id"] !!}">{!! $item["nameSmallCate"]!!}
                           </option>
                           @endforeach
                         </select>

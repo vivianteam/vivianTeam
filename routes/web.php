@@ -269,6 +269,17 @@ Route::post('checkOrder',[
 //
 //start account
 //
+Route::get('loginAdmin',[
+'as'=>'loginAdmin',
+'uses'=>'controllerAccount@getLoginAdmin'
+]);
+Route::post('loginAdmin',[
+'as'=>'loginAdmin',
+'uses'=>'controllerAccount@postLoginAdmin'
+]);
+
+
+
 Route::get('customer',[
 'as'=>'getCustomer',
 'uses'=>'controllerAccount@getCustomer'
@@ -312,7 +323,7 @@ Route::get('products',[
 'uses'=>'ControllerProduct@getproduct'
 ]);
 Route::get('addProduct',[
-'as'=>'getAddProduct',
+'as'=>'getAddProduct', 
 'uses'=>'ControllerProduct@getAddProduct'
 ]);
 Route::post('addProduct',[
