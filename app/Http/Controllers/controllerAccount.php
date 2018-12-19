@@ -9,20 +9,46 @@ use Illuminate\Foundation\Bus\DispatchesJobs;
 use Validator;
 use App\users;
 use App\Http\Requests\CateRequest;
+use Session;
+use Hash;
+use Auth;
+use Illuminate\Http\Request;
 
 class controllerAccount extends Controller
 {
     public function getCustomer(){
     	$customers = users::where('id_type',1)->get();
     	return view('admin.pageAdmin.users.manaCustomer',compact('customers'));
-
     }
- 
+
+    public function getLoginAdmin(){
+        return view('admin.pageAdmin.Login.login');
+    }
+
+    public function postLoginAdmin(Request $req){
+        $credentials = array('email'=>$req->txt_Email,'password'=>$req->txt_Password);
+        $user = users::where([
+                ['email','=',$req->txt_Email]
+            ])->first();
+        if($user){
+            if(Auth::attempt($credentials)){
+
+            return redirect()->route('indexAdmin');
+            }
+            else{
+                return redirect()->back()->with(['flag'=>'danger','message'=>'Đăng nhập không thành công']);
+            }
+        }
+        else{
+           return redirect()->back()->with(['flag'=>'danger','message'=>'Tài khoản chưa kích hoạt']); 
+        }
+    }
+
     public function getAddCustomer(){
     	return view('admin.pageAdmin.users.addCustomer');
     }
 
-    public function postAddCustomer(Requests $req){
+    public function postAddCustomer(Request $req){
     	$customer=new users;
     	$customer->username=$req->txt_name;
     	$customer->password=$req->txt_password;
@@ -32,7 +58,7 @@ class controllerAccount extends Controller
     	$customer->gender=$req->txt_gender;
     	$customer->id_type=1;
     	$customer->save();
-    	return redirect()->route('getAddCustomer')->with(['flash_level'=>'success','flash_message'=>'Success !! Complete add customer']);
+    	return redirect()->route('getCustomer')->with(['flash_level'=>'success','flash_message'=>'Success !! Complete add customer']);
 
     }
     public function geteditCustomer($id){
@@ -50,7 +76,7 @@ class controllerAccount extends Controller
     	$customer->gender=$req->txt_gender;
     	$customer->id_type=1;
     	$customer->save();
-    	return redirect()->route('getAddCustomer')->with(['flash_level'=>'success','flash_message'=>'Success !! Complete update customer']);
+    	return redirect()->route('getCustomer')->with(['flash_level'=>'success','flash_message'=>'Success !! Complete update customer']);
 
     }
     public function getdeleteCustomer($id){

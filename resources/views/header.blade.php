@@ -25,7 +25,7 @@
                 </li>
                 @if(Auth::check())
                   <li><a href=""><span class="icon icon-lock">
-                    </span>Chào bạn {{Auth::user()->username}}</a></li>
+                    </span>Chào bạn {{Auth::user()->username}}</a></li> 
                   <li><a href="{{route('logout')}}"><span class="icon icon-lock">
                     </span>Log out</a></li>
                 @else

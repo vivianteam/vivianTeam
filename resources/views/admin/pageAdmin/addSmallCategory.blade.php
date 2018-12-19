@@ -61,7 +61,7 @@
                           </i> Cancel
                         </button>
                       </a>
-                      <button type="submit" class="btn btn-primary" ">
+                      <button type="submit" class="btn btn-primary" >
                         <i class="la la-check-square-o">
                         </i> Save
                       </button>
