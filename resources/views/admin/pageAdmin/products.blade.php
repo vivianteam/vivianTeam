@@ -25,7 +25,7 @@
                   <button class="btn btn-primary btn-sm">
                     <i class="ft-plus white">Add new
                     </i>
-                  </button>
+                  </button> 
                 </a>
               </div>
             </div>

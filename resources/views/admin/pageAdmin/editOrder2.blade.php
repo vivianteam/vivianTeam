@@ -137,7 +137,7 @@
                       <th>Order note: 
                       </th>
                       <td>
-                        <a href="#" class="updateInfo" data-name="comment" data-type="textarea" data-pk="{{$orders->id}}" data-url="https://demo.s-cart.org/system_admin/shop_order_update" data-title="" >
+                        <a href="#" class="updateInfo" data-name="comment" data-type="textarea" data-pk="{{$orders->id}}" data-url="" data-title="" >
                         </a>
                       </td>
                     </tr>

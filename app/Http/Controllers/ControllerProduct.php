@@ -9,7 +9,7 @@ use Illuminate\Foundation\Bus\DispatchesJobs;
 use Validator;
 use App\products;
 use App\smallCategories;
-use App\Http\Requests\ProductRequest;
+use App\Http\Requests\ProductRequest; 
 
 class ControllerProduct extends Controller
 {
