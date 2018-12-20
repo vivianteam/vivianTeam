@@ -318,7 +318,7 @@ Route::get('logout',[
 'uses'=>'controllerAccount@postLogoutAdmin'
 ]);
 
-
+// start customers
 Route::get('customer',[
 	'middleware'=>'auth',
 'as'=>'getCustomer',
@@ -347,6 +347,35 @@ Route::get('deleteCustomer/{id}',[
 'uses'=>'controllerAccount@getdeleteCustomer'
 ]);
 //
+//
+//start employess
+Route::get('employess',[
+	'middleware'=>'auth',
+'as'=>'getemployess',
+'uses'=>'controllerAccount@getEmployess'
+]);
+Route::get('addemployess',[
+	'middleware'=>'auth',
+'as'=>'getAddEmployess',
+'uses'=>'controllerAccount@getAddEmployess'
+]);
+Route::post('addemployess',[
+'as'=>'postAddEmployess',
+'uses'=>'controllerAccount@postAddEmployess'
+]);
+Route::get('editemployess/{id}',[
+	'middleware'=>'auth',
+'as'=>'geteditEmployess',
+'uses'=>'controllerAccount@getEditEmployess'
+]);
+Route::post('editemployess/{id}',[
+'as'=>'posteditEmployess',
+'uses'=>'controllerAccount@postEditEmployess'
+]);
+Route::get('deleteemployess/{id}',[
+'as'=>'getdeleteEmployess',
+'uses'=>'controllerAccount@getDeleteEmployess'
+]);
 //end account
 //
 // start contact

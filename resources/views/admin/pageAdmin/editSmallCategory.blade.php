@@ -17,13 +17,20 @@
                       </i> Edit Small Categories
                     </h4>
                     @include('admin.pageAdmin.error')
-                    <div class="form-group row">
-                      <label class="col-md-3 label-control" for="projectinput5">Category name
-                      </label>
-                      <div class="col-md-9">
-                        <input type="text" id="projectinput5" class="form-control" placeholder="Category name" name="txt_CateName" value="{!! old('txt_CateName',isset($data)? $data['id_category']: null) !!}">
+                     <div class="form-group row">
+                        <label class="col-md-3 label-control" for="projectinput6">Categories
+                        </label>
+                        <div class="col-md-9">
+                          <select id="projectinput6" value="{!! old('cmb_Small') !!}" name="cmb_Small" class="form-control">
+                            <option value="0" selected="" disabled="">{{$persons->name}}
+                            </option>
+                            @foreach($parent as $item)
+                            <option value="{!! $item["id"] !!}">{!! $item["name"]!!}
+                            </option>
+                            @endforeach
+                          </select>
+                        </div>
                       </div>
-                    </div>
 
                     <div class="form-group row">
                       <label class="col-md-3 label-control" for="projectinput5">Small category name
