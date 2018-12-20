@@ -83,7 +83,7 @@
                         {{ $product->name }}
                       </td>
                       <td class="text-center">
-                        <img src="{{asset('image/')}}/bogs/{{ $product->image }}" style='max-width:80px;max-height:200px' class='img img-thumbnail' />
+                        <img src="{{asset('image/')}}/products/{{ $product->image }}" style='max-width:80px;max-height:200px' class='img img-thumbnail' />
                       </td>
                       <td class="text-center">
                         {{ $product->descriptions_sort}}

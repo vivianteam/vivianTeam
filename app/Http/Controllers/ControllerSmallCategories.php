@@ -10,6 +10,7 @@ use Illuminate\Foundation\Bus\DispatchesJobs;
 use Validator;
 use App\smallCategories;
 use App\categories;
+use App\products;
 use App\Http\Requests\SmallCateRequest;
 
 class ControllerSmallCategories extends Controller
@@ -36,9 +37,19 @@ class ControllerSmallCategories extends Controller
     }
 
     public function getDeleteSmallCategory($id){
-    	$smallcate=smallcategories::find($id);
-    	$smallcate->delete($id);
-    	return redirect()->route('smallCategory')->with(['flash_level'=>'success','flash_message'=>'Success !! Complete delete category']);
+        $parent=products::where('id_small_categories',$id)->count();
+        if($parent==0){
+            $cate=smallcategories::find($id);
+            $cate->delete($id);
+            return redirect()->route('smallCategory')->with(['flash_level'=>'success','flash_message'=>'Success !! Complete delete small category']);
+        }
+        else{
+            echo"<script type='text/javascript'>
+                alert('Sorry ! You can Not Delete This Small Category');
+                window.location='";
+                echo route('smallCategory');
+            echo"'</script>";
+        }
     }
 
     public function getEditSmallCategory($id){

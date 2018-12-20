@@ -69,15 +69,6 @@
                         </select>
                       </div>
                       </div>
-                      <div class="form-group row">
-                        <label class="col-md-3 label-control" for="projectinput9">Password
-                        </label>
-                        <div class="col-md-9">
-                          <input type="password" id="txt_password" class="form-control" placeholder="Password"
-                            name="txt_password" value="{!! old('txt_password',isset($data)? $data['password']: null) !!}">
-                            <p style="color:red;display: none;" class="error errorPassword"></p>
-                        </div>
-                      </div>
                     </div>
                     <div class="form-actions">
                       <a href="{{route('getCustomer')}}">
