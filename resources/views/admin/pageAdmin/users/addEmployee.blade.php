@@ -10,7 +10,7 @@
               <div class="card-content collpase show">
                 <div class="card-body">
 
-                  <form class="form form-horizontal" action="{!! route('getAddCustomer')!!}" method="POST" enctype="multipart/form-data" id="form-AddCustomer">
+                  <form class="form form-horizontal" action="{!! route('postAddEmployess')!!}" method="POST" enctype="multipart/form-data" id="form-AddCustomer">
                     <input type="hidden" name="_token" value="{{ csrf_token() }}" >
                     <div class="form-body">
                       <h4 class="form-section">
@@ -80,7 +80,7 @@
                       </div>
                     </div>
                     <div class="form-actions">
-                      <a href="{{route('getemployess')}}">
+                      <a href="{{route('getCustomer')}}">
                         <button type="button" class="btn btn-warning mr-1">
                           <i class="ft-x">
                           </i> Cancel

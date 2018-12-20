@@ -452,7 +452,7 @@
                   </a>
                 </li>
                 <li>
-                  <a class="menu-item" href="{{route('getOrderStatus')}}" data-i18n="nav.dash.ecommerce">Employee
+                  <a class="menu-item" href="{{route('getemployess')}}" data-i18n="nav.dash.ecommerce">Employee
                   </a>
                 </li>
               </ul>

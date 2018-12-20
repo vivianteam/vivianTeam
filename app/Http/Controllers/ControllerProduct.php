@@ -9,6 +9,7 @@ use Illuminate\Foundation\Bus\DispatchesJobs;
 use Validator;
 use App\products;
 use App\smallCategories;
+use App\images;
 use App\Http\Requests\ProductRequest; 
 
 class ControllerProduct extends Controller
@@ -70,9 +71,19 @@ class ControllerProduct extends Controller
     }
 
     public function getDeleteProducts($id){
-        $pro=products::find($id);
-        $pro->delete($id);
-        return redirect()->route('products')->with(['flash_level'=>'success','flash_message'=>'Success !! Complete delete product']);
+        $parent=images::where('id_product',$id)->count();
+        if($parent==0){
+            $cate=products::find($id);
+            $cate->delete($id);
+            return redirect()->route('products')->with(['flash_level'=>'success','flash_message'=>'Success !! Complete delete product']);
+        }
+        else{
+            echo"<script type='text/javascript'>
+                alert('Sorry ! You can Not Delete This product');
+                window.location='";
+                echo route('products');
+            echo"'</script>";
+        }
     }
 
 }

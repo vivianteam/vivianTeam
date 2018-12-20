@@ -12,6 +12,9 @@ use App\Http\Requests\CateRequest;
 use Session;
 use Hash;
 use Auth;
+use Illuminate\Http\Request;
+use App\orders;
+use App\admin;
 
 class controllerAccount extends Controller
 {
@@ -75,6 +78,8 @@ class controllerAccount extends Controller
         //$parent=categories::select('id','name','image','descriptions')->get()->toArray();
         return view('admin.pageAdmin.users.editCustomer',compact('data'));
     }
+
+
     public function posteditCustomer(Request $req,$id){
     	$customer=users::find($id);
     	$customer->username=$req->txt_name;
@@ -89,8 +94,77 @@ class controllerAccount extends Controller
 
     }
     public function getdeleteCustomer($id){
-    	$customer=users::find($id);
-        $customer->delete($id);
-        return redirect()->route('getCustomer')->with(['flash_level'=>'success','flash_message'=>'Success !! Complete delete customer']);
+        $parent=orders::where('id_user',$id)->count();
+        if($parent==0){
+            $cate=users::find($id);
+            $cate->delete($id);
+            return redirect()->route('getCustomer')->with(['flash_level'=>'success','flash_message'=>'Success !! Complete delete Customer']);
+        }
+        else{
+            echo"<script type='text/javascript'>
+                alert('Sorry ! You can Not Delete This Customer');
+                window.location='";
+                echo route('getCustomer');
+            echo"'</script>";
+        }
     }
+
+    /////////////////////////////////////////////
+
+    public function getEmployess(){
+        $customers = admin::all();
+        return view('admin.pageAdmin.users.manaEmployee',compact('customers'));
+    }
+
+    public function getAddEmployess(){
+        return view('admin.pageAdmin.users.addEmployee');
+    }
+
+    public function postAddEmployess(Request $req){
+        $customer=new admin;
+        $customer->username=$req->txt_name;
+        $customer->password=$req->txt_password;
+        $customer->phone=$req->txt_phone;
+        $customer->email=$req->txt_email;
+        $customer->address=$req->txt_address;
+        $customer->gender=$req->txt_gender;
+        $customer->type=1;
+        $customer->save();
+        return redirect()->route('getCustomer')->with(['flash_level'=>'success','flash_message'=>'Success !! Complete add employess']);
+
+    }
+    public function getEditEmployess($id){
+        $data=admin::find($id);
+        //$parent=categories::select('id','name','image','descriptions')->get()->toArray();
+        return view('admin.pageAdmin.users.editEmployee',compact('data'));
+    }
+    public function postEditEmployess(Request $req,$id){
+        $customer=admin::find($id);
+        $customer->username=$req->txt_name;
+        $customer->password=$req->txt_password;
+        $customer->phone=$req->txt_phone;
+        $customer->email=$req->txt_email;
+        $customer->address=$req->txt_address;
+        $customer->gender=$req->txt_gender;
+        $customer->id_type=1;
+        $customer->save();
+        return redirect()->route('getemployess')->with(['flash_level'=>'success','flash_message'=>'Success !! Complete update employess']);
+
+    }
+    public function getDeleteEmployess($id){
+        $parent=admin::where('id_user',$id)->count();
+        if($parent==0){
+            $cate=admin::find($id);
+            $cate->delete($id);
+            return redirect()->route('getemployess')->with(['flash_level'=>'success','flash_message'=>'Success !! Complete delete employess']);
+        }
+        else{
+            echo"<script type='text/javascript'>
+                alert('Sorry ! You can Not Delete This employess');
+                window.location='";
+                echo route('getemployess');
+            echo"'</script>";
+        }
+    }
+
 }
