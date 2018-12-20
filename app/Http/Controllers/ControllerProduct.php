@@ -25,7 +25,7 @@ class ControllerProduct extends Controller
 
    	public function postAddProduct(ProductRequest $req){
    		$file_image=$req->file('proImg')->getClientOriginalName();
-        $pro= new products;
+        $pro= new products; 
         $pro->name=$req->txt_name;
         $pro->descriptions_sort=$req->txt_dsort;
         $pro->descriptions_long=$req->txt_dlong;

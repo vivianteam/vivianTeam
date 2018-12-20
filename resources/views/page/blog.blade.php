@@ -12,7 +12,7 @@
         </span>
       </li>
     </ol>
-  </div>
+  </div> 
 </section>
 <div id="pageContent" class="starthide">
   <div class="container">
@@ -60,9 +60,20 @@
                         </span>
                       </div>
                     </div>
-                  </div>
-                  <p>{{ $person->description }}
-                  </p>
+                  </div> 
+                  <p>{{ $person->description }}</p>
+                  <a id="containnerTest">
+                    @if($person->id_user==Auth::user()->id)
+                      <div class="active{{$person->id}}">
+                      @if($getPerson->status==1)
+                        <img src="{{asset('image/')}}/like/1.png" onclick="ajaxToggoActiveStatusLike({{$person->id}}, 0)">(2)
+                      @else
+                        <img src="{{asset('image/')}}/like/like.png" onclick="ajaxToggoActiveStatusLike({{$person->id}}, 1)">(1)
+                      @endif
+                    @else
+                        <img src="{{asset('image/')}}/like/like.png" onclick="ajaxToggoActiveStatusLike({{$person->id}}, 0)">(2)
+                    @endif
+                  </a>
                 </div>
               </div>
               @endforeach
@@ -117,10 +128,36 @@
             <img id="image" height="200px" />
           </div>
           <button type="submit" class="btn btn--ys btn--xl">submit
-          </button> 
+          </button>
         </aside>
       </form>
     </div>
   </div>
 </div>
+
+<script type="text/javascript">
+  function ajaxToggoActiveStatusLike(id_user, presentStatus){
+    $.ajaxSetup({
+      headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+      }
+    });
+    $.ajax({
+      url: "{{ route('postCheckLike') }}",
+      type: 'POST',
+      cache: false,
+      data: {
+        id:id_user, status:presentStatus}
+      ,
+      success: function(data){
+        $('.active'+id_user).html(data);
+      }
+      ,
+      error: function (){
+        alert('Lỗi đã xảy ra');
+      }
+    });
+    return false;
+  }
+</script>
 @endsection

@@ -660,6 +660,7 @@
     </script>
     <script src="{{ asset('js/cdn.shopify.com/s/files/1/1637/5229/t/4/assets/custom99a1.js?3804607358406722283')}}" type="text/javascript">
     </script>
+    <script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.13.1/jquery.validate.min.js"></script>
     <script>
       var $ = jQuery;
       productCarousel($('.megaMenuCarousel_js'), 1, 1, 1, 1, 1);
@@ -676,8 +677,6 @@
     <script src="{{ asset('js/cdn.shopify.com/s/files/1/1637/5229/t/4/assets/jquery.currencies.min99a1.js?3804607358406722283')}}" type="text/javascript">
     </script>
     <script src="{{ asset('js/blog.js')}}"></script>
-    
-    
     <script>
       $j(document).ready(function() {
 
@@ -693,9 +692,7 @@
         thumbnailsCarousel($j('.product-images-carousel ul'));
         productCarousel($j('#carouselRelated'),6,4,4,2,1);
         productCarousel($j('#mobileGallery'),1,1,1,1,1);
-
         elevateZoom();
-        
         productBigCarousel($j('.bigGallery'),3,3,3,2,1);
         elevateZoom1();
         sliderNoZoom();
@@ -756,22 +753,16 @@
   
 <script type="text/javascript">
     $(document).ready(function() {      
-
-
         $.ajaxSetup({
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             }
         });
-
-
         $('i.glyphicon-thumbs-up, i.glyphicon-thumbs-down').click(function(){    
             var id = $(this).parents(".panel").data('id');
             var c = $('#'+this.id+'-bs3').html();
             var cObjId = this.id;
             var cObj = $(this);
-
-
             $.ajax({
                type:'POST',
                url:'/ajaxRequest',
@@ -786,11 +777,7 @@
                   }
                }
             });
-
-
         });      
-
-
         $(document).delegate('*[data-toggle="lightbox"]', 'click', function(event) {
             event.preventDefault();
             $(this).ekkoLightbox();

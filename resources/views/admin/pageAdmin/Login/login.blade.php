@@ -13,11 +13,8 @@
 				<img src="{{ asset('image/img/flat-avatar.png')}}" class="user-avatar" />
 				<h1>Vivian Shop</h1>
 				<div class="col-sm-3">
-	                @if(Session::has('flag'))
-	                    <div class="alert alert-{{Session::get('flag')}}">{{Session::get('message')}}</div>
-	                @endif
 	            </div>
-				<form method="post" action="{{route('loginAdmin')}}">
+				<form method="post" action="{{route('login')}}">
 					<input type="hidden" name="_token" value="{{csrf_token()}}">
 					<div class="form-content">
 						<div class="form-group">

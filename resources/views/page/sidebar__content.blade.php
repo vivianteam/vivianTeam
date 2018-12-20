@@ -50,8 +50,6 @@
                             <td class="product__quantity visually-hidden">
                               1
                             </td>
-                            
-
                             <td class="product__price">
                               <span class="order-summary__emphasis"> @if($product['item']['price_sale']==0){{number_format($product['qty'] * $product['item']['price_out'])}} @else {{number_format($product['qty'] * $product['item']['price_sale'])}}@endif
                               </span>

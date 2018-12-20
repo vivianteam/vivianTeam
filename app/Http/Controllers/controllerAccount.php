@@ -32,8 +32,13 @@ class controllerAccount extends Controller
             ])->first();
         if($user){
             if(Auth::attempt($credentials)){
-
-            return redirect()->route('indexAdmin');
+                if($user['id_type']==2)
+                    return redirect()->route('indexAdmin');
+                else
+                    if($user['id_type']==3)
+                        return redirect()->route('getContact');
+                    else
+                        return redirect()->back()->with(['flag'=>'danger','message'=>'Bạn không đủ quyền vào trang này']);
             }
             else{
                 return redirect()->back()->with(['flag'=>'danger','message'=>'Đăng nhập không thành công']);
@@ -42,6 +47,11 @@ class controllerAccount extends Controller
         else{
            return redirect()->back()->with(['flag'=>'danger','message'=>'Tài khoản chưa kích hoạt']); 
         }
+    }
+
+    public function postLogoutAdmin(){
+        Auth::logout();
+        return redirect()->route('login');
     }
 
     public function getAddCustomer(){
@@ -66,7 +76,7 @@ class controllerAccount extends Controller
         //$parent=categories::select('id','name','image','descriptions')->get()->toArray();
         return view('admin.pageAdmin.users.editCustomer',compact('data'));
     }
-    public function posteditCustomer(Requests $req,$id){
+    public function posteditCustomer(Request $req,$id){
     	$customer=users::find($id);
     	$customer->username=$req->txt_name;
     	$customer->password=$req->txt_password;

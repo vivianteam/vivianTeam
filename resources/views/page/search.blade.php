@@ -8,7 +8,7 @@
             </a>
           </li>
           <li>
-            <span>{{$sp_smallName->nameSmallCate}}
+            <span>Search
             </span>
           </li>
         </ol>
@@ -206,12 +206,8 @@
           </aside>
           <aside class="col-md-8 col-lg-9 col-xl-10" id="centerColumn">
             <div class="title-box">
-              <h2 class="text-center text-uppercase title-under">{{$sp_smallName->nameSmallCate}}
+              <h2 class="text-center text-uppercase title-under">SEARCH
               </h2>
-            </div>
-            <div class="offset-top-20">
-              <p class="light-font">{{$sp_smallName->descriptions}}
-              </p>
             </div>
             <div id="listing-point">
             </div>
@@ -230,33 +226,9 @@
                     </span>
                   </a> 
                 </div>
-                <div class="filters-row__select hidden-sm hidden-xs">
-                  <label>Sort by: 
-                  </label>
-                  <div class="select-wrapper">
-                    <select class="select--ys sort-position sort-select">
-                      <option value="manual">Featured
-                      </option>
-                      <option value="title-ascending">Name Ascending
-                      </option>
-                      <option value="title-descending">Name Descending
-                      </option>
-                      <option value="created-ascending">Date Ascending
-                      </option>
-                      <option value="created-descending">Date Descending
-                      </option>
-                      <option value="price-ascending">Price Ascending
-                      </option>
-                      <option value="price-descending">Price Descending
-                      </option>
-                      <option value="best-selling">Best Selling
-                      </option>
-                    </select>
-                  </div>
-                </div>
               </div>
               <div class="pull-right pagination-btns">
-                <div class="filters-row__items hidden-sm hidden-xs">{{count($sp_cate)}} Item(s)
+                <div class="filters-row__items hidden-sm hidden-xs">{{count($products)}}  Item(s)
                 </div>
                 <div class="filters-row__select hidden-sm hidden-xs grid-select">
                   <label>Show: 
@@ -280,7 +252,7 @@
             <!-- /filters row -->
             <div id="centerCol">
               <div class="product-listing row">
-              @foreach($sp_cate as $sp)
+              @foreach($products as $sp)
                 <div class="col-xs-6 col-sm-4 col-md-6 col-lg-4 col-xl-one-fifth">
                   <!-- product -->
                   <div class="product product--zoom 31530889420">
@@ -290,12 +262,6 @@
                         <a href="{{ route('productTitle',$sp->id) }}">
                           <img src="{{asset('image/')}}/products/{{ $sp->image }}" alt="Boyfriend Shirt"/>
                         </a>
-                        <a href="javascript:void(0);" onclick="quiqview('boyfriend-shirt')" class="quick-view">
-                          <b>
-                            <span class="icon icon-visibility">
-                            </span> Quick View
-                          </b>
-                        </a>
                       </div>
                       <!-- /product image --> 
                       <!-- label news -->
@@ -304,7 +270,6 @@
                       @if($sp->price_sale!=0)
                       <div class="product__label product__label--left product__label--sale">
                         <span>Sale
-                          
                         </span>
                       </div>
                       @endif
@@ -319,9 +284,6 @@
                       <!-- /product name --> 
                       <!-- product description --> 
                       <!-- visible only in row-view mode -->
-                      <div class="product__inside__description row-mode-visible">{{$sp->description_sort}}
-                      </div>
-                      <!-- /product description --> 
                       <!-- product price -->
                       <div class="product__inside__price price-box">
                          @if($sp->price_sale==0)

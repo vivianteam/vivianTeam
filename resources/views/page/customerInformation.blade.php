@@ -64,7 +64,6 @@
                     <use xlink:href="#chevron-right" /> 
                   </svg>
                 </li>
-              
                 <li class="breadcrumb__item breadcrumb__item--blank">
                   <a class="breadcrumb__link" data-trekkie-id="breadcrumb_payment_method_link" href="{{route('getPaymentMethod')}}">Payment method
                   </a>
@@ -133,7 +132,6 @@
                               <input disabled placeholder="Full name" autocomplete="shipping given-name" data-trekkie-id="shipping_firstname_field" data-backup="first_name" class="field__input" size="50" type="text" value="{{Auth::user()->username}}" name="fullName" id="checkout_shipping_address_first_name"/>
                             </div>
                           </div>
-                          
                           <div class="field--half field field--optional" data-address-field="first_name">
                             <label class="field__label" for="checkout_shipping_address_first_name">Gender
                             </label>
@@ -173,7 +171,6 @@
                       </div>
                     </div>
                   </div>
-             
                   <div class="section section--shipping-method">
                         <div class="section__header">
                           <h2 class="section__title" id="main-header" tabindex="-1">
@@ -284,7 +281,6 @@
                 Customer information
               </h1>
             </div>
-            
             @include('page/sidebar__content')
           </div>
               @else
