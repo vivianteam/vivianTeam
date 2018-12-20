@@ -3,7 +3,7 @@
 
 <div class="content-detached content-right">
   <div class="content-body">
-    <!-- Basic form layout section start -->
+    <!-- Basic form layout section start --> 
     <section id="horizontal-form-layouts">
         <div class="row">
           <div class="col-md-12">
@@ -15,9 +15,8 @@
                     <div class="form-body">
                       <h4 class="form-section">
                         <i class="ft-clipboard">
-                        </i> Add new
-                      </h4> 
-                       @include('admin.pageAdmin.error')
+                        </i> Edit now
+                      </h4>
                       <div class="form-group row">
                         <label class="col-md-3 label-control" for="projectinput5">User name
                         </label>
@@ -27,7 +26,7 @@
                           <p style="color:red;display: none;" class="error errorLogin"></p>
                         </div>
                       </div>
-                        <div class="form-group row">
+                      <div class="form-group row">
                           <label class="col-md-3 label-control" for="projectinput9">Phone
                           </label>
                           <div class="col-md-9">

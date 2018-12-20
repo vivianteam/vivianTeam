@@ -12,10 +12,10 @@
             <div class="account-row-list mobile-menu-off" style="display: inline-block;">
               <ul>
                 <li>
-                  <a href="/account">
+                  <a href="{{route('getUpdateAcc')}}">
                     <span class="icon icon-person">
                     </span>Account
-                  </a> 
+                  </a>  
                 </li>
                 <li>
                   <a href="checkout.html">
@@ -166,12 +166,6 @@
                      @endforeach
                     </ul>
                   </li>
-                  <li class="dropdown dropdown-mega-menu dropdown-one-col"> 
-                    <a href="listingMenu" class="dropdown-toggle" data-toggle="dropdown">
-                      <span class="act-underline">Listing
-                      </span>
-                    </a> 
-                  </li>
                   
                   <li class="dropdown dropdown-mega-menu dropdown-two-col"> 
                     <a href="pages/about.html" class="dropdown-toggle" data-toggle="dropdown">
@@ -232,10 +226,10 @@
                   </span>
                 </a>
                 <div class="search-dropdown">
-                  <form action="https://fashop-default.myshopify.com/search" method="get">
+                  <form action="{{route('getSearch')}}" method="get">
                     <div class="input-outer">
                       <input type="hidden" name="type" value="product" />
-                      <input type="text" name="q" class="search_field" value="" maxlength="128" placeholder="SEARCH:">
+                      <input type="text" name="key" class="search_field" value="" maxlength="128" placeholder="SEARCH:">
                       <button type="submit" title="" class="icon icon-search">
                       </button>
                     </div> 

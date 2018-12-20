@@ -19,13 +19,13 @@
       </div>
     </section>
     <div id="pageContent" class="starthide">
-      <div class="container">				
+      <div class="container">       
         <!-- title -->
         <div class="title-box">
           <h1 class="text-center text-uppercase title-under">ALREADY REGISTERED?
           </h1>
         </div>
-        <!-- /title -->		
+        <!-- /title -->   
         <div class="row">
           <section class="col-sm-12 col-md-6 col-lg-6 col-xl-4 col-xl-offset-2">
             <div class="login-form-box">
@@ -49,7 +49,7 @@
                 </h3>
                 <p>If you have an account with us, please log in.
                 </p>
-                <form action="{{route('loginPage')}}" method="post" class="beta-form-checkout">
+                <form id= "form-login" action="{{route('loginPage')}}" method="post" class="beta-form-checkout">
                 <input type="hidden" name="_token" value="{{csrf_token()}}">
                   <div class="row">
                     <div class="col-sm-3"></div>
@@ -58,7 +58,7 @@
                       @endif
                     </div>
                   <input type="hidden" name="form_type" value="customer_login" />
-                  <input type="hidden" name="utf8" value="✓" />
+                  <input type="hidden" name="utf8" value="?" />
                   <div class="form-group">
                     <label for="email">Email Address 
                       <sup>*
@@ -87,10 +87,6 @@
                       </div>
                     </div>
                   </div>  
-                  <p class="btn-top">
-                    <a href="#" onclick="showRecoverPasswordForm();return false;" class="link-color">Forgot your password?
-                    </a>
-                  </p>
                 </form>
               </div>
               <div id="recover-password" style="display:none;" class="wrap">
@@ -100,7 +96,7 @@
                 </p>
                 <form method="post" action="/account/recover" accept-charset="UTF-8">
                   <input type="hidden" name="form_type" value="recover_customer_password" />
-                  <input type="hidden" name="utf8" value="✓" />
+                  <input type="hidden" name="utf8" value="?" />
                   <div class="form-group">
                     <label for="email">Email Address 
                       <sup>*
@@ -131,17 +127,34 @@
           </section>
         </div>
       </div>
-      <script type="text/javascript">
-        function showRecoverPasswordForm() {
-          document.getElementById('recover-password').style.display = 'block';
-          document.getElementById('login').style.display='none';
+
+      <script>
+       $(function() {
+    $('#form-login').validate({
+      rules : {
+        txt_Email : {
+          required : true,
+          email : true
+        },
+        txt_Password : {
+          required : true,
+          minlength : 8
         }
-        function hideRecoverPasswordForm() {
-          document.getElementById('recover-password').style.display = 'none';
-          document.getElementById('login').style.display = 'block';
+      },
+      messages : {
+        txt_Email : {
+          required : "Email can not be empty",
+          email : "Email invalidate"
+        },
+        txt_Password : {
+          required : "Password can not be empty",
+          minlength : "Passwords must be at least 8 characters long"
         }
-        if (window.location.hash == '#recover') {
-          showRecoverPasswordForm() }
+      },
+      
+    });
+  })
       </script>
     </div>
+    
 @endsection

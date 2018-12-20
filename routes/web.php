@@ -11,7 +11,7 @@
 */
 Route::get('/', function () {
 return view('welcome');
-});
+}); 
 Route::get('index',[
 'as'=>'index',
 'uses'=>'controllerPage@getIndex'
@@ -39,7 +39,12 @@ Route::get('paymentMethod',[
 Route::get('blog',[
 'as'=>'getBlog',
 'uses'=>'controllerPage@getBlog'
+]); 
+Route::post('blog',[
+'as'=>'postCheckLike',
+'uses'=>'controllerPage@postCheckLike'
 ]);
+
 Route::post('blog',[
 'as'=>'postBlog',
 'uses'=>'controllerPage@postBlog'
@@ -75,7 +80,7 @@ Route::get('commnetTest/{id}',[
 'as'=>'getcomment',
 'uses'=>'controllerPage@getComment'
 ]);
-Route::post('commnetTest',[
+Route::post('commnetTest/{id}',[
 'as'=>'postcomment',
 'uses'=>'controllerPage@postComment'
 ]);
@@ -96,10 +101,23 @@ Route::post('loginPage',[
 'as'=>'loginPage',
 'uses'=>'controllerPage@postLoginPage'
 ]);
+Route::get('updateAcc',[
+'as'=>'getUpdateAcc',
+'uses'=>'controllerPage@getUpdateAcc'
+]);
+Route::post('updateAcc',[
+'as'=>'postUpdateAcc',
+'uses'=>'controllerPage@postUpdateAcc'
+]);
 Route::get('dang-xuat',[
 'as'=>'logout',
 'uses'=>'controllerPage@postLogout'
 ]);
+Route::get('search',[
+'as'=>'getSearch',
+'uses'=>'controllerPage@getSearch'
+]);
+
 /*
 Route::get('listing',[
 'as'=>'listing',
@@ -148,6 +166,7 @@ Route::post('order',[
 //
 //
 Route::get('indexAdmin',[
+'middleware'=>'auth',
 'as'=>'indexAdmin',
 'uses'=>'PageAdminController@getIndexAdmin'
 ]);
@@ -155,10 +174,12 @@ Route::get('indexAdmin',[
 
 //end dassboad
 Route::get('addSmallCategory',[
+	'middleware'=>'auth',
 'as'=>'getaddSmallCategory',
 'uses'=>'ControllerSmallCategories@getaddSmallCategories'
 ]);
 Route::post('addSmallCategory',[
+	'middleware'=>'auth',
 'as'=>'postaddSmallCategory',
 'uses'=>'ControllerSmallCategories@postAddSmallCategories'
 ]);
@@ -167,26 +188,32 @@ Route::post('addSmallCategory',[
 // 
 // 
 Route::get('smallCategory',[
+	'middleware'=>'auth',
 'as'=>'smallCategory',
 'uses'=>'ControllerSmallCategories@getSmallCategories'
 ]);
 Route::get('addSmallCategory',[
+	'middleware'=>'auth',
 'as'=>'getaddSmallCategory',
 'uses'=>'ControllerSmallCategories@getaddSmallCategories'
 ]);
 Route::post('addSmallCategory',[
+	'middleware'=>'auth',
 'as'=>'postaddSmallCategory',
 'uses'=>'ControllerSmallCategories@postAddSmallCategories'
 ]);
 Route::get('editSmallCategory/{id}',[
+	'middleware'=>'auth',
 'as'=>'geteditSmallCategory',
 'uses'=>'ControllerSmallCategories@getEditSmallCategory'
 ]);
 Route::post('editSmallCategory/{id}',[
+	'middleware'=>'auth',
 'as'=>'posteditSmallCategory',
 'uses'=>'ControllerSmallCategories@postEditSmallCategory'
 ]);
 Route::get('deleteSmallCategory/{id}',[
+
 'as'=>'getdeleteSmallCategory',
 'uses'=>'ControllerSmallCategories@getDeleteSmallCategory'
 ]);
@@ -196,10 +223,12 @@ Route::get('deleteSmallCategory/{id}',[
 // 
 // Categories
 Route::get('categories',[
+	'middleware'=>'auth',
 'as'=>'categories',
 'uses'=>'ControllerCategories@getCategories'
 ]);
 Route::get('addCategories',[
+	'middleware'=>'auth',
 'as'=>'getaddCategories',
 'uses'=>'ControllerCategories@getAddCategories'
 ]);
@@ -208,6 +237,7 @@ Route::post('addCategories',[
 'uses'=>'ControllerCategories@postAddCategories'
 ]);
 Route::get('editCategory/{id}',[
+	'middleware'=>'auth',
 'as'=>'geteditCategory',
 'uses'=>'ControllerCategories@getEditCategory'
 ]);
@@ -223,10 +253,12 @@ Route::get('deleteCategory/{id}',[
 // 
 // start image
 Route::get('imageProduct',[
+	'middleware'=>'auth',
 'as'=>'imageProduct',
 'uses'=>'ControllerImage@getImageProduct'
 ]);
 Route::get('addImageProduct',[
+	'middleware'=>'auth',
 'as'=>'getAddImageProduct',
 'uses'=>'ControllerImage@getAddImageProduct'
 ]);
@@ -235,6 +267,7 @@ Route::post('addImageProduct',[
 'uses'=>'ControllerImage@postAddImageProduct'
 ]);
 Route::get('editImage/{id}',[
+	'middleware'=>'auth',
 'as'=>'getEditImageProduct',
 'uses'=>'ControllerImage@getEditImageProduct'
 ]);
@@ -249,14 +282,17 @@ Route::get('deleteImage/{id}',[
 // end image
 // orrder
 Route::get('manaOrder',[
+	'middleware'=>'auth',
 'as'=>'getManagementOrder',
 'uses'=>'controllerOrder@getManagementOrder'
 ]);
 Route::get('editManagementOrder2/{id}',[
+	'middleware'=>'auth',
 'as'=>'getEditManagementOrder2',
 'uses'=>'controllerOrder@getEditManagementOrder2'
 ]);
 Route::get('orderStatus',[
+	'middleware'=>'auth',
 'as'=>'getOrderStatus',
 'uses'=>'controllerOrder@getOrderStatus'
 ]);
@@ -270,21 +306,26 @@ Route::post('checkOrder',[
 //start account
 //
 Route::get('loginAdmin',[
-'as'=>'loginAdmin',
+'as'=>'login',
 'uses'=>'controllerAccount@getLoginAdmin'
 ]);
 Route::post('loginAdmin',[
-'as'=>'loginAdmin',
+'as'=>'login',
 'uses'=>'controllerAccount@postLoginAdmin'
+]);
+Route::get('logout',[
+'as'=>'logoutAdmin',
+'uses'=>'controllerAccount@postLogoutAdmin'
 ]);
 
 
-
 Route::get('customer',[
+	'middleware'=>'auth',
 'as'=>'getCustomer',
 'uses'=>'controllerAccount@getCustomer'
 ]);
 Route::get('addCustomer',[
+	'middleware'=>'auth',
 'as'=>'getAddCustomer',
 'uses'=>'controllerAccount@getAddCustomer'
 ]);
@@ -293,6 +334,7 @@ Route::post('addCustomer',[
 'uses'=>'controllerAccount@postAddCustomer'
 ]);
 Route::get('editCustomer/{id}',[
+	'middleware'=>'auth',
 'as'=>'geteditCustomer',
 'uses'=>'controllerAccount@geteditCustomer'
 ]);
@@ -309,6 +351,7 @@ Route::get('deleteCustomer/{id}',[
 //
 // start contact
 Route::get('contactAdmin',[
+	'middleware'=>'auth',
 'as'=>'getContact',
 'uses'=>'controllerContact@getContact'
 ]);
@@ -319,10 +362,12 @@ Route::get('deleteContact/{id}',[
 // end contact
 // start product
 Route::get('products',[
+	'middleware'=>'auth',
 'as'=>'products',
 'uses'=>'ControllerProduct@getproduct'
 ]);
 Route::get('addProduct',[
+	'middleware'=>'auth',
 'as'=>'getAddProduct', 
 'uses'=>'ControllerProduct@getAddProduct'
 ]);
@@ -331,6 +376,7 @@ Route::post('addProduct',[
 'uses'=>'ControllerProduct@postAddProduct'
 ]);
 Route::get('editProducts/{id}',[
+	'middleware'=>'auth',
 'as'=>'getEditProduct',
 'uses'=>'ControllerProduct@getEditProduct'
 ]);
@@ -348,10 +394,12 @@ Route::get('deleteProducts/{id}',[
 /// start request
 /// 
 Route::get('request',[
+	'middleware'=>'auth',
 'as'=>'request',
 'uses'=>'ControllerRequest@getRequest'
 ]);
 Route::get('addRequest',[
+	'middleware'=>'auth',
 'as'=>'getAddRequest',
 'uses'=>'ControllerRequest@getAddRequest'
 ]);
@@ -360,6 +408,7 @@ Route::post('addProduct',[
 'uses'=>'ControllerRequest@postAddRequest'
 ]);
 Route::get('editRequest/{id}',[
+	'middleware'=>'auth',
 'as'=>'getEditRequest',
 'uses'=>'ControllerRequest@getEditRequest'
 ]);
@@ -425,13 +474,7 @@ Route::get('shop_special_price',[
 'as'=>'shop_special_price',
 'uses'=>'PageAdminController@getShop_special_price'
 ]);
-Route::get('login', function () {
-return view('viewAdmin.login');
-});
-Route::get('login',[
-'as'=>'login',
-'uses'=>'PageAdminController@getLogin'
-]);
+
 Route::get('setting', function () {
 return view('viewAdmin.setting');
 });

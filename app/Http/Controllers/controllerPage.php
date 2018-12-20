@@ -28,7 +28,8 @@ class controllerPage extends Controller
         $slide=slides::all();
         $category = categories::all();
         $new_product= products::where('new',1)->get();
-        return view('page.index',['slides'=>$slide,'categories'=>$category,'products'=>$new_product]);
+        $persons=DB::table('users')->join('person_post_new','users.id','=','person_post_new.id_user')->get();
+        return view('page.index',compact('persons'),['slides'=>$slide,'categories'=>$category,'products'=>$new_product]);
     }
 
     public function getCollectionWomen($type){
@@ -92,7 +93,6 @@ class controllerPage extends Controller
     }
 
     public function getUpdateCart($id, $qty){
-        
         $oldCart = Session::has('cart')?Session::get('cart'):null;
         $cart = new Cart_Old($oldCart);
         $cart->update_new($id,$qty);
@@ -103,9 +103,7 @@ class controllerPage extends Controller
             Session::forget('cart');
         }
         return redirect()->back();
-
     }
-
 
     public function getCustomerInformation()
     {
@@ -125,16 +123,18 @@ class controllerPage extends Controller
         return view('page.customerInformation');
     }
     // comment
-    //
-
-    public function getComment(Request $request){
-        $preson_posts=DB::table('users')->join('person_post_new','users.id','=','person_post_new.id_user')->where('person_post_new.id',$request->id)->first();
-        $countLike=likes::where('id_person',$request->id)->count();
-        $getPerson=likes::where('id_person',$request->id)->get();
-        dd($getPerson->id_user);
+    public function getComment($id){
+        $preson_posts=DB::table('users')->join('person_post_new','users.id','=','person_post_new.id_user')->where('person_post_new.id',$id)->first();
+        $countLike=likes::where('id_person',$id)->count();
+        $getPerson=likes::where('id_person',$id)->get();
+        // dd($getPerson->id_user);
         //dd($countLike);
-        $comments= comments::where('id_person',$preson_posts->id)->get();
-        return view('page.comment2', compact('comments','preson_posts','countLike','getPerson'));
+        // dd($idPer);
+        //$id_post=$idPer;
+        $persons=DB::table('users')->join('person_post_new','users.id','=','person_post_new.id_user')->get();
+        $comments= comments::where('id_person',$id)->get();
+        $sp_small =smallCategories::all();
+        return view('page.comment2', compact('comments','preson_posts','countLike','getPerson','persons','sp_small'));
     }
 
     public function postComment(Request $request){
@@ -144,17 +144,39 @@ class controllerPage extends Controller
         $comment->id_person = $request->id;
         $comment->content = $request->txt_comment;
         $comment->save();
-        return redirect()->route('getComment');
+        return redirect()->route('getcomment', ['id' => $request->id]);
     }
     // end comment
-
 
     public function getBlog(Request $req){
         $persons=DB::table('users')->join('person_post_new','users.id','=','person_post_new.id_user')->get();
         $likePosts=DB::table('person_post_new')
                     ->join('likes','person_post_new.id','=','likes.id_person')->get();
-        return view('page.blog',compact('persons','likePosts'));
-    } 
+
+        $getPerson=likes::where('id_person',$req->id)->get();
+        return view('page.blog',compact('persons','likePosts','getPerson'));
+    }
+
+    // check like
+    public function postCheckLike(Request $req){
+        $checkOrder=likes::find($req->id);
+        $status = $req->status;
+        $order_id=$req->id;
+        //dd($status);
+        if($checkOrder->status==0)
+        {
+            $checkOrder->status =1;
+            $checkOrder->paid=1;
+        }
+        else
+        {
+            $checkOrder->status =0;
+            $checkOrder->paid=0;
+        }
+        $reuslt = $checkOrder->save();
+       // dd($reuslt);
+        return view('admin.pageAdmin.ajaxToggoActiveStatus',compact('status','order_id'));
+    }
  
     public function postLikeTest02(Request $req){
         $loggedin_user=Auth::user()->id;
@@ -196,15 +218,15 @@ class controllerPage extends Controller
 // }
 
     public function postPayment(Request $req){
-
         $cart = Session::get('cart');
-        $total=number_format($cart->totalPrice+20000);
+        $totalTam=$cart->totalPrice+20000;
+        $total=$totalTam;
         $quanitily=$cart->totalQty;
         //dd($total,$quanitily);
         $url="https://www.baokim.vn/payment/product/version11?business=tducnguyen1997%40gmail.com&id=&order_description=&product_name=Tổng hóa đơn&product_price=1&product_quantity={$quanitily}&total_amount={$total}&url_cancel=&url_detail=&url_success=http%3A%2F%2Flocalhost%3A8080%2Flaravel%2Fvivianv1.0%2Fvivian%2Fvivian%2Fpublic%2Findex";
         return redirect()->away($url);
     }
-
+ 
     public function postLikePost(Request $request)
        {
            $post_id = $request['postId'];
@@ -362,6 +384,34 @@ class controllerPage extends Controller
     public function postLogout(){
         Auth::logout();
         return redirect()->route('index');
+    }
+
+    public function getUpdateAcc(){
+        
+        return view('page.updateAccount');
+    }
+
+    public function postUpdateAcc(Request $req){
+        $user = Auth::user();
+        $users = users::find($user->id)->first();
+        $users->username = $req->txt_fullName;
+        $users->password = Hash::make($req->txt_Password);
+        $users->phone = $req->txt_phone;
+        $users->email = $req->txt_Email;
+        $users->address = $req->txt_Address;
+        $users->gender = $req->txt_Gender;
+        $users->id_type=1;
+        // dd($req->txt_fullName,$req->txt_phone,$req->txt_Email,$req->txt_Address,$req->txt_Gender);
+        $users->save();
+        return redirect()->route('getUpdateAcc');
+
+    }
+
+    public function getSearch(Request $req){
+        $products=products::where('name','like','%'.$req->key.'%')->orWhere('price_out',$req->key)->get();
+        $sp_small =smallCategories::all();
+        return view('page.search',compact('products','sp_small'));
+
     }
 
 }

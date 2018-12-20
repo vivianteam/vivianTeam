@@ -151,7 +151,7 @@
             <!-- col-left -->
             <div class="col-md-6 col-sm-6 col-xs-12">
               <!-- banner -->
-              <a href="collections/accessories.html" class="banner zoom-in"> 
+              <a href="#" class="banner zoom-in"> 
                 <span class="figure">
                   <img src="image/img10_1024x1024f06f.jpg?v=1481310095" alt="">
                   <span class="figcaption text-left">
@@ -175,7 +175,7 @@
             <!-- col-left -->
             <div class="col-md-6 col-sm-6 col-xs-12">
               <!-- banner -->
-              <a href="collections/women-s.html" class="banner zoom-in"> 
+              <a href="#" class="banner zoom-in"> 
                 <span class="figure">
                   <img src="image/img11_1024x10246048.jpg?v=1481310211" alt="">
                   <span class="figcaption text-left">
@@ -199,7 +199,7 @@
             <!-- col-left -->
             <div class="col-md-6 col-sm-6 col-xs-12">
               <!-- banner -->
-              <a href="collections/accessories.html" class="banner zoom-in"> 
+              <a href="#" class="banner zoom-in"> 
                 <span class="figure">
                   <img src="image/img12_1024x10249970.jpg?v=1481310353" alt="">
                   <span class="figcaption text-left">
@@ -223,7 +223,7 @@
             <!-- col-left -->
             <div class="col-md-6 col-sm-6 col-xs-12">
               <!-- banner -->
-              <a href="collections/men-s.html" class="banner zoom-in"> 
+              <a href="#" class="banner zoom-in"> 
                 <span class="figure">
                   <img src="image/img13_1024x1024d1c9.jpg?v=1481310403" alt="">
                   <span class="figcaption">
@@ -264,16 +264,15 @@
                 <div class="carousel-products row carousel-small" data-autoplay="false" data-speed="7000" data-step="3">
                   @foreach($products as $product)
                     @if($product->price_sale!=0)
-                    <div class="col-lg-3">
+                    <div class="col-lg-3" >
                       <!-- product -->
                       <div class="product 31530898636">
                         <div class="product__inside">
                           <!-- product image -->
                           <div class="product__inside__image">
                             <a href="{{ route('productTitle',$product->id) }}"> 
-                              <img src="image/products/{{ $product->image}}" alt="Black Cap" /> 
-                            </a> 
-                            
+                              <img style="height: 200px;width: 200px" src="image/products/{{ $product->image}}" alt="Black Cap" /> 
+                            </a>
                           </div>
                           <!-- /product image -->
                           <!-- label news -->
@@ -422,18 +421,24 @@
                 <!-- carousel-new -->
                 <div class="carousel-products row postscarousel-js-1480804987566" id="postsCarousel" data-autoplay="true" data-speed="7000" data-step="2" data-showproducts="4">
                   <!-- slide-->
+                  @foreach($persons as $person)
                   <div class="col-sm-3 col-xl-12">
                     <!--  -->
+                    <?php
+                      $day=date("d", strtotime("$person->created_at"));
+                      $month=date("M", strtotime("$person->created_at"));
+                    ?>
+                    {{csrf_field()}}
                     <div class="recent-post-box">
                       <div class="col-lg-12 col-xl-12"> 
-                        <a href="blogs/news/mauris-lacinia-lectus-6.html">
+                        <a href="{{route('getcomment',$person->id)}}">
                           <span class="figure">
-                            <img src="image/bogs/blog8_1024x1024e0c7.jpg?v=1481316680" alt="Mauris Lacinia Lectus">
+                            <img src="{{asset('image/')}}/bogs/{{ $person->image }}" alt="Mauris Lacinia Lectus">
                             <span class="figcaption label-top-left">
                               <span>
-                                <b>09
+                                <b>{{$day}}
                                 </b>
-                                <em>dec
+                                <em>{{$month}}
                                 </em>
                               </span>
                             </span>
@@ -443,10 +448,10 @@
                       <div class="col-lg-12 col-xl-12">
                         <div class="recent-post-box__text">
                           <h4>
-                            <a href="blogs/news/mauris-lacinia-lectus-6.html">Mauris Lacinia Lectus
+                            <a href="{{route('getcomment',$person->id)}}">{{$person->title}}
                             </a>
                           </h4>
-                          <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec eros tellus, scelerisque.
+                          <p>{{ $person->description }}
                           </p> 
                           <a class="link-commet" href="blogs/news/mauris-lacinia-lectus-6.html#addcomment">
                             <span class="icon icon-message ">
@@ -459,201 +464,7 @@
                     </div>
                     <!-- / -->
                   </div>
-                  <!-- /slide -->
-                  <!-- slide-->
-                  <div class="col-sm-3 col-xl-12">
-                    <!--  -->
-                    <div class="recent-post-box">
-                      <div class="col-lg-12 col-xl-12"> 
-                        <a href="blogs/news/mauris-lacinia-lectus-5.html">
-                          <span class="figure">
-                            <img src="image/bogs/blog1_1024x1024b4c6.jpg?v=1481316604" alt="Mauris Lacinia Lectus">
-                            <span class="figcaption label-top-left">
-                              <span>
-                                <b>09
-                                </b>
-                                <em>dec
-                                </em>
-                              </span>
-                            </span>
-                          </span>
-                        </a> 
-                      </div>
-                      <div class="col-lg-12 col-xl-12">
-                        <div class="recent-post-box__text">
-                          <h4>
-                            <a href="blogs/news/mauris-lacinia-lectus-5.html">Mauris Lacinia Lectus
-                            </a>
-                          </h4>
-                          <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec eros tellus, scelerisque.
-                          </p> 
-                          <a class="link-commet" href="blogs/news/mauris-lacinia-lectus-5.html#addcomment">
-                            <span class="icon icon-message ">
-                            </span>
-                            <span class="number">0
-                            </span> comment(s)
-                          </a> 
-                        </div>
-                      </div>
-                    </div>
-                    <!-- / -->
-                  </div>
-                  <!-- /slide -->
-                  <!-- slide-->
-                  <div class="col-sm-3 col-xl-12">
-                    <!--  -->
-                    <div class="recent-post-box">
-                      <div class="col-lg-12 col-xl-12"> 
-                        <a href="blogs/news/mauris-lacinia-lectus-7.html">
-                          <span class="image/bogs/blog6_1024x1024b57f.jpg?v=1481316711" alt="Mauris Lacinia Lectus">
-                            <span class="figcaption label-top-left">
-                              <span>
-                                <b>09
-                                </b>
-                                <em>dec
-                                </em>
-                              </span>
-                            </span>
-                          </span>
-                        </a> 
-                      </div>
-                      <div class="col-lg-12 col-xl-12">
-                        <div class="recent-post-box__text">
-                          <h4>
-                            <a href="blogs/news/mauris-lacinia-lectus-7.html">Mauris Lacinia Lectus
-                            </a>
-                          </h4>
-                          <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec eros tellus, scelerisque.
-                          </p> 
-                          <a class="link-commet" href="blogs/news/mauris-lacinia-lectus-7.html#addcomment">
-                            <span class="icon icon-message ">
-                            </span>
-                            <span class="number">0
-                            </span> comment(s)
-                          </a> 
-                        </div>
-                      </div>
-                    </div>
-                    <!-- / -->
-                  </div>
-                  <!-- /slide -->
-                  <!-- slide-->
-                  <div class="col-sm-3 col-xl-12">
-                    <!--  -->
-                    <div class="recent-post-box">
-                      <div class="col-lg-12 col-xl-12"> 
-                        <a href="blogs/news/mauris-lacinia-lectus-1.html">
-                          <span class="figure">
-                            <img src="image/bogs/blog7_1024x1024e58d.jpg?v=1481316484" alt="Mauris Lacinia Lectus">
-                            <span class="figcaption label-top-left">
-                              <span>
-                                <b>09
-                                </b>
-                                <em>dec
-                                </em>
-                              </span>
-                            </span>
-                          </span>
-                        </a> 
-                      </div>
-                      <div class="col-lg-12 col-xl-12">
-                        <div class="recent-post-box__text">
-                          <h4>
-                            <a href="blogs/news/mauris-lacinia-lectus-1.html">Mauris Lacinia Lectus
-                            </a>
-                          </h4>
-                          <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec eros tellus, scelerisque.
-                          </p> 
-                          <a class="link-commet" href="blogs/news/mauris-lacinia-lectus-1.html#addcomment">
-                            <span class="icon icon-message ">
-                            </span>
-                            <span class="number">0
-                            </span> comment(s)
-                          </a> 
-                        </div>
-                      </div>
-                    </div>
-                    <!-- / -->
-                  </div>
-                  <!-- /slide -->
-                  <!-- slide-->
-                  <div class="col-sm-3 col-xl-12">
-                    <!--  -->
-                    <div class="recent-post-box">
-                      <div class="col-lg-12 col-xl-12"> 
-                        <a href="blogs/news/mauris-lacinia-lectus-4.html">
-                          <span class="figure">
-                            <img src="image/bogs/teBlog.jpg?v=1481316478" alt="Mauris Lacinia Lectus">
-                            <span class="figcaption label-top-left">
-                              <span>
-                                <b>03
-                                </b>
-                                <em>dec
-                                </em>
-                              </span>
-                            </span>
-                          </span>
-                        </a> 
-                      </div>
-                      <div class="col-lg-12 col-xl-12">
-                        <div class="recent-post-box__text">
-                          <h4>
-                            <a href="blogs/news/mauris-lacinia-lectus-4.html">Mauris Lacinia Lectus
-                            </a>
-                          </h4>
-                          <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec eros tellus, scelerisque.
-                          </p> 
-                          <a class="link-commet" href="blogs/news/mauris-lacinia-lectus-4.html#addcomment">
-                            <span class="icon icon-message ">
-                            </span>
-                            <span class="number">0
-                            </span> comment(s)
-                          </a> 
-                        </div>
-                      </div>
-                    </div>
-                    <!-- / -->
-                  </div>
-                  <!-- /slide -->
-                  <!-- slide-->
-                  <div class="col-sm-3 col-xl-12">
-                    <!--  -->
-                    <div class="recent-post-box">
-                      <div class="col-lg-12 col-xl-12"> 
-                        <a href="blogs/news/mauris-lacinia-lectus-3.html">
-                          <span class="figure">
-                            <img src="image/bogs/blog5_1024x1024d9a6.jpg?v=1481316363" alt="Mauris Lacinia Lectus">
-                            <span class="figcaption label-top-left">
-                              <span>
-                                <b>03
-                                </b>
-                                <em>dec
-                                </em>
-                              </span>
-                            </span>
-                          </span>
-                        </a> 
-                      </div>
-                      <div class="col-lg-12 col-xl-12">
-                        <div class="recent-post-box__text">
-                          <h4>
-                            <a href="blogs/news/mauris-lacinia-lectus-3.html">Mauris Lacinia Lectus
-                            </a>
-                          </h4>
-                          <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec eros tellus, scelerisque.
-                          </p> 
-                          <a class="link-commet" href="blogs/news/mauris-lacinia-lectus-3.html#addcomment">
-                            <span class="icon icon-message ">
-                            </span>
-                            <span class="number">0
-                            </span> comment(s)
-                          </a> 
-                        </div>
-                      </div>
-                    </div>
-                    <!-- / -->
-                  </div>
-                  <!-- /slide -->
+                  @endforeach
                 </div>
                 <!-- /carousel-new -->
               </div>

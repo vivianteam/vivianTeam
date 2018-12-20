@@ -18,17 +18,23 @@
             <div class="container">
                 <div class="row product-info-outer">
                     <div id="productPrevNext" class="hidden-xs hidden-sm">
-                        
                     </div>
                     <div class="col-sm-12 col-md-12 col-lg-12 col-xl-8">
                         <div class="row">
                             <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6 hidden-xs">
                                 <div class="product-main-image">
+                    <div class="product-main-image__item">
+                      <img class="product-zoom" id="bigImg" src="{{asset('image/')}}/products/{{ $sanpham->image }}" zoom-image="{{asset('image/')}}/products/{{ $sanpham->image }}" alt="Carhartt Logo Starter" />
+                    </div>
+                    <div class="product-main-image__zoom">
+                    </div>
+                  </div>
+                                <!-- <div class="product-main-image">
                                     <div class="product-main-image__item">
-                                        <img style="height:500px;width: 450px" class="product-zoom" id="bigImg" src="{{asset('image/')}}/products/{{ $sanpham->image }}" zoom-image="{{ asset('image/')}}/products/{{ $sanpham->image }}" alt="Black Coffee Belt" /> 
+                                        <img id="imgZoom" width="450px" height="500px" onmousemove="zoomIn(event)" onmouseout="zoomOut()" src="{{asset('image/')}}/products/{{ $sanpham->image }}">
                                     </div>
-                                    <div class="product-main-image__zoom"></div>
-                                </div>
+                                    <div id="overlay" onmousemove="zoomIn(event)"></div>
+                                </div> -->
                                 <div class="product-images-carousel">
                                     <ul id="smallGallery" >
                                         @foreach($image_products as $image_product)
@@ -62,7 +68,6 @@
                                                 <a ><img src="{{asset('image/')}}/products/{{ $image_product->image }}" alt="Bright White Shoes"></a>
                                             </li>
                                         @endforeach
-                                        
                                     </ul> 
                                 </div>
                                 <div class="price-box product-info__price">
@@ -96,15 +101,8 @@
                                 <div class="divider divider--xs product-info__divider"></div>
                                     <div class="divider divider--sm"></div>
                                     <div class="wrapper">
-                                        <div class="pull-left"><span class="qty-label">QTY:</span>
-                                        </div>
-                                        <div class="pull-left">
-                                            
-                      <input type="number" name="" id="zzz" class="form-control input-desktop" value="{{$sanpham['qty']}}" min="1" max="100000" title="Many in stock">
-                    
-                                        </div>
                                         <div class="pull-left" style="margin-left: 50px">
-                                            <a href="{{route('AddCartTitle',$sanpham->id)}}">
+                                            <a href="{{route('addCart',$sanpham->id)}}">
                                             <button type="submit" class="btn btn--ys btn--xxl addtocart"><span class="icon icon-shopping_basket"></span> Add to Cart</button>
                                         </a>
                                         </div>
