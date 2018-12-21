@@ -379,7 +379,7 @@
               <a href="#">
                 <i class="la la-home">
                 </i>
-                <span class="menu-title" data-i18n="nav.dash.main">Management products
+                <span class="menu-title" data-i18n="nav.dash.main">products Management 
                 </span>
               </a>
               <ul class="menu-content">
@@ -409,7 +409,7 @@
               <a href="{{route('getContact')}}">
                 <i class="la la-home">
                 </i>
-                <span class="menu-title" data-i18n="nav.dash.main">Management Contacts
+                <span class="menu-title" data-i18n="nav.dash.main">Contacts Management 
                 </span>
               </a>
             </li>
@@ -417,7 +417,7 @@
               <a href="#">
                 <i class="la la-home">
                 </i>
-                <span class="menu-title" data-i18n="nav.dash.main">Management Order
+                <span class="menu-title" data-i18n="nav.dash.main">Orders Management 
                 </span>
               </a>
               <ul class="menu-content">
@@ -435,7 +435,7 @@
               <a href="{{route('request')}}">
                 <i class="la la-television">
                 </i>
-                <span class="menu-title" data-i18n="nav.templates.main">Management requests
+                <span class="menu-title" data-i18n="nav.templates.main">Requests Management 
                 </span>
               </a>
             </li>
@@ -443,7 +443,7 @@
               <a href="#">
                 <i class="la la-home">
                 </i>
-                <span class="menu-title" data-i18n="nav.dash.main">Management Users
+                <span class="menu-title" data-i18n="nav.dash.main">Users Management 
                 </span>
               </a>
               <ul class="menu-content">
@@ -468,7 +468,7 @@
             <a href="{{route('getContact')}}">
               <i class="la la-home">
               </i>
-              <span class="menu-title" data-i18n="nav.dash.main">Management Contacts
+              <span class="menu-title" data-i18n="nav.dash.main">Contacts Management 
               </span>
             </a>
           </li>
@@ -476,7 +476,7 @@
             <a href="#">
               <i class="la la-home">
               </i>
-              <span class="menu-title" data-i18n="nav.dash.main">Management Order
+              <span class="menu-title" data-i18n="nav.dash.main">Order Management 
               </span>
             </a>
             <ul class="menu-content">
@@ -494,7 +494,7 @@
             <a href="{{route('request')}}">
               <i class="la la-television">
               </i>
-              <span class="menu-title" data-i18n="nav.templates.main">Management requests
+              <span class="menu-title" data-i18n="nav.templates.main">Requests Management 
               </span>
             </a>
           </li>

@@ -18,7 +18,7 @@ use App\likes;
 use App\comments;
 use App\contacts;
 use Session;
-use Mail;   
+use Mail;
 use Hash;
 use Auth;
  
@@ -125,26 +125,38 @@ class controllerPage extends Controller
     // comment
     public function getComment($id){
         $preson_posts=DB::table('users')->join('person_post_new','users.id','=','person_post_new.id_user')->where('person_post_new.id',$id)->first();
-        $countLike=likes::where('id_person',$id)->count();
+        $countComment=comments::where('id_person',$id)->count();
         $getPerson=likes::where('id_person',$id)->get();
         // dd($getPerson->id_user);
         //dd($countLike);
         // dd($idPer);
         //$id_post=$idPer;
         $persons=DB::table('users')->join('person_post_new','users.id','=','person_post_new.id_user')->get();
-        $comments= comments::where('id_person',$id)->get();
+        $comments= DB::table('comments')->join('users','comments.id_user','=','users.id')->where('id_person',$id)->paginate(8);
         $sp_small =smallCategories::all();
-        return view('page.comment2', compact('comments','preson_posts','countLike','getPerson','persons','sp_small'));
+        return view('page.comment2', compact('comments','preson_posts','countComment','getPerson','persons','sp_small'));
     }
 
     public function postComment(Request $request){
-        $user = Auth::user();
-        $comment = new comments();
-        $comment->id_user = $user->id;
-        $comment->id_person = $request->id;
-        $comment->content = $request->txt_comment;
-        $comment->save();
-        return redirect()->route('getcomment', ['id' => $request->id]);
+        if(Auth::check())
+        {
+            $user = Auth::user();
+            $comment = new comments();
+            $comment->id_user = $user->id;
+            $comment->id_person = $request->id;
+            $comment->content = $request->txt_comment;
+            $comment->date = date("Y-m-d H:i:s");
+            $comment->save();
+            return redirect()->route('getcomment', ['id' => $request->id]);
+        }
+        else{
+            echo"<script type='text/javascript'>
+                alert('Sorry ! You need login or register!!!');
+                window.location='";
+                echo route('getcomment', ['id' => $request->id]);
+            echo"'</script>";
+
+        }
     }
     // end comment
 
@@ -280,15 +292,28 @@ class controllerPage extends Controller
         return redirect()->route('index');
     }
     public function postBlog(Request $req){
-        $person=new person_post_new;
-        $file_image=$req->file('img')->getClientOriginalName();
-        $person->created_at=date("Y-m-d H:i:s");
-        $person->image=$file_image;
-        $person->description=$req->txt_Decription;
-        $person->id_user=1;
-        $req->file('img')->move('image/bogs/',$file_image);
-        $person->save();
-        return redirect()->route('getBlog');
+        if(Auth::check())
+        {
+            $user = Auth::user();
+            $person=new person_post_new;
+            $file_image=$req->file('img')->getClientOriginalName();
+            $person->created_at=date("Y-m-d H:i:s");
+            $person->image=$file_image;
+            $person->description=$req->txt_Decription;
+            $person->id_user=$user->id;
+            $req->file('img')->move('image/bogs/',$file_image);
+            $person->save();
+            return redirect()->route('getBlog');
+        }
+        else{
+            echo"<script type='text/javascript'>
+                alert('Sorry ! You need login or register!!!');
+                window.location='";
+                echo route('getBlog');
+            echo"'</script>";
+
+        }
+
     }
 
 

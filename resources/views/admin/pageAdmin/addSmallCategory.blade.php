@@ -18,31 +18,27 @@
                         </i> Add new
                       </h4>
                        @include('admin.pageAdmin.error')
+                       <div class="form-group row">
+                        <label class="col-md-3 label-control" for="projectinput6">Categories
+                        </label>
+                        <div class="col-md-9">
+                          <select id="projectinput6" value="{!! old('cmb_Small') !!}" name="cmb_Small" class="form-control">
+                            <option value="0" selected="" disabled="">Categories name
+                            </option>
+                            @foreach($parent as $item)
+                            <option value="{!! $item["id"] !!}">{!! $item["name"]!!}
+                            </option>
+                            @endforeach
+                          </select>
+                        </div>
+                      </div>
                       <div class="form-group row">
                         <label class="col-md-3 label-control" for="projectinput5">Small category name
                         </label>
                         <div class="col-md-9">
                           <input type="text" id="projectinput5" class="form-control" placeholder="Category name"
                                  name="txt_SmallCateName" value="{!! old('txt_SmallCateName') !!}">
-                          
                         </div>
-                      </div>
-                        
-                      <div class="form-group row">
-                      <label class="col-md-3 label-control" for="projectinput6">Categories
-                      </label>
-                      <div class="col-md-9">
-                        <select id="projectinput6" value="{!! old('cmb_Small') !!}" name="cmb_Small" class="form-control">
-                          <option value="0" selected="" disabled="">Categories name
-                          </option>
-                          @foreach($parent as $item)
-                          <option value="{!! $item["id"] !!}">{!! $item["name"]!!}
-                          </option>
-                          @endforeach
-                        </select>
-                      </div>
-                    </div>
-
                       </div>
                       <div class="form-group row">
                         <label class="col-md-3 label-control" for="projectinput9">Description
@@ -50,7 +46,6 @@
                         <div class="col-md-9">
                           <textarea id="projectinput9" rows="5" class="form-control" name="txt_SmallCateDecription">{!! old('txt_SmallCateDecription') !!}
                           </textarea>
-                         
                         </div>
                       </div>
                     </div>

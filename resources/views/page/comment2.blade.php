@@ -57,14 +57,8 @@
                     <span class="post__meta__item">
                       <span class="icon icon-message">
                       </span>
-                      <a href="#">0 comment(s)
+                      <a href="#">{{$countComment}} comment(s)
                       </a>
-                    </span>
-                    <span class="post__meta__item">
-                      <span class="icon icon-folder">
-                      </span>
-                      <a href="#">News
-                      </a> 
                     </span>
                   </div>
                 </div>
@@ -111,45 +105,24 @@
                 </button>
             </form>
             @foreach($comments as $comment)
-              <div class="form-group">
-                <b>ten</b>: {{ $comment->id }}
-                <p style="font-size:9px;">date</p>
+              <div class="form-group" style="margin-top: 10px">
+                <fieldset class="spr-form-contact">
+                  <div class="spr-form-contact-name">
+                    <img src="{{asset('image/')}}/img/user.png" alt="Bright White Shoes"> &nbsp;&nbsp;
+                    <label class="spr-form-label" for="review_email_9097940044">{{$comment->username}}
+                    </label>
+                    <label style="margin-left: 20px" class="spr-form-label" for="review_email_9097940044">{{$comment->date}}
+                    </label>
+
+                  </div>
+                </fieldset>
+                <label style="margin-top: 10px; margin-left: 15px" class="spr-form-label" for="review_email_9097940044">{{$comment->content}}
+                    </label>
               </div>
             @endforeach
+            {!! $comments->links() !!}
             <!-- /form comment-->
           </div>
-
-          <!-- The Modal -->
-
-            <div class="modal fade" id="myModal">
-              <div class="modal-dialog modal-sm">
-                <div class="modal-content">
-                  <!-- Modal Header -->
-                  @if(Auth::check())
-                    <div class="modal-header">
-                      <h4 class="modal-title">Succfull</h4>
-                      <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    </div>
-                  @else
-                    <div class="modal-header">
-                      <h4 class="modal-title">Warning</h4>
-                      <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    </div>
-                    <!-- Modal body -->
-                    <div class="modal-body">
-                      You need login or register
-                    </div>
-                    <!-- Modal footer -->
-                    <div class="modal-footer">
-                    <button type="button" class="btn btn-info" data-dismiss="modal">Login</button>
-                      <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                    </div>
-                  @endif
-                </div>
-              </div>
-            </div>
-          <!-- @endif -->
-        <!--    end model -->
           <div class="divider divider--lg visible-md visible-sm visible-xs">
           </div>
           <!-- right column -->
@@ -192,6 +165,7 @@
                       </span>
                     </a>
                   </div>
+
                   <div class="col-lg-12 col-xl-6">
                     <div class="recent-post-box__text">
                       <h4>
@@ -204,12 +178,6 @@
                       </div>
                       <p>{{$person->title}}
                       </p>
-                      <a class="link-commet" href="{{route('getcomment',$person->id)}}">
-                        <span class="icon icon-message ">
-                        </span>
-                        <span class="number">0
-                        </span> comment(s)
-                      </a>
                     </div>
                   </div>
                 </div>

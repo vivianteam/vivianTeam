@@ -11,7 +11,9 @@ use Validator;
 use App\smallCategories;
 use App\categories;
 use App\products;
+use Illuminate\Http\Request;
 use App\Http\Requests\SmallCateRequest;
+use Illuminate\Support\Facades\DB;
 
 class ControllerSmallCategories extends Controller
 {
@@ -27,11 +29,11 @@ class ControllerSmallCategories extends Controller
     	return view('admin.pageAdmin.addSmallCategory',compact('parent'));
     }
 
-    public function postAddSmallCategories(SmallCateRequest $req){
+    public function postAddSmallCategories(Request $req){
     	$smallcate=new smallcategories;
     	$smallcate->nameSmallCate=$req->txt_SmallCateName;
     	$smallcate->descriptions=$req->txt_SmallCateDecription;
-    	$smallcate->id_category=$req->txt_CateName;
+    	$smallcate->id_category=$req->cmb_Small;
     	$smallcate->save();
     	return redirect()->route('smallCategory')->with(['flash_level'=>'success','flash_message'=>'Success !! Complete add small category']);
     }
@@ -54,15 +56,17 @@ class ControllerSmallCategories extends Controller
 
     public function getEditSmallCategory($id){
     	$data=smallcategories::find($id);
-    	$parent=smallcategories::select('id','nameSmallCate','descriptions','id_category')->get()->toArray();
-    	return view('admin.pageAdmin.editSmallCategory',compact('data','parent','id'));
+        $parent=categories::select('id','name')->get()->toArray();
+        $persons=DB::table('categories')->join('smallcategories','categories.id','=','smallcategories.id_category')->Where('categories.id','=',$data->id_category)->first();
+       // dd($persons);
+    	return view('admin.pageAdmin.editSmallCategory',compact('data','parent','persons'));
     }
 
-    public function postEditSmallCategory(SmallCateRequest $req,$id){
+    public function postEditSmallCategory(Request $req,$id){
     	$smallcate=smallcategories::find($id);
     	$smallcate->nameSmallCate=$req->txt_SmallCateName;
     	$smallcate->descriptions=$req->txt_SmallCateDecription;
-    	$smallcate->id_category=$req->txt_CateName;
+    	$smallcate->id_category=$req->cmb_Small;
     	$smallcate->save();
     	return redirect()->route('smallCategory')->with(['flash_level'=>'success','flash_message'=>'Success !! Complete update Small category']);
 

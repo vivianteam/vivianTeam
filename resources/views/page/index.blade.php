@@ -56,7 +56,6 @@
                               <img  src="image/products/{{ $product->image }}" alt="" /> 
                             </a> 
                             <a href="javascript:void(0);" onclick="quiqview('boyfriend-shirt')" >
-                              
                             </a> 
                           </div>
                           <!-- /product image -->
@@ -315,7 +314,6 @@
                                   <span class="icon icon-shopping_basket">
                                   </span> Add to Cart
                                 </a> 
-                                
                               </div>
                               <div class="custom__info__link hidden-xs">
                               </div>
@@ -453,12 +451,6 @@
                           </h4>
                           <p>{{ $person->description }}
                           </p> 
-                          <a class="link-commet" href="blogs/news/mauris-lacinia-lectus-6.html#addcomment">
-                            <span class="icon icon-message ">
-                            </span>
-                            <span class="number">0
-                            </span> comment(s)
-                          </a> 
                         </div>
                       </div>
                     </div>

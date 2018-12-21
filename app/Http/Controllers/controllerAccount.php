@@ -29,18 +29,19 @@ class controllerAccount extends Controller
 
     public function postLoginAdmin(Request $req){
         $credentials = array('email'=>$req->txt_Email,'password'=>$req->txt_Password);
-        $user = users::where([
+        $user = admin::where([
                 ['email','=',$req->txt_Email]
             ])->first();
         if($user){
             if(Auth::attempt($credentials)){
-                if($user['id_type']==2)
+                if($user['type']==2)
                     return redirect()->route('indexAdmin');
                 else
-                    if($user['id_type']==3)
+                    if($user['type']==3)
                         return redirect()->route('getContact');
                     else
-                        return redirect()->back()->with(['flag'=>'danger','message'=>'Bạn không đủ quyền vào trang này']);
+                        return redirect()->back()->with(['flag'=>'dange0.
+                            r','message'=>'Bạn không đủ quyền vào trang này']);
             }
             else{
                 return redirect()->back()->with(['flag'=>'danger','message'=>'Đăng nhập không thành công']);

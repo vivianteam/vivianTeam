@@ -23,8 +23,6 @@
           <div class="title-box">
             <h1 class="text-center text-uppercase title-under">Blog
             </h1>
-            <p id="msg" class="alert alert-success">
-            </p>
             <form action="{!! route('getBlog')!!}" method="POST">
               @foreach($persons as $person)
               <?php
@@ -62,18 +60,6 @@
                     </div>
                   </div> 
                   <p>{{ $person->description }}</p>
-                  <a id="containnerTest">
-                    @if($person->id_user==Auth::user()->id)
-                      <div class="active{{$person->id}}">
-                      @if($getPerson->status==1)
-                        <img src="{{asset('image/')}}/like/1.png" onclick="ajaxToggoActiveStatusLike({{$person->id}}, 0)">(2)
-                      @else
-                        <img src="{{asset('image/')}}/like/like.png" onclick="ajaxToggoActiveStatusLike({{$person->id}}, 1)">(1)
-                      @endif
-                    @else
-                        <img src="{{asset('image/')}}/like/like.png" onclick="ajaxToggoActiveStatusLike({{$person->id}}, 0)">(2)
-                    @endif
-                  </a>
                 </div>
               </div>
               @endforeach
@@ -100,8 +86,11 @@
       <form class="form form-horizontal" action="{!! route('getBlog')!!}" method="POST" enctype="multipart/form-data">
         <input type="hidden" name="_token" value="{{ csrf_token() }}" >
         <aside class="col-xl-4 col-lg-4  col-md-12" id="rightColumn">
-          <h4 class="text title-aside">USERNAME :
-            <a href="#">vim ♥
+          <h4 class="text title-aside">Hello :
+            <a href="#">
+              @if(Auth::check())
+                {{Auth::user()->username}}
+              @endif
             </a>
           </h4>
           <div class="form-group">
@@ -134,30 +123,5 @@
     </div>
   </div>
 </div>
-
-<script type="text/javascript">
-  function ajaxToggoActiveStatusLike(id_user, presentStatus){
-    $.ajaxSetup({
-      headers: {
-        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-      }
-    });
-    $.ajax({
-      url: "{{ route('postCheckLike') }}",
-      type: 'POST',
-      cache: false,
-      data: {
-        id:id_user, status:presentStatus}
-      ,
-      success: function(data){
-        $('.active'+id_user).html(data);
-      }
-      ,
-      error: function (){
-        alert('Lỗi đã xảy ra');
-      }
-    });
-    return false;
-  }
-</script>
+<!--  -->
 @endsection

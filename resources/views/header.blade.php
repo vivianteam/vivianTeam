@@ -168,38 +168,10 @@
                   </li>
                   
                   <li class="dropdown dropdown-mega-menu dropdown-two-col"> 
-                    <a href="pages/about.html" class="dropdown-toggle" data-toggle="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                       <span class="act-underline">About
                       </span>
                     </a>
-                    <ul class="dropdown-menu multicolumn two-col" role="menu">
-                      <li class="dl-back">
-                        <a href="#">
-                          <span class="icon icon-chevron_left">
-                          </span>back
-                        </a> 
-                      </li>
-                      <li> 
-                        <a href="pages/typography.html">Typography
-                        </a> 
-                      </li>
-                      <li> 
-                        <a href="pages/delivery-page.html">Delivery Page
-                        </a> 
-                      </li>
-                      <li> 
-                        <a href="pages/faq.html">Faq
-                        </a> 
-                      </li>
-                      <li> 
-                        <a href="pages/support-24.html">Support-24
-                        </a> 
-                      </li>
-                      <li> 
-                        <a href="pages/warranty-and-services.html">Warranty and Services
-                        </a> 
-                      </li>
-                    </ul>
                   </li>
                   <li class="dropdown dropdown-mega-menu dropdown-one-col"> 
                     <a href="{{route('getBlog')}}" class="dropdown-toggle" data-toggle="dropdown">

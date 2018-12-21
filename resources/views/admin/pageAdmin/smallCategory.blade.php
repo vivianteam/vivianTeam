@@ -4,6 +4,12 @@
   <div class="content-body">
     <section class="row">
       <div class="col-12">
+        @if(Session::has('flash_message'))
+                  <div class="alert alert-{!! Session::get('flash_level') !!}">
+                    {!! Session::get('flash_message') !!}
+                  </div>
+                @endif
+              </div>
         <div class="card">
           <div class="card-head">
             <div class="card-header">
@@ -33,7 +39,6 @@
           </div>
           <div class="card-content"> 
             <div class="card-body">
-              
               <!-- Task List table -->
               <div class="table-responsive">
                  <table id="example" class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
