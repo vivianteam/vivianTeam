@@ -22,7 +22,7 @@
                         </label>
                         <div class="col-md-9 ">
                           <input type="text" id="txt_name" class="form-control" placeholder="User name"
-                            name="txt_name" required pattern="^[a-zA-Z]*$" title="Name Invalid" value="{!! old('txt_name',isset($data)? $data['username']: null) !!}">
+                            name="txt_name" required pattern="^[a-zA-Z ]*$" title="Name Invalid" value="{!! old('txt_name',isset($data)? $data['username']: null) !!}">
                         </div>
                       </div>
                       <div class="form-group row">
