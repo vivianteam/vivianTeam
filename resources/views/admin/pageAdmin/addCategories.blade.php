@@ -1,6 +1,5 @@
 @extends('masterAdmin')
 @section('content')     
-
 <div class="content-detached content-right">
   <div class="content-body">
     <!-- Basic form layout section start -->
@@ -10,20 +9,19 @@
             <div class="card">
               <div class="card-content collpase show">
                 <div class="card-body">
-                  <form class="form form-horizontal" action="{!! route('getaddCategories')!!}" method="POST" enctype="multipart/form-data">
+                  <form class="form form-horizontal" id="add_categories" action="{!! route('getaddCategories')!!}" method="POST" enctype="multipart/form-data">
                     <input type="hidden" name="_token" value="{{ csrf_token() }}" >
                     <div class="form-body">
                       <h4 class="form-section">
                         <i class="ft-clipboard">
                         </i> Add new
                       </h4>
-                       @include('admin.pageAdmin.error')
                       <div class="form-group row">
                         <label class="col-md-3 label-control" for="projectinput5">Category name
                         </label>
                         <div class="col-md-9">
                           <input type="text" id="projectinput5" class="form-control" placeholder="Category name"
-                            name="txt_CateNameTest" value="{!! old('txt_CateNameTest') !!}">
+                            name="txt_CateNameTest" required pattern="^[a-zA-Z]*$" title="Category Name Invalid" value="{!! old('txt_CateNameTest') !!}">
                         </div>
                       </div>
                         <div class="form-group row">
@@ -31,16 +29,23 @@
                           </label>
                           <div class="col-md-9">
                               <fieldset class="form-group">
-                                <input type="file"  name="cateImage" multiple="multiple" class="form-control" value="{!! old('cateImage') !!}">
+                                <input type="file"  name="cateImage" id="chooseimg" multiple="multiple" class="form-control" required accept="image/gif, image/jpeg, image/png" value="{!! old('cateImage') !!}">
                               </fieldset>
                           </div>
                       </div>
+                      </div>
                       <div class="form-group row">
-                        <label class="col-md-3 label-control" for="projectinput9">Description
-                        </label>
+                        <label class="col-md-3 label-control" for="projectinput9">Image</label>
+                        <div class="col-md-9">        
+                          <div class="form" style="border :1px solid #CACFE7">
+                            <img id="image" height="200px" />
+                          </div>
+                        </div>
+                      </div>
+                      <div class="form-group row">
+                        <label class="col-md-3 label-control" for="projectinput9">Description</label>
                         <div class="col-md-9">
-                          <textarea id="projectinput9" rows="5" class="form-control" name="txt_CateDecription">{!! old('txt_CateDecription') !!}
-                          </textarea>
+                          <textarea id="projectinput9" rows="5" class="form-control" placeholder="Description" accept="image/gif, image/jpeg, image/png" required name="txt_CateDecription">{!! old('txt_CateDecription') !!}</textarea>
                         </div>
                       </div>
                     </div>

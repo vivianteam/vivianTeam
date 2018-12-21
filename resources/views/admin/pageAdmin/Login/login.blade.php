@@ -18,11 +18,11 @@
 					<input type="hidden" name="_token" value="{{csrf_token()}}">
 					<div class="form-content">
 						<div class="form-group">
-							<input type="text" class="form-control input-underline input-lg" name="txt_Email" placeholder=Email>
+							<input type="text" class="form-control input-underline input-lg" name="txt_Email" placeholder=Email required pattern="^[\w]{1,}[\w.+-]{0,}@[\w-]{2,}([.][a-zA-Z]{2,}|[.][\w-]{2,}[.][a-zA-Z]{2,})$" title="Email Format Invalid">
 						</div>
 
 						<div class="form-group">
-							<input type="password" class="form-control input-underline input-lg" name="txt_Password" placeholder=Password>
+							<input type="password" class="form-control input-underline input-lg" name="txt_Password" placeholder="Password" required pattern=".{6,}" title="Six or more characters">
 						</div>
 					</div>
 					<input type="submit" class="btn btn-white btn-outline btn-lg btn-rounded progress-login"  value="Log in">

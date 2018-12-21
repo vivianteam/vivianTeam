@@ -1,4 +1,3 @@
-
       var file = document.getElementById('chooseimg');
       var img = document.getElementById('image');
       file.addEventListener("change", function() {
@@ -9,5 +8,5 @@
           };
           img.src = window.URL.createObjectURL(file);
         }
-        });
-    
+      });
+      

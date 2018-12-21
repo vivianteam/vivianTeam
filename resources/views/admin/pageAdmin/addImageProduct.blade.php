@@ -1,5 +1,10 @@
 @extends('masterAdmin')
-@section('content')      
+@section('content')
+<style type="text/css">
+  .error{
+    color: red;
+  }
+</style>       
 <div class="content-detached content-right">
   <div class="content-body">
     <!-- Basic form layout section start -->
@@ -9,19 +14,18 @@
           <div class="card">
             <div class="card-content collpase show">
               <div class="card-body">
-                <form class="form form-horizontal" action="{!! route('getAddImageProduct')!!}" method="POST" enctype="multipart/form-data">
+                <form class="form form-horizontal" id="addImgForm" action="{!! route('getAddImageProduct')!!}" method="POST" enctype="multipart/form-data">
                     <input type="hidden" name="_token" value="{{ csrf_token() }}" >
                   <div class="form-body">
                     <h4 class="form-section">
                       <i class="ft-clipboard">
                       </i> Add new
                     </h4>
-                    @include('admin.pageAdmin.error')
                     <div class="form-group row">
                       <label class="col-md-3 label-control" for="projectinput5">ID product
                       </label>
                       <div class="col-md-9">
-                        <select id="projectinput6" name="cmb_pro_Add" class="form-control">
+                        <select id="cmb_pro_Add" name="cmb_pro_Add" class="form-control" required>
                           <option value="{!!old('cmb_pro_Add')!!}" selected="" disabled="">Product name
                           </option>
                           @foreach($parent as $item)
@@ -32,14 +36,21 @@
                       </div>
                     </div>
                     <div class="form-group row">
-                      <label class="col-md-3 label-control" for="projectinput9">Url Image
+                      <label class="col-md-3 label-control" for="chooseimg">Url Image
                       </label>
                       <div class="col-md-9">
                           <fieldset class="form-group">
-                            <input type="file" name="img" class="form-control-file" id="exampleInputFile" value="{!!old('img')!!}">
+                            <input type="file"  name="img" class="form-control-file" id="chooseimg" required accept="image/gif, image/jpeg, image/png" value="{!!old('img')!!}">
                           </fieldset>
-                      </div>
                     </div>
+                  </div>
+                    <div class="form-group row">
+                      <label class="col-md-3 label-control" for="projectinput9">Image</label>
+                      <div class="col-md-9">        
+                          <div class="form" style="border :1px solid #CACFE7">
+                            <img id="image" height="200px" />
+                          </div>
+                      </div>
                   </div>
                   <div class="form-actions">
                     <a href="categories">

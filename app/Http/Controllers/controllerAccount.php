@@ -1,6 +1,6 @@
 <?php
-
 namespace App\Http\Controllers;
+use Illuminate\Http\Request;
 use App\Http\Controllers\Controller as Controller;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
@@ -12,7 +12,6 @@ use App\Http\Requests\CateRequest;
 use Session;
 use Hash;
 use Auth;
-use Illuminate\Http\Request;
 use App\orders;
 use App\admin;
 

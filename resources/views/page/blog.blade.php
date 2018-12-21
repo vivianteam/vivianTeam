@@ -1,5 +1,5 @@
 @extends('master')
-@section('content')              
+@section('content')        
 <section class="breadcrumbs">
   <div class="container">
     <ol class="breadcrumb breadcrumb--ys pull-left">
@@ -83,7 +83,7 @@
       </div>
       <div class="divider divider--lg visible-md visible-sm visible-xs">
       </div>
-      <form class="form form-horizontal" action="{!! route('getBlog')!!}" method="POST" enctype="multipart/form-data">
+      <form class="form form-horizontal" action="{!! route('getBlog')!!}" id="add_image_form" method="POST" enctype="multipart/form-data">
         <input type="hidden" name="_token" value="{{ csrf_token() }}" >
         <aside class="col-xl-4 col-lg-4  col-md-12" id="rightColumn">
           <h4 class="text title-aside">Hello :
@@ -96,13 +96,12 @@
           <div class="form-group">
             <label for="Description">Title:
             </label>
-            <input type="text" class="form-control" rows="2" />
+            <input type="text" id="txt_tile" name = "txt_title"class="form-control" required rows="2" placeholder="Title" />
           </div>
           <div class="form-group">
             <label for="Description">Description:
             </label>
-            <textarea class="form-control" rows="5" id="description" name="txt_Decription">
-            </textarea>
+            <textarea class="form-control" rows="5" id="description" required name="txt_Decription" placeholder="Description"></textarea>
           </div>
           <div class="block-underline">
             <ul class="categories-list">
@@ -110,7 +109,7 @@
             <div class="upload-btn-wrapper">
               <button class="btnInputFile">Upload a file
               </button>
-              <input type="file" name="img" id="chooseimg" />
+              <input type="file" required accept="image/gif, image/jpeg, image/png" name="img" id="chooseimg" />
             </div>
           </div>
           <div class="form-group">
