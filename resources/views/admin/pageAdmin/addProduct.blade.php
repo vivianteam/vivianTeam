@@ -31,7 +31,7 @@
                       <label class="col-md-3 label-control" for="txt_name">Product name
                       </label>
                       <div class="col-md-9">
-                        <input type="text" id="txt_name" class="form-control" placeholder="Product name"name="txt_name" required pattern="^[a-zA-Z]*$" title="Product Name Invalid" value="{!! old('txt_name') !!}">
+                        <input type="text" id="txt_name" class="form-control" placeholder="Product name"name="txt_name" required pattern="^[a-zA-Z ]*$" title="Product Name Invalid" value="{!! old('txt_name') !!}">
                       </div>
                     </div>
                     <div class="form-group row">
@@ -65,13 +65,13 @@
                     <div class="form-group row">
                       <label class="col-md-3 label-control" for="txt_Color">Color</label>
                       <div class="col-md-9">
-                        <input type="text" name="txt_Color" id="txt_Color" class="form-control" value="{!!old('txt_Color')!!}" required pattern="^[a-zA-Z]*$" title="Example: Red" placeholder="Color">
+                        <input type="text" name="txt_Color" id="txt_Color" class="form-control" value="{!!old('txt_Color')!!}" required pattern="^[a-zA-Z ]*$" title="Example: Red" placeholder="Color">
                       </div>
                     </div>
                     <div class="form-group row">
                       <label class="col-md-3 label-control" for="txt_Size">Size</label>
                       <div class="col-md-9">
-                        <input type="text" id="txt_Size" class="form-control" placeholder="Size" required name="txt_Size" value="{!!old('txt_Size')!!}">
+                        <input type="text" id="txt_Size" class="form-control" pattern="^[a-zA-Z0-9 ]*$" placeholder="Size" required name="txt_Size" value="{!!old('txt_Size')!!}">
                       </div>
                     </div>
                     <div class="form-group row">

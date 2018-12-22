@@ -22,8 +22,7 @@
                         </label>
                         <div class="col-md-9 ">
                           <input type="text" id="txt_name" class="form-control" placeholder="User name"
-                            name="txt_name" value="{!! old('txt_name',isset($data)? $data['username']: null) !!}">
-                          <p style="color:red;display: none;" class="error errorLogin"></p>
+                            name="txt_name" required pattern="^[a-zA-Z ]*$" title="User Name Invalid" value="{!! old('txt_name',isset($data)? $data['username']: null) !!}">
                         </div>
                       </div>
                       <div class="form-group row">
@@ -31,9 +30,8 @@
                           </label>
                           <div class="col-md-9">
                               <fieldset class="form-group">
-                                <input type="text" id="txt_phone" class="form-control" placeholder="Phone"
+                                <input type="text" id="txt_phone" maxlength="10" pattern="(09|03|04|07|08|05)+([0-9]{8})\b" required title="invalid format Phone Number" class="form-control" placeholder="Phone"
                             name="txt_phone" value="{!! old('txt_phone',isset($data)? $data['phone']: null) !!}">
-                            <p style="color:red;display: none;" class="error errorPhone"></p>
                               </fieldset>
                           </div>
                       </div>
@@ -42,17 +40,15 @@
                         </label>
                         <div class="col-md-9">
                           <input type="text" id="txt_email" class="form-control" placeholder="Emaill"
-                            name="txt_email" value="{!! old('txt_email',isset($data)? $data['email']: null) !!}">
-                            <p style="color:red;display: none;" class="error errorEmail"></p>
+                            name="txt_email" required pattern="^[\w]{1,}[\w.+-]{0,}@[\w-]{2,}([.][a-zA-Z]{2,}|[.][\w-]{2,}[.][a-zA-Z]{2,})$" title="Email Format Invalid" value="{!! old('txt_email',isset($data)? $data['email']: null) !!}">
                         </div>
                       </div>
                       <div class="form-group row">
                         <label class="col-md-3 label-control" for="projectinput9">Address
                         </label>
                         <div class="col-md-9">
-                          <input type="text" id="txt_address" class="form-control" placeholder="Address"
+                          <input type="text" id="txt_address" class="form-control" required placeholder="Address"
                             name="txt_address" value="{!! old('txt_address',isset($data)? $data['address']: null) !!}">
-                            <p style="color:red;display: none;" class="error errorAdress"></p>
                         </div>
                       </div>
                       <div class="form-group row">
@@ -60,8 +56,7 @@
                         </label>
                         <div class="col-md-9">
                         <select id="txt_gender"  name="txt_gender" class="form-control">
-                          <option value="{!!old('txt_gender',isset($data)? $data['gender']: null)!!}" selected="" disabled="">Gender
-                          </option>
+                          <option value="" selected="" disabled="">{!!old('txt_gender',isset($data)? $data['gender']: null)!!}</option>
                           <option value="Nữ" id="txt_gender">Famale
                           </option>
                           <option value="Nam" id="txt_gender">Male

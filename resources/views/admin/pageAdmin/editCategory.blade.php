@@ -25,7 +25,7 @@
                       <label class="col-md-3 label-control" for="projectinput5">Category name
                       </label>
                       <div class="col-md-9">
-                        <input type="text" id="projectinput5" class="form-control" placeholder="Category name" name="txt_thienTest" required pattern="^[a-zA-Z]*$" title="Category Name Invalid" value="{!! old('txt_thienTest',isset($data)? $data['name']: null) !!}">
+                        <input type="text" id="projectinput5" class="form-control" placeholder="Category name" name="txt_thienTest" required pattern="^[a-zA-Z ]*$" title="Category Name Invalid" value="{!! old('txt_thienTest',isset($data)? $data['name']: null) !!}">
                       </div>
                     </div>
                      <div class="form-group row">

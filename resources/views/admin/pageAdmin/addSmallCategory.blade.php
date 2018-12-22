@@ -34,7 +34,7 @@
                         <label class="col-md-3 label-control" for="projectinput5">Small category name
                         </label>
                         <div class="col-md-9">
-                          <input type="text" id="projectinput5" class="form-control" placeholder="Category name" name="txt_SmallCateName" required pattern="^[a-zA-Z]*$" title="Small Category Name Invalid" value="{!! old('txt_SmallCateName') !!}">
+                          <input type="text" id="projectinput5" class="form-control" placeholder="Category name" name="txt_SmallCateName" required pattern="^[a-zA-Z ]*$" title="Small Category Name Invalid" value="{!! old('txt_SmallCateName') !!}">
                         </div>
                       </div>
                       </div>
