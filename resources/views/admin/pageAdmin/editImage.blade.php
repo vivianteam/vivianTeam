@@ -45,10 +45,10 @@
                     </div>
                     </div>
                     <div class="form-group row">
-                      <label class="col-md-3 label-control" for="projectinput9">Image</label>
+                      <label class="col-md-3 label-control" for="projectinput9"></label>
                       <div class="col-md-9">        
                           <div class="form" style="border :1px solid #CACFE7">
-                            <img id="image" height="200px" />
+                            <img id="image" height="200px" src="{{asset('image/')}}/products/{{ isset($data)? $data['image']: null }}" />
                           </div>
                       </div>
                   </div>  

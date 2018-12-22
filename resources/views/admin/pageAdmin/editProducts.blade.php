@@ -14,7 +14,7 @@
                   <div class="form-body">
                     <h4 class="form-section">
                       <i class="ft-clipboard">
-                      </i> Add new
+                      </i> Edit now
                     </h4>
                     <div class="form-group row">
                       <label class="col-md-3 label-control" for="cmb_Small">Small categories

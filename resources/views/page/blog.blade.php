@@ -21,7 +21,7 @@
         <div class="blog-layout">
           <!-- title -->
           <div class="title-box">
-            <h1 class="text-center text-uppercase title-under">Blog
+            <h1 class="text-center text-uppercase title-under">REQUESTS
             </h1>
             <form action="{!! route('getBlog')!!}" method="POST">
               @foreach($persons as $person)

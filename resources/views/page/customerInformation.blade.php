@@ -5,7 +5,7 @@
       </a>
       <div class="banner" data-header>
         <div class="wrap">
-          <a class="logo logo--left" href="https://vivianShop.myshopify.com">
+          <a class="logo logo--left" href="{{route('index')}}">
             <span class="logo__text heading-1">
               VivianShop
             </span>
@@ -48,7 +48,7 @@
         <div class="wrap">
           <div class="main" role="main">
             <div class="main__header">
-              <a class="logo logo--left" href="https://vivianShop.myshopify.com">
+              <a class="logo logo--left" href="{{route('index')}}">
                 <span class="logo__text heading-1">
                   VivianShop
                 </span>
@@ -213,7 +213,7 @@
                           <fieldset class="content-box">
                             <div class="radio-wrapper content-box__row" data-same-billing-address>
                               <div class="radio__input">
-                                <input class="input-radio" data-backup="different_billing_address_false" data-trekkie-id="same_billing_address_field" type="Offline" value="false" checked="checked" name="payment" id="checkout_different_billing_address_false" />
+                                <input class="input-radio"  type="radio"  data-backup="different_billing_address_false" data-trekkie-id="same_billing_address_field" value="Offline" checked="checked" name="payment" id="checkout_different_billing_address_false" />
                               </div>
                               <label class="radio__label content-box__emphasis" for="checkout_different_billing_address_false">
                                 Cash on Delivery (COD)
@@ -221,8 +221,8 @@
                             </div>
                             <div class="radio-wrapper content-box__row" data-different-billing-address>
                               <div class="radio__input">
-                                <input class="input-radio" data-backup="different_billing_address_true" data-trekkie-id="different_billing_address_field" aria-expanded="true" aria-controls="section--billing-address__different" type="radio" value="Online" name="payment" id="checkout_different_billing_address_true"                                </div>
-                             
+                                <input class="input-radio" data-backup="different_billing_address_true" data-trekkie-id="different_billing_address_field" aria-expanded="true" aria-controls="section--billing-address__different" type="radio" value="Online" name="payment" id="checkout_different_billing_address_true">
+                              </div>
                               <a href="{{route('postPayment')}}"><img src="{{asset('image/')}}/img/thanhtoan-l.png" alt="Thanh toán an toàn với Bảo Kim !" border="0" title="Thanh toán trực tuyến an toàn dùng tài khoản Ngân hàng (VietcomBank, TechcomBank, Đông Á, VietinBank, Quân Đội, VIB, SHB,... và thẻ Quốc tế (Visa, Master Card...) qua Cổng thanh toán trực tuyến BảoKim.vn" ></a>
                           </fieldset>
                         </div> 
@@ -236,7 +236,6 @@
                         <use xlink:href="#spinner-button" /> 
                       </svg>
                     </button>
-               
                     <a class="step__footer__previous-link" data-trekkie-id="previous_step_link" href="{{route('index')}}">
                       <svg focusable="false" aria-hidden="true" class="icon-svg icon-svg--color-accent icon-svg--size-10 previous-link__icon" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 10">
                         <path d="M8 1L7 0 3 4 2 5l1 1 4 4 1-1-4-4"/>
@@ -309,8 +308,8 @@
                   <a class="btn btn--ys" href="{{route('loginPage')}}">
                     <span class="icon icon-keyboard_arrow_left">
                     </span>CONTINUE SHOPPING
-                  </a>              
-                </div>          
+                  </a>
+                </div>
               </div>
               @endif
         </div>

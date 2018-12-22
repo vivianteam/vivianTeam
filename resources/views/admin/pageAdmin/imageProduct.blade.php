@@ -35,7 +35,7 @@
             <div class="card-body">
               <!-- Task List table -->
               <div class="table-responsive">
-                <table id="example" class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
+                <table id="datatable" class="table table-striped table-bordered" style="width:100%">
      <thead>
                       <tr>
                         <th>ID
@@ -56,7 +56,7 @@
                       <td>
                         {!! $stt !!}
                       </td>
-                      <td class="text-center"><img src="{{asset('image/')}}/products/{{ $image->image }}" style='max-width:80px;max-height:200px' class='img img-thumbnail' />
+                      <td class="text-center"><img src="{{asset('image/')}}/products/{{ $image->image }}" style='max-width:80px;max-height:200px' class='img img-thumbnail' /> 
                       </td>
                       <td>
                         {{ $image-> id_product }}

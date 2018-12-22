@@ -1,5 +1,5 @@
 @extends('masterAdmin')
-@section('content')  
+@section('content')
 <div class="content-detached content-right">
   <div class="content-body">
     <!-- Basic form layout section start -->
@@ -37,31 +37,32 @@
                     <div class="form-group row">
                       <label class="col-md-3 label-control" for="txt_dsort">Description sort</label>
                       <div class="col-md-9">
-                        <textarea id="txt_dsort" value="{!!old('txt_dsort')!!}" rows="5" class="form-control" name="txt_dsort" placeholder="Description sort" required></textarea>
+                        <input id="txt_dsort" value="{!! old('txt_dsort') !!}" rows="4" class="form-control" name="txt_dsort" placeholder="Description sort" required>
                       </div>
                     </div>
                     <div class="form-group row">
                       <label class="col-md-3 label-control" for="projectinput9">Description long</label>
                       <div class="col-md-9">
-                        <textarea id="projectinput9" value="{!!old('txt_dlong')!!}" rows="5" class="form-control" name="txt_dlong" placeholder="Description long" required></textarea>
+                        <input id="projectinput9" value="{!!old('txt_dlong')!!}" rows="5" class="form-control" name="txt_dlong" placeholder="Description long" required>
                       </div>
                     </div>
-                    <div class="form-group row">
-                        <label class="col-md-3 label-control" for="projectinput9">Url Image</label>
-                        <div class="col-md-9">
-                            <fieldset class="form-group">
-                              <input type="file" id="chooseimg" name="proImg" multiple="multiple" class="form-control" required accept="image/gif, image/jpeg, image/png" value="{!! old('proImg') !!}">
-                            </fieldset>
-                        </div>
+                            <div class="form-group row">
+                          <label class="col-md-3 label-control" for="projectinput9">Url Image
+                          </label>
+                          <div class="col-md-9">
+                              <fieldset class="form-group">
+                                <input type="file"  name="cateImage" id="chooseimg" class="form-control" required accept="image/gif, image/jpeg, image/png" value="{!! old('cateImage') !!}">
+                              </fieldset>
+                          </div>
                       </div>
-                    <div class="form-group row">
-                      <label class="col-md-3 label-control" for="projectinput9">Image</label>
-                      <div class="col-md-9">        
+                      <div class="form-group row">
+                        <label class="col-md-3 label-control" for="projectinput9"></label>
+                        <div class="col-md-9">        
                           <div class="form" style="border :1px solid #CACFE7">
                             <img id="image" height="200px" />
                           </div>
+                        </div>
                       </div>
-                    </div>
                     <div class="form-group row">
                       <label class="col-md-3 label-control" for="txt_Color">Color</label>
                       <div class="col-md-9">

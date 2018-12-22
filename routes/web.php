@@ -204,7 +204,7 @@ Route::post('addSmallCategory',[
 ]);
 Route::get('editSmallCategory/{id}',[
 	'middleware'=>'auth',
-'as'=>'geteditSmallCategory',
+'as'=>'geteditSmallCategory2',
 'uses'=>'ControllerSmallCategories@getEditSmallCategory'
 ]);
 Route::post('editSmallCategory/{id}',[
@@ -299,6 +299,15 @@ Route::get('orderStatus',[
 Route::post('checkOrder',[
 'as'=>'postCheckOrder',
 'uses'=>'controllerOrder@postCheckOrder'
+]);
+Route::get('manaComment',[
+	'middleware'=>'auth',
+'as'=>'getManaComment',
+'uses'=>'ControllerRequest@getManaComment'
+]);
+Route::get('deleteComment/{id}',[
+'as'=>'getDeleteComment',
+'uses'=>'ControllerRequest@getDeleteComment'
 ]);
 //end order
 //

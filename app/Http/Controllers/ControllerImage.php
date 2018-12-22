@@ -26,7 +26,7 @@ class ControllerImage extends Controller
 		$parent=products::select('id','name')->get()->toArray();
     	return view('admin.pageAdmin.addImageProduct',compact('parent'));
     }
-
+ 
     public function postAddImageProduct(Request $req){
     	$file_image=$req->file('img')->getClientOriginalName();
         $img=new images;

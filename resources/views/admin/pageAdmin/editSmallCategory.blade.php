@@ -9,7 +9,7 @@
           <div class="card">
             <div class="card-content collpase show">
               <div class="card-body">
-                <form class="form form-horizontal" action="{{ route('geteditSmallCategory',$data['id']) }}" method="POST" enctype="multipart/form-data">
+                <form class="form form-horizontal" action="{{ route('geteditSmallCategory2',$data['id']) }}" method="POST" enctype="multipart/form-data">
                   <input type="hidden" name="_token" value="{{ csrf_token() }}" >
                   <div class="form-body">
                     <h4 class="form-section">
@@ -21,7 +21,7 @@
                         </label>
                         <div class="col-md-9">
                           <select id="projectinput6" value="{!! old('cmb_Small') !!}" name="cmb_Small" class="form-control" required>
-                            <option value="0" selected="" disabled="">{{$persons->name}}
+                            <option value="{{$persons->CateId}}" selected="" disabled="">{{$persons->name}}
                             </option>
                             @foreach($parent as $item)
                             <option value="{!! $item["id"] !!}">{!! $item["name"]!!}

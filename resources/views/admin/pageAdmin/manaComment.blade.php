@@ -14,15 +14,13 @@
         <div class="card">
           <div class="card-head">
             <div class="card-header">
-              <h4 class="card-title">All Request
+              <h4 class="card-title">All Comment
               </h4>
               <a class="heading-elements-toggle">
                 <i class="la la-ellipsis-h font-medium-3">
                 </i>
               </a>
-              
             </div>
-            
           </div>
           <div class="card-content">
             <div class="card-body">
@@ -31,15 +29,17 @@
                 <table id="datatable" class="table table-striped table-bordered" style="width:100%">
      <thead>
                       <tr>
-                        <th>ID
+                        <th class="sorting_desc_disabled sorting_asc_disabled sorting">ID
                         </th>
-                        <th>Image
+                        <th>Content
                         </th>
                         <th>Created at
                         </th>
-                        <th>Decription
+                        <th>ID_User
                         </th>
-                        <th>Comment
+                        <th>ID_Product
+                        </th>
+                        <th>ID_Post
                         </th>
                         <th class="sorting_desc_disabled sorting_asc_disabled sorting">Actions
                         </th>
@@ -47,25 +47,28 @@
                   </thead>
                   <tbody>
                     <?php $stt=0 ?>
-                    @foreach($requests as $request)
+                    @foreach($getComments as $getComment)
                     <?php $stt=$stt+1 ?>
                     <tr>
                       <td>
                         {!! $stt !!}
                       </td>
-                      <td class="text-center"><img src="{{asset('image/')}}/bogs/{{ $request->image }}" style='max-width:80px;max-height:200px' class='img img-thumbnail' />
+                      <td class="text-center">{{ $getComment->content }}
                       </td>
                       <td>
-                        {{ $request-> created_at }}
+                        {{ $getComment->date }}
                       </td>
                       <td>
-                        {{ $request-> description }}
+                        {{ $getComment->id_user }}
                       </td>
                       <td>
-                        1
+                        {{ $getComment->id_product}}
                       </td>
                       <td>
-                        <a  href="{{route('getDeleteRequest',$request['id'])}}">
+                        {{ $getComment->id_person}}
+                      </td>
+                      <td>
+                        <a  href="{{route('getDeleteRequest',$getComment['id'])}}">
                           <button  class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#removeItem" data-placement="top" rel="tooltip" data-original-title="" title="Remove item">
                             <span class="glyphicon glyphicon-remove">
                             </span>Remove

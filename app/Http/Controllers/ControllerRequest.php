@@ -9,6 +9,7 @@ use Illuminate\Foundation\Bus\DispatchesJobs;
 use Validator;
 use App\person_post_new;
 use App\likes;
+use App\comments;
 use App\Http\Requests\PorsonRequest;
 
 class ControllerRequest extends Controller
@@ -17,7 +18,6 @@ class ControllerRequest extends Controller
 
     public function getRequest(){
     	$requests=person_post_new::all();
-        
     	return view('admin.pageAdmin.request',compact('requests'));
     }
 
@@ -58,6 +58,17 @@ class ControllerRequest extends Controller
     public function getDeleteRequest($id){
     	$requests=person_post_new::find($id);
         $requests->delete($id);
-        return redirect()->route('request')->with(['flash_level'=>'success','flash_message'=>'Success !! Complete delete category']);
+        return redirect()->route('request')->with(['flash_level'=>'success','flash_message'=>'Success !! Complete delete requests']);
+    }
+
+    public function getManaComment(){
+        $getComments=comments::all();
+        return view('admin.pageAdmin.manaComment',compact('getComments'));
+    }
+
+    public function getDeleteComment($id){
+        $requests=comments::find($id);
+        $requests->delete($id);
+        return redirect()->route('getManaComment')->with(['flash_level'=>'success','flash_message'=>'Success !! Complete delete requests']);
     }
 }

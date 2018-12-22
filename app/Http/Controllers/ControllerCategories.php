@@ -18,14 +18,14 @@ class ControllerCategories extends Controller
     }
     public function getAddCategories(){
         return view('admin.pageAdmin.addCategories');
-    }
+    } 
     public function postAddCategories(CateRequest $req){
         $file_image=$req->file('cateImage')->getClientOriginalName();
         $cate=new categories;
         $cate->name=$req->txt_CateNameTest;
         $cate->image=$file_image;
         $cate->descriptions=$req->txt_CateDecription;
-        $req->file('cateImage')->move('image/',$file_image);
+        $req->file('cateImage')->move('image/Categories/',$file_image);
         $cate->save();
         return redirect()->route('categories')->with(['flash_level'=>'success','flash_message'=>'Success !! Complete add category']);
     }
@@ -56,7 +56,7 @@ class ControllerCategories extends Controller
         $cate->name=$req->txt_thienTest;
         $cate->image=$file_image;
         $cate->descriptions=$req->txt_CateDecription;
-        $req->file('cateImage')->move('image/',$file_image);
+        $req->file('cateImage')->move('image/Categories/',$file_image);
         $cate->save();
         return redirect()->route('categories')->with(['flash_level'=>'success','flash_message'=>'Success !! Complete update category']);
     }

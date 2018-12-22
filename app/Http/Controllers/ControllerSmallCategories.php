@@ -57,18 +57,30 @@ class ControllerSmallCategories extends Controller
     public function getEditSmallCategory($id){
     	$data=smallcategories::find($id);
         $parent=categories::select('id','name')->get()->toArray();
-        $persons=DB::table('categories')->join('smallcategories','categories.id','=','smallcategories.id_category')->Where('categories.id','=',$data->id_category)->first();
+        $persons=DB::table('categories')->join('smallcategories','categories.id','=','smallcategories.id_category')
+            ->select('name','categories.id as CateId')
+            ->Where('categories.id','=',$data->id_category)->first();
+        //dd($persons);
        // dd($persons);
     	return view('admin.pageAdmin.editSmallCategory',compact('data','parent','persons'));
     }
 
     public function postEditSmallCategory(Request $req,$id){
-    	$smallcate=smallcategories::find($id);
-    	$smallcate->nameSmallCate=$req->txt_SmallCateName;
-    	$smallcate->descriptions=$req->txt_SmallCateDecription;
-    	$smallcate->id_category=$req->cmb_Small;
-    	$smallcate->save();
-    	return redirect()->route('smallCategory')->with(['flash_level'=>'success','flash_message'=>'Success !! Complete update Small category']);
-
+        if($req->cmb_Small==null || $req->txt_SmallCateDecription==null && $req->txt_SmallCateName==null )
+        {
+            echo"<script type='text/javascript'>
+                alert('Sorry ! You need change information or click button Cancel');
+                window.location='";
+                echo route('geteditSmallCategory2',['id' => $id]);
+            echo"'</script>";
+        }
+        else{
+            $smallcate=smallcategories::find($id);
+            $smallcate->nameSmallCate=$req->txt_SmallCateName;
+            $smallcate->descriptions=$req->txt_SmallCateDecription;
+            $smallcate->id_category=$req->cmb_Small;
+            $smallcate->save();
+            return redirect()->route('smallCategory')->with(['flash_level'=>'success','flash_message'=>'Success !! Complete update Small category']);
+        }
     }
 }
