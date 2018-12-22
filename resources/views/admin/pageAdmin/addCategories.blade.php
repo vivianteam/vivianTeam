@@ -21,10 +21,9 @@
                         </label>
                         <div class="col-md-9">
                           <input type="text" id="projectinput5" class="form-control" placeholder="Category name"
-                            name="txt_CateNameTest" required pattern="^[a-zA-Z ]*$" title="Category Name Invalid" value="{!! old('txt_CateNameTest') !!}">
+                            name="txt_CateNameTest" required pattern="^[a-zA-Z]*$" title="Category Name Invalid" maxlength="50" value="{!! old('txt_CateNameTest') !!}">
                         </div>
                       </div>
-         
                         <div class="form-group row">
                           <label class="col-md-3 label-control" for="projectinput9">Url Image
                           </label>

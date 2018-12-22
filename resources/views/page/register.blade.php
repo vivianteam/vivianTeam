@@ -59,7 +59,7 @@
                       <sup>*
                       </sup>
                     </label>
-                    <input type="text" name="txt_fullName" class="form-control" id="" required pattern="^[a-zA-Z0-9]*$" title="Name Invalid">
+                    <input type="text" name="txt_fullName" class="form-control" id="" required pattern="^[a-zA-Z0-9 ]*$" title="Name Invalid">
                   </div>
                   
                   <div class="form-group">

@@ -122,16 +122,12 @@
                   </span>
                 </span>
                 <span class="avatar avatar-online">
-                  <img src="{{ asset('css/Admin/app-assets/images/portrait/small/avatar-s-19.png')}}" alt="avatar">
+                  <img src="{{asset('image/')}}/img/user.png" alt="avatar">
                   <i>
                   </i>
                 </span>
               </a>
               <div class="dropdown-menu dropdown-menu-right">
-                <button type="button" class="btn btn-default btn-lg" id="myBtn" class="dropdown-item"  >
-                  <i class="ft-user">
-                  </i> Edit Profile
-                </button>
                 <div class="dropdown-divider">
                 </div>
                 <a class="dropdown-item" href="{{route('logoutAdmin')}}">

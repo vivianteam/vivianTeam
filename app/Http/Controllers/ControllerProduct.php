@@ -99,4 +99,40 @@ class ControllerProduct extends Controller
         }
     }
 
+      public function getAddProduct2(){
+      $parent=smallCategories::select('id','nameSmallCate')->get()->toArray();
+      return view('admin.pageAdmin.addPro',compact('parent'));
+    }
+
+    public function postAddProduct2(Request $req){
+      if($req->txt_in>$req->txt_out || $req->txt_sale<$req->txt_in || $req->txt_sale>$req->txt_out){
+        echo"<script type='text/javascript'>
+                alert('Sorry ! Price in, price out, price out invalid' );
+                window.location='";
+                echo route('products');
+            echo"'</script>";
+      }
+      else{
+
+      
+        $file_image=$req->file('cateImage')->getClientOriginalName();
+        $pro= new products; 
+        $pro->name=$req->txt_name;
+        $pro->descriptions_sort=$req->txt_sort;
+        $pro->descriptions_long=$req->txt_long;
+        $pro->image=$file_image;
+        $pro->color=$req->txt_color;
+        $pro->size=$req->txt_size;
+        $pro->price_in=$req->txt_in;
+        $pro->price_out=$req->txt_out;
+        $pro->price_sale=$req->txt_sale;
+        $pro->status=$req->txt_Status;
+        $pro->new=$req->txt_New;
+        $pro->id_small_categories=$req->cmb_Small;
+        $req->file('cateImage')->move('image/products/',$file_image);
+        $pro->save();
+        return redirect()->route('products')->with(['flash_level'=>'success','flash_message'=>'Success !! Complete add products']);
+      }
+    }
+
 }

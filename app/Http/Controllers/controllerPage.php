@@ -127,10 +127,6 @@ class controllerPage extends Controller
         $preson_posts=DB::table('users')->join('person_post_new','users.id','=','person_post_new.id_user')->where('person_post_new.id',$id)->first();
         $countComment=comments::where('id_person',$id)->count();
         $getPerson=likes::where('id_person',$id)->get();
-        // dd($getPerson->id_user);
-        //dd($countLike);
-        // dd($idPer);
-        //$id_post=$idPer;
         $persons=DB::table('users')->join('person_post_new','users.id','=','person_post_new.id_user')->get();
         $comments= DB::table('comments')->join('users','comments.id_user','=','users.id')->where('id_person',$id)->paginate(8);
         $sp_small =smallCategories::all();
@@ -298,6 +294,7 @@ class controllerPage extends Controller
             $person=new person_post_new;
             $file_image=$req->file('img')->getClientOriginalName();
             $person->created_at=date("Y-m-d H:i:s");
+            $person->title=$req->txt_title;
             $person->image=$file_image;
             $person->description=$req->txt_Decription;
             $person->id_user=$user->id;
@@ -316,7 +313,6 @@ class controllerPage extends Controller
 
     }
 
-
     public function postOrder(Request $req){
         $cart = Session::get('cart');
 
@@ -333,7 +329,6 @@ class controllerPage extends Controller
 
         $user = Auth::user();
         //dd($req->payment);
-        
         	$emailTest=$user->email;
 	        $this->email=$emailTest;
 	    if($req->payment=="Offline"){
@@ -370,7 +365,7 @@ class controllerPage extends Controller
         }
         else{
         	$emailTest=$user->email;
-	        $this->email=$emailTes0t;
+	        $this->email=$emailTest;
 	        $order = new orders;
 	        $order->id_user = $user->id;
 	        $order->date_order = date("Y-m-d H:i:s");
@@ -400,10 +395,7 @@ class controllerPage extends Controller
 
 	        Session::forget('cart');
         }
-
-	       
-      
-    }
+   }
 
     public function getSignin(){
         return view('page.register');

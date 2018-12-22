@@ -21,7 +21,7 @@
                 </i>
               </a>
               <div class="heading-elements">
-                <a href="{{route('getAddProduct')}}">
+                <a href="{{route('getAddProduct2')}}">
                   <button class="btn btn-primary btn-sm">
                     <i class="ft-plus white">Add new
                     </i>

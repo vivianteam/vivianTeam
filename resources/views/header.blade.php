@@ -18,7 +18,7 @@
                   </a>  
                 </li>
                 <li>
-                  <a href="checkout.html">
+                  <a href="{{route('getCustomerInformation')}}">
                     <span class="icon icon-done_all">
                     </span>Checkout
                   </a> 
@@ -73,26 +73,25 @@
               </a>
               <ul class="dropdown-menu dropdown-menu--xs-full">
                 <li>
-                  <a href="account.html">
+                  <a href="{{route('getUpdateAcc')}}">
                     <span class="icon icon-person">
                     </span>Account
-                  </a> 
+                  </a>  
                 </li>
                 <li>
-                  <a href="checkout.html">
+                  <a href="{{route('getCustomerInformation')}}">
                     <span class="icon icon-done_all">
                     </span>Checkout
                   </a> 
                 </li>
                 <li>
-                  <a href="account/login.html">
+                  <a href="#">
                     <span class="icon icon-lock">
                     </span>Sign In
                   </a> 
                 </li>
                 <li>
-                  <a href="account/register.html">
-                    <span class="icon icon-person_add">
+                  <a href="#n_add">
                     </span>Register
                   </a> 
                 </li>

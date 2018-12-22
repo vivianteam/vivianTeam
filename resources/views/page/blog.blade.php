@@ -96,7 +96,7 @@
           <div class="form-group">
             <label for="Description">Title:
             </label>
-            <input type="text" id="txt_tile" name = "txt_title"class="form-control" required rows="2" placeholder="Title" />
+            <input type="text" id="txt_tile" name ="txt_title" class="form-control" required rows="2" placeholder="Title" />
           </div>
           <div class="form-group">
             <label for="Description">Description:
