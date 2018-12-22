@@ -65,7 +65,6 @@ Route::post('likeTest02',[
 'as'=>'postLikeTest02',
 'uses'=>'controllerPage@postLikeTest02'
 ]);
-
 ////
 Route::get('payment',[
 'as'=>'postPayment',
@@ -412,6 +411,15 @@ Route::get('addProduct',[
 Route::post('addProduct',[
 'as'=>'postAddProduct',
 'uses'=>'ControllerProduct@postAddProduct'
+]);
+Route::get('addProduct2',[
+	'middleware'=>'auth',
+'as'=>'getAddProduct2', 
+'uses'=>'ControllerProduct@getAddProduct2'
+]);
+Route::post('addProduct2',[
+'as'=>'postAddProduct2',
+'uses'=>'ControllerProduct@postAddProduct2'
 ]);
 Route::get('editProducts/{id}',[
 	'middleware'=>'auth',

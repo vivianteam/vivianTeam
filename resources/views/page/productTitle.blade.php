@@ -72,15 +72,22 @@
                                 </div>
                                 <div class="price-box product-info__price">
                                     @if($sanpham->price_sale==0)
-                                        <span class=money>{{ $sanpham->price_out }}
+                                        <span class=money>{{ number_format($sanpham->price_out) }}
                                         </span>
                                         @else
-                                          <span class=money>{{ $sanpham->price_sale}}
+                                          <span class=money>{{ number_format($sanpham->price_sale)}}
                                           </span>
                                           <span class="price-box__old">
-                                            <span class=money>{{ $sanpham->price_out }}
+                                            <span class=money>{{ number_format($sanpham->price_out) }}
                                             </span>
                                           </span>
+                                    @endif
+                                    @if($sanpham->amount==0)
+                                        <span class=money>( Out of stock )
+                                        </span>
+                                    @else
+                                        <span class=money>( Quantily remnant {{$sanpham->amount}} )
+                                        </span>
                                     @endif
                                 </div>
                                 <div class="product-info__review">

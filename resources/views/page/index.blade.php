@@ -18,7 +18,7 @@
                   </div>
                   <div class="tp-caption3--wd-3" style="color:#ff0000">{{ $slide->sale }}
                   </div>
-                  <div class="text-center"> 
+                  <div class="text-center">
                     <a href="collections/accessories.html" class="link-button button--border-thick" data-text="Shop now!">Shop now!
                     </a> 
                   </div>
@@ -86,13 +86,13 @@
                           <!-- product price -->
                           <div class="product__inside__price price-box">
                             @if($product->price_sale==0)
-                            <span class=money>{{ $product->price_out }}
+                            <span class=money>{{ number_format($product->price_out) }}
                             </span>
                             @else
-                              <span class=money>{{ $product->price_sale}}
+                              <span class=money>{{ number_format($product->price_sale)}}
                               </span>
                               <span class="price-box__old">
-                                <span class=money>{{ $product->price_out }}
+                                <span class=money>{{ number_format($product->price_out) }}
                                 </span>
                               </span>
                             @endif
@@ -293,7 +293,7 @@
                           <!-- /product description -->
                           <!-- product price -->
                           <div class="product__inside__price price-box baseprice">
-                            <span class=money>{{ $product->price_sale}}
+                            <span class=money>{{number_format($product->price_sale)}}
                             </span> 
                           </div>
                           <!-- /product price -->

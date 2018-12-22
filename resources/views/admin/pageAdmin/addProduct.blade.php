@@ -31,7 +31,7 @@
                       <label class="col-md-3 label-control" for="txt_name">Product name
                       </label>
                       <div class="col-md-9">
-                        <input type="text" id="txt_name" class="form-control" placeholder="Product name"name="txt_name" required pattern="^[a-zA-Z ]*$" title="Product Name Invalid" value="{!! old('txt_name') !!}">
+                        <input type="text" id="txt_name" class="form-control" placeholder="Product name" name="txt_name" required pattern="^[a-zA-Z ]*$" title="Product Name Invalid" value="{!! old('txt_name') !!}">
                       </div>
                     </div>
                     <div class="form-group row">
