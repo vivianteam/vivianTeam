@@ -29,20 +29,12 @@
                 </a>
               </div>
             </div>
-            <div class="card-header">
-                    <div class="input-group">
-                        <div class="input-group-prepend">
-                          <span class="input-group-text"><i class="ft-search"></i></span>
-                        </div>
-                        <input type="text" class="form-control ac-default" />
-                      </div>
-            </div>
           </div>
           <div class="card-content">
             <div class="card-body">
               <!-- Task List table -->
               <div class="table-responsive">
-                <table id="users-contacts" class="table table-striped table-bordered row-grouping display no-wrap icheck table-middle">
+                <table id="datatable" class="table table-striped table-bordered" style="width:100%">
                   <thead>
                     <tr>
                       <th>ID
@@ -67,7 +59,7 @@
                       </th>
                       <th>Id small cate
                       </th>
-                      <th>Actions
+                      <th class="sorting_desc_disabled sorting_asc_disabled sorting">Actions
                       </th>
                     </tr>
                   </thead>

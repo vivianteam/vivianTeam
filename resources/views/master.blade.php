@@ -720,9 +720,9 @@
       $('.sub-cart').on('click', function () {
         var url = $(this).attr('url');
         var qty = $('#zzz').val()
-        alert(qty)
+        // alert(qty)
         window.location.href = url.substr(0, url.length - 1) + qty;
-        // alert(qty);   
+        // alert(qty);
 
         // var callback = $(this).attr('data-url');
 

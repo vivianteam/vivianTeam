@@ -26,7 +26,7 @@ class ControllerProduct extends Controller
    	}
 
    	public function postAddProduct(Request $req){
-   		$file_image=$req->file('proImg')->getClientOriginalName();
+   		  $file_image=$req->file('cateImage')->getClientOriginalName();
         $pro= new products; 
         $pro->name=$req->txt_name;
         $pro->descriptions_sort=$req->txt_dsort;
@@ -40,7 +40,7 @@ class ControllerProduct extends Controller
         $pro->status=$req->cmb_Satus;
         $pro->new=$req->cmb_New;
         $pro->id_small_categories=$req->cmb_Small;
-        $req->file('proImg')->move('image/products/',$file_image);
+        $req->file('cateImage')->move('image/products/',$file_image);
         $pro->save();
         return redirect()->route('products')->with(['flash_level'=>'success','flash_message'=>'Success !! Complete add products']);
    	}
@@ -48,10 +48,21 @@ class ControllerProduct extends Controller
    	public function getEditProduct($id){
    		$data=products::find($id);
         $parent=smallCategories::select('id','nameSmallCate')->get()->toArray();
+       // dd($data);
         return view('admin.pageAdmin.editProducts',compact('data','parent'));
    	}
 
    	public function postEditProduct(Request $req,$id){
+      if($req->txt_name == null && $req->txt_dsort == null && $req->txt_dlong == null && $req->txt_Color == null && $req->txt_Size == null && $req->txt_PriceIn == null && $req->txt_PriceOut == null && $req->txt_PriceSale == null && $req->cmb_Satus == null && $req->cmb_New == null ){
+        echo"<script type='text/javascript'>
+                alert('Sorry ! You need change information or click button Cancel');
+                window.location='";
+                echo route('getEditProduct',['id' => $id]);
+            echo"'</script>";
+      }
+
+      else
+      {
       	$file_image=$req->file('proImg')->getClientOriginalName();
        	$pro=products::find($id);
         $pro->name=$req->txt_name;
@@ -69,6 +80,7 @@ class ControllerProduct extends Controller
         $req->file('proImg')->move('image/products/',$file_image);
         $pro->save();
         return redirect()->route('products')->with(['flash_level'=>'success','flash_message'=>'Success !! Complete update products']);
+      }
     }
 
     public function getDeleteProducts($id){

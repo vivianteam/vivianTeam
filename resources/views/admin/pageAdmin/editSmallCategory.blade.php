@@ -9,7 +9,7 @@
           <div class="card">
             <div class="card-content collpase show">
               <div class="card-body">
-                <form class="form form-horizontal" action="{{ route('geteditSmallCategory',$data['id']) }}" method="POST" enctype="multipart/form-data">
+                <form class="form form-horizontal" action="{{ route('geteditSmallCategory2',$data['id']) }}" method="POST" enctype="multipart/form-data">
                   <input type="hidden" name="_token" value="{{ csrf_token() }}" >
                   <div class="form-body">
                     <h4 class="form-section">
@@ -21,7 +21,7 @@
                         </label>
                         <div class="col-md-9">
                           <select id="projectinput6" value="{!! old('cmb_Small') !!}" name="cmb_Small" class="form-control" required>
-                            <option value="0" selected="" disabled="">{{$persons->name}}
+                            <option value="{{$persons->CateId}}" selected="" disabled="">{{$persons->name}}
                             </option>
                             @foreach($parent as $item)
                             <option value="{!! $item["id"] !!}">{!! $item["name"]!!}
@@ -35,7 +35,7 @@
                       <label class="col-md-3 label-control" for="projectinput5">Small category name
                       </label>
                       <div class="col-md-9">
-                        <input type="text" id="projectinput5" class="form-control" placeholder="Small category name" name="txt_SmallCateName" required pattern="^[a-zA-Z]*$" title="Small Category Name Invalid" value="{!! old('txt_SmallCateName',isset($data)? $data['nameSmallCate']: null) !!}">
+                        <input type="text" id="projectinput5" class="form-control" placeholder="Small category name" name="txt_SmallCateName" required pattern="^[a-zA-Z ]*$" title="Small Category Name Invalid" value="{!! old('txt_SmallCateName',isset($data)? $data['nameSmallCate']: null) !!}">
                       </div>
                     </div>
                     <div class="form-group row">

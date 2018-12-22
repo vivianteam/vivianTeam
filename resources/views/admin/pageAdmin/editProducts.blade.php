@@ -14,7 +14,7 @@
                   <div class="form-body">
                     <h4 class="form-section">
                       <i class="ft-clipboard">
-                      </i> Add new
+                      </i> Edit now
                     </h4>
                     <div class="form-group row">
                       <label class="col-md-3 label-control" for="cmb_Small">Small categories
@@ -34,7 +34,7 @@
                       <label class="col-md-3 label-control" for="txt_name">Product name
                       </label>
                       <div class="col-md-9">
-                        <input type="text" id="txt_name" class="form-control" placeholder="Product name" name="txt_name" required pattern="^[a-zA-Z]*$" title="Product Name Invalid" value="{!! old('txt_name',isset($data)? $data['name']: null) !!}">
+                        <input type="text" id="txt_name" class="form-control" placeholder="Product name" name="txt_name" required pattern="^[a-zA-Z ]*$" title="Product Name Invalid" value="{!! old('txt_name',isset($data)? $data['name']: null) !!}">
                       </div>
                     </div>
                     <div class="form-group row">
@@ -75,7 +75,7 @@
                     <div class="form-group row">
                       <label class="col-md-3 label-control" for="txt_Size">Size</label>
                       <div class="col-md-9">
-                        <input type="text" id="txt_Size" class="form-control" placeholder="Size" required name="txt_Size" value="{!!old('txt_Size',isset($data)? $data['size']: null)!!}">
+                        <input type="text" id="txt_Size" class="form-control" placeholder="Size" required pattern="^[a-zA-Z0-9 ]*$" title="Example: Red" name="txt_Size" value="{!!old('txt_Size',isset($data)? $data['size']: null)!!}">
                       </div>
                     </div>
                     <div class="form-group row">

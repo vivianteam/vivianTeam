@@ -12,8 +12,17 @@
 			<div class="col-md-4 col-lg-4 col-md-offset-4 col-lg-offset-4">
 				<img src="{{ asset('image/img/flat-avatar.png')}}" class="user-avatar" />
 				<h1>Vivian Shop</h1>
+
 				<div class="col-sm-3">
 	            </div>
+	            <div class="col-12">
+        @if(Session::has('message'))
+                  <div class="alert alert-{!! Session::get('flag') !!}">
+                    {!! Session::get('message') !!}
+                  </div>
+                @endif
+              </div>
+
 				<form method="post" action="{{route('login')}}">
 					<input type="hidden" name="_token" value="{{csrf_token()}}">
 					<div class="form-content">

@@ -332,38 +332,77 @@ class controllerPage extends Controller
         // $user->save();
 
         $user = Auth::user();
-       // $email=$user->email;
-        $user->email=$req->email;
-        $this->email=$req->email;
-        $order = new orders;
-        $order->id_user = $user->id;
-        $order->date_order = date("Y-m-d H:i:s");
-        $order->totalPrice = $cart->totalPrice;
-        $order->payment = $req->payment;
-        $order->paid = 0;
-        $order->status = 'chua';
-        $order->save();
+        //dd($req->payment);
+        
+        	$emailTest=$user->email;
+	        $this->email=$emailTest;
+	    if($req->payment=="Offline"){
+        	$emailTest=$user->email;
+	        $this->email=$emailTest;
+	        $order = new orders;
+	        $order->id_user = $user->id;
+	        $order->date_order = date("Y-m-d H:i:s");
+	        $order->totalPrice = $cart->totalPrice;
+	        $order->payment = $req->payment;
+	        $order->paid = 0;
+	        $order->status = 0;
+	        $order->save();
 
-        foreach ($cart->items as $key => $value) {
-            $order_detail = new order_details;
-            $order_detail->id_order = $order->id;
-            $this->id_order=$order->id;
-            $order_detail->id_product = $key;
-            $this->id_product=$key;
-            $order_detail->quanitily = $value['qty'];
-            $order_detail->price = ($value['price']/$value['qty']);
-            $order_detail->save();
-        } 
+	        foreach ($cart->items as $key => $value) {
+	            $order_detail = new order_details;
+	            $order_detail->id_order = $order->id;
+	            $this->id_order=$order->id;
+	            $order_detail->id_product = $key;
+	            $this->id_product=$key;
+	            $order_detail->quanitily = $value['qty'];
+	            $order_detail->price = ($value['price']/$value['qty']);
+	            $order_detail->save();
+	        }
 
-        $data=['hoten'=>$req->fullName,'idOrder'=>$order->id,'Total'=>$cart->totalPrice];
-        Mail::send('page.message',$data,function($msg){
-            $msg->from('tducnguyen1997@gmail.com','Đức Thiện');
-            $msg->to($this->email)->subject('Xác nhận đặt hàng');
-        });
+	        $data=['hoten'=>$req->fullName,'idOrder'=>$order->id,'Total'=>$cart->totalPrice];
+	        Mail::send('page.message',$data,function($msg){
+	            $msg->from('tducnguyen1997@gmail.com','Đức Thiện');
+	            $msg->to($this->email)->subject('Xác nhận đặt hàng');
+	        });
 
-        Session::forget('cart');
-        return redirect()->back()->with('thongbao','Đặt hàng thành công');
+	         Session::forget('cart');
+	        return redirect()->route('index');
+        }
+        else{
+        	$emailTest=$user->email;
+	        $this->email=$emailTes0t;
+	        $order = new orders;
+	        $order->id_user = $user->id;
+	        $order->date_order = date("Y-m-d H:i:s");
+	        $order->totalPrice = $cart->totalPrice;
+	        $order->payment = $req->payment;
+	        $order->paid = 0;
+	        $order->status = 0;
+	        $order->save();
 
+	        foreach ($cart->items as $key => $value) {
+	            $order_detail = new order_details;
+	            $order_detail->id_order = $order->id;
+	            $this->id_order=$order->id;
+	            $order_detail->id_product = $key;
+	            $this->id_product=$key;
+	            $order_detail->quanitily = $value['qty'];
+	            $order_detail->price = ($value['price']/$value['qty']);
+	            $order_detail->save();
+	        }
+
+	        $data=['hoten'=>$req->fullName,'idOrder'=>$order->id,'Total'=>$cart->totalPrice];
+	        Mail::send('page.message',$data,function($msg){
+	            $msg->from('tducnguyen1997@gmail.com','Đức Thiện');
+	            $msg->to($this->email)->subject('Xác nhận đặt hàng');
+	        });
+	       	return redirect()->route('postPayment');
+
+	        Session::forget('cart');
+        }
+
+	       
+      
     }
 
     public function getSignin(){
@@ -394,8 +433,7 @@ class controllerPage extends Controller
             ])->first();
         if($user){
             if(Auth::attempt($credentials)){
-
-            return redirect()->back()->with(['flag'=>'success','message'=>'Đăng nhập thành công']);
+            	return redirect()->back()->with(['flag'=>'success','message'=>'Đăng nhập thành công']);
             }
             else{
                 return redirect()->back()->with(['flag'=>'danger','message'=>'Đăng nhập không thành công']);

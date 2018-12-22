@@ -37,7 +37,7 @@
                     </div>
                     <div class="form-group row">
                       <label class="col-md-3 label-control" for="chooseimg">Url Image
-                      </label>
+                      </label> 
                       <div class="col-md-9">
                           <fieldset class="form-group">
                             <input type="file"  name="img" class="form-control-file" id="chooseimg" required accept="image/gif, image/jpeg, image/png" value="{!!old('img')!!}">

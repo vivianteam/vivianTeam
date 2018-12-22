@@ -21,7 +21,7 @@
                         <label class="col-md-3 label-control" for="projectinput5">User name
                         </label>
                         <div class="col-md-9 ">
-                          <input type="text" id="txt_name" class="form-control" placeholder="User name" name="txt_name" required pattern="^[a-zA-Z]*$" title="User Name Invalid" value="{!! old('txt_name') !!}">
+                          <input type="text" id="txt_name" class="form-control" placeholder="User name" name="txt_name" required pattern="^[a-zA-Z ]*$" title="User Name Invalid" value="{!! old('txt_name') !!}">
                         </div>
                       </div>
                       <div class="form-group row">

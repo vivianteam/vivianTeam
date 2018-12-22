@@ -22,7 +22,7 @@
                         </label>
                         <div class="col-md-9 ">
                           <input type="text" id="txt_name" class="form-control" placeholder="User name"
-                            name="txt_name" required pattern="^[a-zA-Z]*$" title="Name Invalid" value="{!! old('txt_name',isset($data)? $data['username']: null) !!}">
+                            name="txt_name" required pattern="^[a-zA-Z ]*$" title="Name Invalid" value="{!! old('txt_name',isset($data)? $data['username']: null) !!}">
                         </div>
                       </div>
                       <div class="form-group row">
@@ -63,14 +63,6 @@
                           </option>
                         </select>
                       </div>
-                      </div>
-                      <div class="form-group row">
-                        <label class="col-md-3 label-control" for="projectinput9">Password
-                        </label>
-                        <div class="col-md-9">
-                          <input type="password" id="txt_password" class="form-control" placeholder="Password"
-                            name="txt_password" required pattern=".{6,}" title="Six or more characters" value="{!! old('txt_password',isset($data)? $data['password']: null) !!}">
-                        </div>
                       </div>
                     </div>
                     <div class="form-actions">

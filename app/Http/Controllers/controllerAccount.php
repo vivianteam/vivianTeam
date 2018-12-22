@@ -28,26 +28,25 @@ class controllerAccount extends Controller
 
     public function postLoginAdmin(Request $req){
         $credentials = array('email'=>$req->txt_Email,'password'=>$req->txt_Password);
-        $user = admin::where([
+        $user = users::where([
                 ['email','=',$req->txt_Email]
             ])->first();
         if($user){
             if(Auth::attempt($credentials)){
-                if($user['type']==2)
+                if($user['id_type']==2)
                     return redirect()->route('indexAdmin');
                 else
-                    if($user['type']==3)
+                    if($user['id_type']==3)
                         return redirect()->route('getContact');
                     else
-                        return redirect()->back()->with(['flag'=>'dange0.
-                            r','message'=>'Bạn không đủ quyền vào trang này']);
+                        return redirect()->back()->with(['flag'=>'danger','message'=>'Login unsuccessful']);
             }
             else{
-                return redirect()->back()->with(['flag'=>'danger','message'=>'Đăng nhập không thành công']);
+                return redirect()->back()->with(['flag'=>'danger','message'=>'Login unsuccessful']);
             }
         }
         else{
-           return redirect()->back()->with(['flag'=>'danger','message'=>'Tài khoản chưa kích hoạt']); 
+           return redirect()->back()->with(['flag'=>'danger','message'=>'Account not activated']); 
         }
     }
 
@@ -81,17 +80,24 @@ class controllerAccount extends Controller
 
 
     public function posteditCustomer(Request $req,$id){
-    	$customer=users::find($id);
-    	$customer->username=$req->txt_name;
-    	$customer->password=$req->txt_password;
-    	$customer->phone=$req->txt_phone;
-    	$customer->email=$req->txt_email;
-    	$customer->address=$req->txt_address;
-    	$customer->gender=$req->txt_gender;
-    	$customer->id_type=1;
-    	$customer->save();
-    	return redirect()->route('getCustomer')->with(['flash_level'=>'success','flash_message'=>'Success !! Complete update customer']);
-
+        if($req->txt_name==null && $req->txt_Email==null &&$req->txt_phone==null && $req->txt_address==null ){
+            echo"<script type='text/javascript'>
+                alert('Sorry ! You need change information or click button Cancel');
+                window.location='";
+                echo route('geteditCustomer',['id' => $id]);
+            echo"'</script>";
+        }
+        else{
+            $customer=users::find($id);
+            $customer->username=$req->txt_name;
+            $customer->phone=$req->txt_phone;
+            $customer->email=$req->txt_email;
+            $customer->address=$req->txt_address;
+            $customer->gender=$req->txt_gender;
+            $customer->id_type=1;
+            $customer->save();
+            return redirect()->route('getCustomer')->with(['flash_level'=>'success','flash_message'=>'Success !! Complete update customer']);
+        }
     }
     public function getdeleteCustomer($id){
         $parent=orders::where('id_user',$id)->count();
@@ -128,7 +134,7 @@ class controllerAccount extends Controller
         $customer->email=$req->txt_email;
         $customer->address=$req->txt_address;
         $customer->gender=$req->txt_gender;
-        $customer->type=1;
+        $customer->type=3;
         $customer->save();
         return redirect()->route('getCustomer')->with(['flash_level'=>'success','flash_message'=>'Success !! Complete add employess']);
 
@@ -146,7 +152,7 @@ class controllerAccount extends Controller
         $customer->email=$req->txt_email;
         $customer->address=$req->txt_address;
         $customer->gender=$req->txt_gender;
-        $customer->id_type=1;
+        $customer->id_type=3;
         $customer->save();
         return redirect()->route('getemployess')->with(['flash_level'=>'success','flash_message'=>'Success !! Complete update employess']);
 

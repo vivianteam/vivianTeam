@@ -4,7 +4,7 @@
   .error{
     color: red;
   }
-</style>   
+</style>
 <div class="content-detached content-right">
   <div class="content-body">
     <!-- Basic form layout section start -->
@@ -25,7 +25,7 @@
                       <label class="col-md-3 label-control" for="projectinput5">Category name
                       </label>
                       <div class="col-md-9">
-                        <input type="text" id="projectinput5" class="form-control" placeholder="Category name" name="txt_thienTest" required pattern="^[a-zA-Z]*$" title="Category Name Invalid" value="{!! old('txt_thienTest',isset($data)? $data['name']: null) !!}">
+                        <input type="text" id="projectinput5" class="form-control" placeholder="Category name" name="txt_thienTest" required pattern="^[a-zA-Z ]*$" title="Category Name Invalid" value="{!! old('txt_thienTest',isset($data)? $data['name']: null) !!}">
                       </div>
                     </div>
                      <div class="form-group row">
@@ -38,10 +38,10 @@
                           </div>
                       </div>
                       <div class="form-group row">
-                        <label class="col-md-3 label-control" for="projectinput9">Image</label>
-                        <div class="col-md-9">        
+                        <label class="col-md-3 label-control" for="projectinput9"></label>
+                        <div class="col-md-9">
                           <div class="form" style="border :1px solid #CACFE7">
-                            <img id="image" height="200px" />
+                            <img id="image" height="200px" src="{{asset('image/')}}/Categories/{{ isset($data)? $data['image']: null}}"/>
                           </div>
                         </div>
                       </div>

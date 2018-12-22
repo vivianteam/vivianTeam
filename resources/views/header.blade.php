@@ -25,7 +25,7 @@
                 </li>
                 @if(Auth::check())
                   <li><a href=""><span class="icon icon-lock">
-                    </span>Chào bạn {{Auth::user()->username}}</a></li> 
+                    </span>Hi {{Auth::user()->username}}</a></li> 
                   <li><a href="{{route('logout')}}"><span class="icon icon-lock">
                     </span>Log out</a></li>
                 @else
@@ -175,7 +175,7 @@
                   </li>
                   <li class="dropdown dropdown-mega-menu dropdown-one-col"> 
                     <a href="{{route('getBlog')}}" class="dropdown-toggle" data-toggle="dropdown">
-                      <span class="act-underline">BLOG
+                      <span class="act-underline">REQUESTS
                       </span>
                     </a> 
                   </li>

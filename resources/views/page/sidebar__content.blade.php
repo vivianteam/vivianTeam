@@ -126,7 +126,6 @@
                     <div class="visually-hidden" aria-live="polite" aria-atomic="true" role="status">
                       Updated total price:
                       <span >
-                       
                       </span>
                     </div>
                   </div>
