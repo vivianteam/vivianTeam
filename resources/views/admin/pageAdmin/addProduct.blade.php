@@ -1,5 +1,5 @@
 @extends('masterAdmin')
-@section('content')  
+@section('content')
 <div class="content-detached content-right">
   <div class="content-body">
     <!-- Basic form layout section start -->
